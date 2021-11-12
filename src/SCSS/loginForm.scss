@@ -11,6 +11,16 @@
   padding: 0 0.2rem;
   color: #228c22;
 }
+
+.input-container input:not(:placeholder-shown) ~ label {
+  top: 0;
+  left: 5px;
+  background-color: white;
+  color: black;
+  padding: 0 0.2rem;
+  color: #228c22;
+}
+
 .input-label {
   position: absolute;
   top: 50%;
