@@ -1,0 +1,21 @@
+.input-container {
+  position: relative;
+  margin: 1rem 0;
+}
+
+.input-container:focus-within label {
+  top: 0;
+  left: 5px;
+  background-color: white;
+  color: black;
+  padding: 0 0.2rem;
+  color: #228c22;
+}
+.input-label {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 5px;
+  color: #ccc;
+  transition: all 300ms;
+}
