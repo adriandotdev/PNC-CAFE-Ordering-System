@@ -6,10 +6,10 @@ import Button from '../components/Button'
 
 function Login() {
     return (
-        <div className="hero h-screen p-20 flex flex-col justify-center gap-4 lg:flex-row">
+        <div className="hero  h-screen mt-12  p-2 flex flex-col gap-4 lg:mt-0 lg:justify-center lg:flex-row lg:p-12">
             
             {/* Title Section */}
-             <div className="hero-content flex-col items-center lg:items-start gap-3 flex-shrink-0">
+             <div className="hero-content flex-col items-center lg:items-start gap-3 flex-shrink-0 z-auto">
                     <h1 className="text-2xl text-pnc font-bold lg:text-4xl xl:text-6xl text-center">Welcome to PNC Cafe</h1>
                     <p className="font-medium text-pnc text-center">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
             </div>
@@ -17,7 +17,7 @@ function Login() {
             {/* Login Form */}
             <div className="hero-content gap-6 max-w-4xl w-full ">
                
-                <div className="card bordered border max-w-md w-full m-auto p-5 ">
+                <div className="card lg:bordered lg:border max-w-md w-full m-auto p-5 ">
                     <h1 className="card-title font-bold text-xl md:text-2xl text-pnc">Login</h1>
                     <form className="form-control " action="">
                     
