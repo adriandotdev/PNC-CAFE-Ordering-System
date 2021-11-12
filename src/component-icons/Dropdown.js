@@ -1,4 +1,5 @@
 import React from 'react'
+import Button from '../components/Button'
 
 function Dropdown() {
     return (
@@ -10,8 +11,8 @@ function Dropdown() {
                 </svg>
                 </button>
                 <ul className="menu dropdown-content w-32 rounded mr-1 z-10 bg-pncHover transition-all shadow-2xl">
-                    <button className="btn-block hover:bg-pnc p-2 font-medium transition-all text-white">Home</button>
-                    <button className="btn-block hover:bg-pnc p-2 font-medium transition-all text-white">About</button>
+                    <Button className="btn-block hover:bg-pnc p-2 font-medium transition-all text-white" text="Home"/>
+                    <Button className="btn-block hover:bg-pnc p-2 font-medium transition-all text-white" text="About"/>
                 </ul>
             </div>
         </>
