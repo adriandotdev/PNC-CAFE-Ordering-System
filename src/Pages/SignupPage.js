@@ -5,7 +5,7 @@ import Button from '../components/Button'
 
 function SignupPage() {
     return (
-        <div className="hero h-screen flex-col items-start mt-12 lg:mt-0 lg:items-center ">
+        <div className="hero flex-col items-start mt-12 lg:mt-0 lg:items-center ">
             
             <div className="hero-content max-w-4xl w-full">
 
@@ -21,11 +21,11 @@ function SignupPage() {
                         <InputContainer name="confirm-password" type="password" labelContent="Confirm Password"/>
 
                         <section>
-                            <Button className="btn bg-pnc w-full hover:bg-pncHover text-lg font-medium text-white md:text-xl border-none" text="Sign Up"/>
+                            <Button className="globalButtons" text="Sign Up"/>
                         </section>
 
                         <section className="flex justify-center mt-2">
-                            <small className="text-pnc font-medium text-center sm:text-base">Already have an account? <Link to="/" className="text-pncHover">Log In</Link> </small>
+                            <small className="text-pnc font-medium text-center sm:text-base">Already have an account? <Link to="/login" className="text-pncHover">Log In</Link> </small>
                         </section>
                     </form>
                 </div>

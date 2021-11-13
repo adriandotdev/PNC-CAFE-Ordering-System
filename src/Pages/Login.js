@@ -6,7 +6,7 @@ import Button from '../components/Button'
 
 function Login() {
     return (
-        <div className="hero h-screen mt-12  flex flex-col lg:mt-0 lg:justify-center lg:flex-row lg:p-12">
+        <div className="hero mt-12 flex flex-col lg:mt-0 lg:justify-center lg:flex-row lg:p-12">
             
             {/* Title Section */}
              <div className="hero-content flex-col lg:items-start gap-3 flex-shrink-0 z-auto">
@@ -27,7 +27,7 @@ function Login() {
 
                         {/* Login Button */}
                         <section>
-                            <Button className="btn bg-pnc w-full border-none hover:bg-pncHover text-lg font-medium text-white md:text-xl" text="Login"/>
+                            <Button className="globalButtons" text="Login"/>
                         </section>
 
                         {/* Link Section */}

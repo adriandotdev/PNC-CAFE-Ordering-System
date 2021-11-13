@@ -1,3 +1,37 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.globalButtons {
+  @apply btn btn-outline text-lg font-medium text-white md:text-xl w-full border-none bg-pnc hover:bg-pncHover;
+}
+
+.button {
+  @apply btn btn-outline bg-pnc hover:bg-pncHover border-none;
+}
+
+.admin-drawer-button {
+  @apply btn btn-square btn-outline glass  drawer-content hover:bg-pnc bordered border border-pnc;
+}
+
+.admin-drawer-mobile {
+  @apply drawer w-screen gap-14 glass grid-flow-col place-content-center p-2  bg-white;
+}
+
+.admin-layout {
+  display: grid;
+  grid-template-rows: minmax(0, 5rem) minmax(0, 1fr);
+  grid-template-columns: minmax(0, 5rem) minmax(0, 1fr);
+}
+
+.nav {
+  grid-row: 1/2;
+  grid-column: 1/-1;
+}
+
+.main-content {
+  grid-row: 2/-1;
+  grid-column: 1/-1;
+  @apply grid grid-cols-2;
+  grid-template-rows: repeat(3, minmax(0, min-content));
+}

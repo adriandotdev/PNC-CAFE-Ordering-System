@@ -10,6 +10,16 @@ module.exports = {
           current: 'currentColor',
           pnc: '#228c22',
           pncHover: '#2CB52C',
+        },
+        gridTemplateColumns: {
+          // Simple 16 column grid
+         '2': 'minmax(0, 5rem) minmax(0, 1fr)',
+
+          // Complex site-specific column configuration
+         'footer': '200px minmax(900px, 1fr) 100px',
+        },
+        gridTemplateRows: {
+          '2': 'minmax(0, 5rem) minmax(0, 1fr)',
         }
       }
   },
