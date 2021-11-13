@@ -35,3 +35,8 @@
   @apply grid grid-cols-2;
   grid-template-rows: repeat(3, minmax(0, min-content));
 }
+
+/* Table Styles */
+.table-headers {
+  @apply sticky top-0 bg-pnc bg-opacity-100 text-pnc;
+}

@@ -15,19 +15,24 @@ function AdminPage() {
 
             <div className="lg:row-start-2 col-start-1 col-end-3 lg:col-start-2 lg:col-end-3 overflow-y-auto max-h-96 border">
                 
-                <table className="table table-compact w-full relative">
-                    <thead className="sticky z-10 top-0 w-full">
-                        <th>ID Number</th>
-                        <th>Given Name</th>
-                        <th>Middle Name</th>
-                        <th>Last Name</th>
-                        <th>Email</th>
+                <table className="table w-full relative ">
+                    <thead className="relative">
+                            
+                            <th className="hidden"></th>
+                            <th className="table-headers">ID Number</th>
+                            <th className="table-headers">Given Name</th>
+                            <th className="table-headers">Middle Name</th>
+                            <th className="table-headers">Last Name</th>
+                            <th className="table-headers">Email</th>
+                        
+                        
                     </thead>
                     <tbody className="overflow-y-auto">
                         {
                             customer.map(cust => {
                                 return (
                                     <tr className="hover">
+                                        <th className="hidden"></th>
                                         <th>{cust.idNumber}</th>
                                         <td>{cust.givenName}</td>
                                         <td>Lauriano</td>
