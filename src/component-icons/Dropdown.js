@@ -5,13 +5,13 @@ function Dropdown() {
     return (
         <>
             <div  className="dropdown dropdown-hover dropdown-end">
-                <button className="btn hover:bg-pncHover bg-pnc">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-11 w-11" fill="none" viewBox="0 0 24 24" stroke="white">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
-                </svg>
+                <button className="btn hover:bg-pncHover bg-pnc border-none">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 md:h-8 md:w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
                 </button>
                 <ul className="menu dropdown-content w-32 rounded mr-1 z-10 bg-pncHover transition-all shadow-2xl">
-                    <Button className="btn-block hover:bg-pnc p-2 font-medium transition-all text-white" text="Home"/>
+                    <Button className="btn-block focus:border-none hover:bg-pnc p-2 font-medium transition-all text-white" text="Home"/>
                     <Button className="btn-block hover:bg-pnc p-2 font-medium transition-all text-white" text="About"/>
                 </ul>
             </div>
