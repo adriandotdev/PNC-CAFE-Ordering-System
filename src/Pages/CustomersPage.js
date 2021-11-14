@@ -3,8 +3,8 @@ import {customer} from '../test/customer'
 
 function CustomersPage() {
     return (
-        <div>
-            <div className="row-start-2 row-end-2 col-start-1 lg:col-start-2 lg:row-start-1 lg:row-end-1">
+        <div className="row-start-3 row-end-3 col-start-1 col-end-5 lg:col-start-2 lg:row-start-1 lg:row-end-1">
+            <div >
                 <h1 className="p-3 pl-1 font-medium md:text-lg lg:text-2xl">Customers</h1>
             </div>
 
@@ -22,6 +22,8 @@ function CustomersPage() {
                         
                         
                     </thead>
+
+                    {/* Actual Data */}
                     <tbody className="overflow-y-auto">
                         {
                             customer.map(cust => {
@@ -39,13 +41,6 @@ function CustomersPage() {
                         }
                         
                     </tbody>
-                    <tfoot className="sticky top-auto left-0 right-0">
-                        <th>ID Number</th>
-                        <th>Given Name</th>
-                        <th>Middle Name</th>
-                        <th>Last Name</th>
-                        <th>Email</th>
-                    </tfoot>
                 </table>
             </div>
         </div>
