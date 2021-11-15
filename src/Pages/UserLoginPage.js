@@ -4,9 +4,9 @@ import '../SCSS/loginForm.scss';
 import InputContainer from '../components/InputContainer'
 import Button from '../components/Button'
 
-function Login() {
+function UserLoginPage() {
     return (
-        <div className="hero mt-12 flex flex-col lg:mt-0 lg:justify-center lg:flex-row lg:p-12">
+        <div className="hero mt-12 flex flex-col lg:mt-0 lg:justify-center lg:items-center lg:flex-row lg:p-12">
             
             {/* Title Section */}
              <div className="hero-content flex-col lg:items-start gap-3 flex-shrink-0 z-auto">
@@ -44,4 +44,4 @@ function Login() {
     )
 }
 
-export default Login
+export default UserLoginPage

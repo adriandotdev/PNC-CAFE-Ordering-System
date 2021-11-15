@@ -15,6 +15,8 @@ function Navbar({navClass}) {
                     <Dropdown />
                 </section>
             </nav>
+
+            {/* Other Pages to be rendered (E.g. UserLoginPage, UserSignupPage) */}
             <Outlet />
         </div>
     )

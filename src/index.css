@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Button styles such as Login and Signup button */
 .globalButtons {
   @apply btn btn-outline text-lg font-medium text-white md:text-xl w-full border-none bg-pnc hover:bg-pncHover;
 }
@@ -22,7 +23,7 @@
   @apply menu dropdown-content w-32 rounded mr-1 z-10 bg-pncHover transition-all shadow-2xl;
 }
 
-.nav {
+.user-navbar {
   grid-row: 1/2;
   grid-column: 1/-1;
 }
@@ -31,17 +32,19 @@
   @apply btn-block focus:border-current hover:bg-pnc p-2 font-medium transition-all text-white;
 }
 
-/* Admin Page */
+/* Admin layout that consist the AdminNavbar, Sidebar and (Customer | Menu | Transactions tables) */
 .admin-layout {
   display: grid;
   grid-template-rows: minmax(0, 5rem) minmax(0, 1fr);
   grid-template-columns: minmax(0, 10rem) repeat(2, minmax(0, 1fr));
+  height: 100vh;
 }
 
+/* Container of Sidebar component and (Customer, Menu, Transaction tables) */
 .main-content-admin {
+  display: grid;
   grid-row: 2/-1;
   grid-column: 1/-1;
-  @apply grid;
   grid-template-columns: minmax(0, 10rem) repeat(3, minmax(0, 1fr));
   grid-template-rows: repeat(3, minmax(0, min-content));
 }
@@ -65,20 +68,15 @@
 .admin-cancel-btn {
   @apply btn bg-blue-400 hover:bg-blue-500 border-none;
 }
+/* END OF ADMIN COMPONENT STYLES */
 
 /* TABLE STYLES */
 .table-height {
   height: 50rem;
 }
 
-.table-headers {
-  @apply bg-pnc bg-opacity-100 text-pnc;
-}
-
 /* MENU DESCRIPTION */
 .description-width {
-  /* max-width: 50px;
-  width: 50px; */
   white-space: pre-wrap;
   text-overflow: ellipsis;
 }

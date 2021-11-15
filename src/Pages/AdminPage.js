@@ -7,7 +7,10 @@ function AdminPage() {
     return (
         <div className="main-content-admin lg:h-full lg:sticky">
             
-            <Sidebar />
+            {/* Sidebar that contains the USER, TRANSACTION, AND MENU BUTTON */}
+            <Sidebar /> 
+
+            {/* This will render the page for user, transaction, and menu table */}
             <Outlet />
         </div>
     )

@@ -3,7 +3,8 @@ import {Link} from 'react-router-dom'
 import InputContainer from '../components/InputContainer'
 import Button from '../components/Button'
 
-function SignupPage() {
+// User sign up page
+function UserSignupPage() {
     return (
         <div className="hero flex-col items-start mt-12 lg:mt-0 lg:items-center ">
             
@@ -35,4 +36,4 @@ function SignupPage() {
     )
 }
 
-export default SignupPage
+export default UserSignupPage

@@ -1,5 +1,6 @@
 import React from 'react'
 
+// This is the shopping cart button
 function ShoppingCart() {
     return (
         <>

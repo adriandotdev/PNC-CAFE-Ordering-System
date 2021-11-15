@@ -1,6 +1,7 @@
 import React from 'react'
 import Button from '../components/Button'
 
+// This is the dropdown menu for user.
 function Dropdown() {
     return (
         <>
