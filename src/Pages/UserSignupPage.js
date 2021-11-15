@@ -26,7 +26,7 @@ function UserSignupPage() {
                         </section>
 
                         <section className="flex justify-center mt-2">
-                            <small className="text-pnc font-medium text-center sm:text-base">Already have an account? <Link to="/login" className="text-pncHover">Log In</Link> </small>
+                            <small className="text-pnc font-medium text-center sm:text-base">Already have an account? <Link to="/" className="text-pncHover">Log In</Link> </small>
                         </section>
                     </form>
                 </div>
