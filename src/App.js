@@ -29,7 +29,7 @@ function App() {
     <Router >
         <Routes>
           <Route exact path="/" element={<Navbar navClass="grid grid-rows-2 h-screen"/>} >
-            <Route path="/login" element={<Login />} />
+            <Route path="/" element={<Login />} />
             <Route path="/signup" element={<SignupPage />} />
           </Route>
 
