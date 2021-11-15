@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom'
 // row-start-1 col-start-1 col-end-5 grid grid-flow-col place-items-center place-content-center
 function Sidebar() {
     return (
-        <div className="max-h-min flex flex-wrap justify-center w-screen gap-5 p-3  lg:shadow-none lg:col-start-1 lg:col-end-3 lg:row-start-1 lg:row-end-4 lg:grid-flow-row lg:max-w-min lg:place-content-start">
+        <div className="max-h-min flex flex-wrap justify-center w-screen gap-5 p-3 shadow-md mb-3 lg:mb-0 lg:col-start-1 lg:col-end-3 lg:row-start-1 lg:row-end-4 lg:grid-flow-row lg:max-w-min lg:place-content-start ">
 
             <Link to="/admin/transactions" className="admin-sidebar-btn w-28">Transactions</Link>
             <Link to="/admin/users" className="admin-sidebar-btn w-28">Users</Link>
