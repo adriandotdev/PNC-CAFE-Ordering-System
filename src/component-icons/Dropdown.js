@@ -11,7 +11,7 @@ function Dropdown() {
                     </svg>
                 </button>
                 <ul className="menu dropdown-content w-32 rounded mr-1 z-10 bg-pncHover transition-all shadow-2xl">
-                    <Button className="btn-block focus:border-none hover:bg-pnc p-2 font-medium transition-all text-white" text="Home"/>
+                    <Button className="btn-block focus:border-none hover:bg-pnc p-2 font-medium transition-all text-white" text="Menu"/>
                     <Button className="btn-block hover:bg-pnc p-2 font-medium transition-all text-white" text="About"/>
                 </ul>
             </div>
