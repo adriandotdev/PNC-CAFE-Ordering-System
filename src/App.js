@@ -6,8 +6,9 @@ import SignupPage from './Pages/SignupPage'
 import AdminPage from './Pages/AdminPage'
 import Sample from './Pages/Sample'
 import CustomersPage from './Pages/CustomersPage'
-import Sidebar from './components/Sidebar'
+import MenuPage from './Pages/MenuPage'
 import React from 'react'
+
 function App() {
   return (
     <Router >
@@ -22,8 +23,8 @@ function App() {
 
             <Route path="/admin" element={<AdminPage />}>
               <Route path="/admin/users" element={<CustomersPage />} />
+              <Route path="/admin/menu" element={<MenuPage />} />
             </Route>
-            
           </Route>
 
           {/* For testing only */}

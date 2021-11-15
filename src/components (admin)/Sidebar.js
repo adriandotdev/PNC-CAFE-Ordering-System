@@ -1,7 +1,6 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
-import InputContainer from './InputContainer'
-import Button from './Button'
+
 // row-start-1 col-start-1 col-end-5 grid grid-flow-col place-items-center place-content-center
 function Sidebar() {
     return (

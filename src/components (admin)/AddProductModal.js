@@ -1,31 +1,52 @@
-import React from 'react'
-import InputContainer from '../components (admin)/AdminNavbar'
+import React, {useState} from 'react'
+import Textfield from '../components/Textfield'
+import Label from '../components/Label'
+import Button from '../components/Button';
+import ModalButton from './ModalButton'
 
-function AddProductModal() {
+function AddProductModal({isEditing, setEditing}) {
+
+    const [menu, setMenu] = useState('');
+    const [menuDesc, setMenuDesc] = useState(''); // menu description
+    const [price, setPrice] = useState(0);
+
+    /**
+     * Dito ay mag po-POST request ka
+     * para mag add ng new menu.
+     * 
+     * then pag mag eedit ka mag po-POST request ka din
+     */
     return (
         <>
-            <label htmlFor="modal-1" className="admin-sidebar-btn modal-button">Add Product</label>
-            <input type="checkbox" name="modal-1" id="modal-1" className="modal-toggle" />
+            
             <div className="modal ">
                 
-                <div className="modal-box">
+                <form className="modal-box">
 
-                    <h1 className="font-bold text-2xl lg:text-3xl">Add Product</h1>
-
-                    <InputContainer name="prod-name" type="text" labelContent="Product Name"/>
+                    <h1 className="font-bold text-2xl lg:text-3xl">{isEditing ? "Edit Product" : "Add Product"}</h1>
                     
+                    <section className="input-container flex flex-col-reverse relative">
+                        <Textfield props={{type: 'text', name: 'product-name'}} value={menu} onChange={(e) => setMenu(e.target.value)}/>
+                        <Label props={{name: 'product-name', labelContent: 'Product Name'}} />
+                    </section>
+
                     <div className="form-control">
-                        <textarea className="textarea border-pnc textarea-bordered focus:ring-1 ring-pnc" placeholder="Product Description"></textarea>
+                        <textarea value={menuDesc} onChange={(e) => setMenuDesc(e.target.value)} 
+                        className="textarea border-pnc textarea-bordered focus:ring-1 ring-pnc" placeholder="Product Description" required></textarea>
                     </div>
 
-                    <InputContainer name="price" type="number" labelContent="Price"/>
+                    <section className="input-container flex flex-col-reverse relative">
+                        <Textfield props={{type: 'number', name: 'product-price'}} value={price} onChange={(e) => setPrice(e.target.value)}/>
+                        <Label props={{name: 'product-price', labelContent: 'Product Price'}} />
+                    </section>
 
-                    <InputContainer name="items" type="number" labelContent="No. of items"/>
                     <div className="modal-action">
-                        <label htmlFor="modal-1" className="admin-sidebar-btn modal-button">Add</label>
-                        <label htmlFor="modal-1" className="admin-sidebar-btn modal-button">Close</label>
+                        <Button className="admin-sidebar-btn" text={isEditing ? "Edit" : "Add"}/>
+                        <ModalButton htmlFor="menu-modal" className="admin-sidebar-btn modal-button" text="Close" onClick={() => { 
+                            setEditing(false)
+                        }}/>
                     </div>
-                </div>
+                </form>
             </div>
         </>
     )

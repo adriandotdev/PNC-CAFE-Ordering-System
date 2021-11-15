@@ -18,10 +18,8 @@
   @apply drawer w-screen gap-14 glass grid-flow-col place-content-center p-2  bg-white;
 }
 
-.admin-layout {
-  display: grid;
-  grid-template-rows: minmax(0, 5rem) minmax(0, 1fr);
-  grid-template-columns: minmax(0, 5rem) minmax(0, 1fr);
+.dropdown-menu {
+  @apply menu dropdown-content w-32 rounded mr-1 z-10 bg-pncHover transition-all shadow-2xl;
 }
 
 .nav {
@@ -29,14 +27,48 @@
   grid-column: 1/-1;
 }
 
-.main-content {
-  grid-row: 2/-1;
-  grid-column: 1/-1;
-  @apply grid grid-cols-2;
-  grid-template-rows: repeat(3, minmax(0, min-content));
+.nav-menu-button {
+  @apply btn-block focus:border-current hover:bg-pnc p-2 font-medium transition-all text-white;
 }
-
 /* Table Styles */
 .table-headers {
   @apply sticky top-0 bg-pnc bg-opacity-100 text-pnc;
+}
+
+/* Admin Page */
+.admin-layout {
+  display: grid;
+  grid-template-rows: minmax(0, 5rem) minmax(0, 1fr);
+  grid-template-columns: minmax(0, 10rem) repeat(2, minmax(0, 1fr));
+}
+
+.main-content-admin {
+  grid-row: 2/-1;
+  grid-column: 1/-1;
+  @apply grid;
+  grid-template-columns: minmax(0, 10rem) repeat(3, minmax(0, 1fr));
+  grid-template-rows: repeat(3, minmax(0, min-content));
+}
+
+.admin-button {
+  @apply btn border-none glass flex justify-between gap-2 bg-pncHover hover:bg-pncHover;
+}
+
+.admin-sidebar-btn {
+  @apply btn glass bg-pnc hover:bg-pncHover;
+}
+
+.admin-edit-btn {
+  @apply btn bg-blue-400 hover:bg-blue-500 border-none;
+}
+
+.admin-delete-btn {
+  @apply btn bg-red-400 hover:bg-red-500 border-none;
+}
+
+.admin-cancel-btn {
+  @apply btn bg-blue-400 hover:bg-blue-500 border-none;
+}
+.table-height {
+  height: 50rem;
 }
