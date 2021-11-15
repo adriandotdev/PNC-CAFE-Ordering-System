@@ -1,15 +1,22 @@
+import React, {useState} from 'react'
+import {BrowserRouter as Router, Route, Routes} from 'react-router-dom'
+
+// components
 import Navbar from './components/Navbar'
 import AdminNavbar from './components (admin)/AdminNavbar'
-import {BrowserRouter as Router, Route, Routes} from 'react-router-dom'
+
+import Sample from './Pages/Sample' // for testing
+
+// pages
 import Login from './Pages/Login'
 import SignupPage from './Pages/SignupPage'
 import AdminPage from './Pages/AdminPage'
-import Sample from './Pages/Sample'
-import CustomersPage from './Pages/CustomersPage'
 import MenuPage from './Pages/MenuPage'
-import React from 'react'
-
+import CustomersPage from './Pages/CustomersPage'
 function App() {
+
+  const [isAdmin, setAdmin] = useState(false);
+  
   return (
     <Router >
         <Routes>
