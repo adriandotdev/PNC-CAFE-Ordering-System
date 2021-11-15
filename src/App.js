@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import {BrowserRouter as Router, Route, Routes} from 'react-router-dom'
 
 // components
@@ -13,10 +13,18 @@ import SignupPage from './Pages/SignupPage'
 import AdminPage from './Pages/AdminPage'
 import MenuPage from './Pages/MenuPage'
 import CustomersPage from './Pages/CustomersPage'
+import AdminLogin from './Pages/AdminLogin'
+
 function App() {
 
   const [isAdmin, setAdmin] = useState(false);
-  
+
+  useEffect(() => {
+
+    if (window.sessionStorage.getItem('isAdmin') === 'true') {
+      setAdmin(true)
+    }
+  })
   return (
     <Router >
         <Routes>
@@ -26,12 +34,16 @@ function App() {
           </Route>
 
           {/* Admin Route */}
-          <Route path="/admin" element={<AdminNavbar navClass="admin-layout"/>}>
+          <Route path="/admin" element={<AdminNavbar isAdmin={isAdmin} setAdmin={setAdmin} navClass="admin-layout"/>}>
 
-            <Route path="/admin" element={<AdminPage />}>
-              <Route path="/admin/users" element={<CustomersPage />} />
-              <Route path="/admin/menu" element={<MenuPage />} />
-            </Route>
+            {!isAdmin && <Route path="/admin" element={<AdminLogin setAdmin={setAdmin}/>} />}
+            {
+              isAdmin && <Route path="/admin" element={<AdminPage />}>
+                          <Route path="/admin/users" element={<CustomersPage />} />
+                          <Route path="/admin/menu" element={<MenuPage />} />
+                        </Route>
+            }
+            
           </Route>
 
           {/* For testing only */}
