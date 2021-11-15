@@ -30,10 +30,6 @@
 .nav-menu-button {
   @apply btn-block focus:border-current hover:bg-pnc p-2 font-medium transition-all text-white;
 }
-/* Table Styles */
-.table-headers {
-  @apply sticky top-0 bg-pnc bg-opacity-100 text-pnc;
-}
 
 /* Admin Page */
 .admin-layout {
@@ -69,6 +65,20 @@
 .admin-cancel-btn {
   @apply btn bg-blue-400 hover:bg-blue-500 border-none;
 }
+
+/* TABLE STYLES */
 .table-height {
   height: 50rem;
+}
+
+.table-headers {
+  @apply bg-pnc bg-opacity-100 text-pnc;
+}
+
+/* MENU DESCRIPTION */
+.description-width {
+  /* max-width: 50px;
+  width: 50px; */
+  white-space: pre-wrap;
+  text-overflow: ellipsis;
 }

@@ -40,9 +40,9 @@ function MenuPage() {
                                     <tr key={index} className="hover">
                                         <th className="hidden"></th>
                                         <th>{cust.idNumber}</th>
-                                        <td>{cust.givenName}</td>
-                                        <td>Lauriano</td>
-                                        <td>Marcelo</td>
+                                        <td>Caldereta</td>
+                                        <td><p className="description-width">It is made by gold and iron Lorem, ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur adipisicing elit. At saepe nemo explicabo autem, similique ullam! Ut esse quas fugiat labore velit temporibus molestiae mollitia voluptas cum quibusdam ad iure quis minima eveniet, earum quo asperiores quaerat blanditiis iusto. Quae aperiam eum inventore recusandae molestiae mollitia nihil iste consequatur cupiditate incidunt?</p></td>
+                                        <td>$3.00</td>
                                         <td>
                                             <ModalButton onClick={() => setEditing(true)} htmlFor="menu-modal" className="admin-edit-btn modal-button" text="Edit"/>
                                         </td>
