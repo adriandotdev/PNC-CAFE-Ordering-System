@@ -3,6 +3,7 @@ import {customer} from '../test/customer'
 import AddProductModal from '../components (admin)/AddProductModal'
 import DeleteModal from '../components (admin)/DeleteModal'
 import ModalButton from '../components (admin)/ModalButton'
+import Button from '../components/Button'
 
 function MenuPage() {
 
@@ -41,14 +42,17 @@ function MenuPage() {
                                         <th className="hidden"></th>
                                         <th>{cust.idNumber}</th>
                                         <td>Caldereta</td>
-                                        <td><p className="description-width">It is made by gold and iron Lorem, ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur adipisicing elit. At saepe nemo explicabo autem, similique ullam! Ut esse quas fugiat labore velit temporibus molestiae mollitia voluptas cum quibusdam ad iure quis minima eveniet, earum quo asperiores quaerat blanditiis iusto. Quae aperiam eum inventore recusandae molestiae mollitia nihil iste consequatur cupiditate incidunt?</p></td>
+                                        <td><Button className="button" text="Product Info"/></td>
                                         <td>$3.00</td>
                                         <td>
+                                            {/* Edit Button */}
                                             <ModalButton onClick={() => setEditing(true)} htmlFor="menu-modal" className="admin-edit-btn modal-button" text="Edit"/>
                                         </td>
                                         <td>
+                                            {/* Delete Button */}
                                             <ModalButton htmlFor="delete-modal" className="admin-delete-btn modal-button" text="Delete"/>
-                                            <DeleteModal />
+                                            {/* The modal that pops up when the Delete button is clicked */}
+                                            <DeleteModal /> 
                                         </td>
                                     </tr>
                                 )
