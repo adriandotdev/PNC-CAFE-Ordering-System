@@ -22,7 +22,7 @@ function App() {
 
     if (window.sessionStorage.getItem('isAdmin') === 'true') 
       setAdmin(true)
-  })
+  }, [])
 
   return (
     <Router >
