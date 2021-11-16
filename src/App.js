@@ -12,6 +12,7 @@ import AdminPage from './Pages/AdminPage'
 import MenuPage from './Pages/MenuPage'
 import CustomersPage from './Pages/CustomersPage'
 import AdminLogin from './Pages/AdminLogin'
+import Homepage from './Pages/Homepage'
 
 function App() {
 
@@ -32,6 +33,7 @@ function App() {
           <Route exact path="/" element={<Navbar navClass="grid grid-rows-2 h-screen"/>} >
             <Route path="/" element={<UserLoginPage />} />
             <Route path="/signup" element={<UserSignupPage />} />
+            <Route path="/homepage" element={<Homepage />} />
           </Route>
 
           {/* Routes for admin */}

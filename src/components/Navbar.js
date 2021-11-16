@@ -6,15 +6,18 @@ import Dropdown from '../component-icons/Dropdown'
 function Navbar({navClass}) {
     return (
         <div className={navClass}>
-            <nav className="nav navbar bg-pnc p-5 navbar-start w-full flex items-center justify-between">
-                <h1 className="text-white font-bold text-2xl md:text-3xl">PNC Cafe</h1>
-                
-                <section className="">
+            <div className="relative">
+                <nav className="nav navbar bg-pnc p-5 navbar-start w-full flex items-center justify-between fixed top-0 z-10">
+                    <h1 className="text-white font-bold text-2xl md:text-3xl ">PNC Cafe</h1>
+                    
+                    <section className="">
 
-                    <ShoppingCart />
-                    <Dropdown />
-                </section>
-            </nav>
+                        <ShoppingCart />
+                        <Dropdown />
+                    </section>
+                </nav>
+            </div>
+            
 
             {/* Other Pages to be rendered (E.g. UserLoginPage, UserSignupPage) */}
             <Outlet />

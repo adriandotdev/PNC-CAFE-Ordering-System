@@ -8,7 +8,7 @@
 }
 
 .button {
-  @apply btn btn-outline bg-pnc hover:bg-pncHover border-none;
+  @apply btn btn-outline bg-pnc hover:bg-pncHover border-none text-white;
 }
 
 .admin-drawer-button {
@@ -79,4 +79,12 @@
 .description-width {
   white-space: pre-wrap;
   text-overflow: ellipsis;
+}
+
+/* Homepage */
+.menu-desc {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-lines: 3;
+  @apply text-lg font-medium;
 }
