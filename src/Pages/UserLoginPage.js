@@ -1,10 +1,18 @@
-import React from 'react'
+import React, {useState} from 'react'
 import {Link} from 'react-router-dom'
 import '../SCSS/loginForm.scss';
 import InputContainer from '../components/InputContainer'
 import Button from '../components/Button'
+import ErrorAlert from '../components/ErrorAlert'
 
 function UserLoginPage() {
+
+    const [IDNumber, setIDNumber] = useState('');
+    const [password, setPassword] = useState('');
+    const [errorMessage, setErrorMessage] = useState('');
+    const idNumber = '1900120'
+    const pass = 'password'
+
     return (
         <div className="hero mt-12 flex flex-col lg:mt-0 lg:justify-center lg:items-center lg:flex-row lg:p-12">
             
@@ -15,19 +23,51 @@ function UserLoginPage() {
              </div>
 
             {/* Login Form */}
-            <div className="hero-content max-w-4xl w-full">
+            <div className="hero-content flex flex-col max-w-4xl w-full">
                
                 <div className="card lg:bordered lg:border lg:p-5 max-w-md w-full">
                     <h1 className="card-title font-bold text-xl md:text-2xl text-pnc text-center lg:text-left">Login</h1>
-                    <form className="form-control " action="">
+                    <form className="form-control " action="" onSubmit={(e) => e.preventDefault()}>
                     
                         {/* INPUT FIELDS */}
-                        <InputContainer name="id-number" type="text" labelContent="ID Number"/>
-                        <InputContainer name="password" type="password" labelContent="Password"/>
+                        <InputContainer name="id-number" type="text" labelContent="ID Number" value={IDNumber} onChange={(e) => {
+                            setIDNumber(e.target.value)
+                            setErrorMessage('')
+                        }}/>
+
+                        <InputContainer name="password" type="password" labelContent="Password" value={password} onChange={(e) => {
+                            setPassword(e.target.value)
+                            setErrorMessage('')
+                        }}/>
 
                         {/* Login Button */}
                         <section>
-                            <Button className="globalButtons" text="Login"/>
+                            <Button onClick={() => {
+                                /**
+                                 * Query the id number and password that given by the user. 
+                                 * 
+                                 * evaluate if it is equal 
+                                 * 
+                                 * if given id number doesn't have a match at the database 
+                                 *   - message = 'ID Number doesn't exist'
+                                 * 
+                                 * if given password is incorrect
+                                 *  - message = 'Password incorrect'
+                                 */
+                                
+
+                                if (!IDNumber || !password) {
+                                    setErrorMessage('Please provide ID Number and Password')
+                                } else if (password !== pass) {
+                                    setErrorMessage('Incorrect Password')
+                                } else if (IDNumber !== idNumber) {
+                                    setErrorMessage('ID Number doesn\'t exist')
+                                } else {
+                                    setErrorMessage('')
+                                }
+                            }} 
+                            className="globalButtons" 
+                            text="Login"/>
                         </section>
 
                         {/* Link Section */}
@@ -38,6 +78,7 @@ function UserLoginPage() {
                         </section>
                     </form>
                 </div>
+                {errorMessage && <ErrorAlert errorMessage={errorMessage}/>}
             </div>
             
         </div>
