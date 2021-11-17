@@ -24,6 +24,14 @@ function CartMenu() {
                         <p>$30.00</p>
                     </section>
                     <section>
+                        <p>x3</p>
+                    </section>
+                    <section className="btn-group">
+                        <Button className="btn btn-outline btn-sm" text="-"/>
+                        <Button className="quantity" text="1" />
+                        <Button className="btn btn-outline btn-sm" text="+"/>
+                    </section>
+                    <section>
                         <Button className="admin-delete-btn" text="remove"/>
                     </section>
                 </div>
