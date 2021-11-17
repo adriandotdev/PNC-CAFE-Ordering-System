@@ -13,7 +13,7 @@ function Navbar({navClass, isUser, setUser}) {
                     
                     <section className="">
 
-                        <ShoppingCart />
+                        { isUser && <ShoppingCart /> }
                         <Dropdown isUser={isUser} setUser={setUser}/>
                     </section>
                 </nav>
