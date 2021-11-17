@@ -2,7 +2,7 @@ import React from 'react'
 import Button from '../components/Button'
 
 // This is the dropdown menu for user.
-function Dropdown() {
+function Dropdown({isUser, setUser}) {
     return (
         <>
             <div  className="dropdown dropdown-hover dropdown-end">
@@ -12,8 +12,21 @@ function Dropdown() {
                     </svg>
                 </button>
                 <ul className="menu dropdown-content w-32 rounded mr-1 z-10 bg-pncHover transition-all shadow-2xl">
+
+                    {/* Menu Button */}
                     <Button className="btn-block focus:border-none hover:bg-pnc p-2 font-medium transition-all text-white" text="Menu"/>
+
+                    {/* About Button */}
                     <Button className="btn-block hover:bg-pnc p-2 font-medium transition-all text-white" text="About"/>
+
+                    {/* Logout button */}
+                    {isUser && <Button onClick={
+                                        () => {
+                                            setUser(false)
+                                            window.location.replace('http://localhost:3000/login')
+                                        }}       
+                                        className="btn-block hover:bg-pnc p-2 font-medium transition-all text-white" 
+                                        text="Logout"/>}
                 </ul>
             </div>
         </>

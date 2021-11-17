@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import {BrowserRouter as Router, Route, Routes} from 'react-router-dom'
+import {BrowserRouter as Router, Route, Routes, Navigate} from 'react-router-dom'
 
 // components
 import Navbar from './components/Navbar'
@@ -17,7 +17,7 @@ import Homepage from './Pages/Homepage'
 function App() {
 
   const [isAdmin, setAdmin] = useState(false);
-
+  const [isUser, setUser] = useState(false);
   // If the admin account hasn't logged out yet, we still use the sessionStorage for previous activity.
   useEffect(() => {
 
@@ -30,11 +30,11 @@ function App() {
         <Routes>
 
           {/* Routes for user */}
-          <Route exact path="/" element={<Navbar navClass="grid grid-rows-2 h-screen"/>} >
-            <Route path="/" element={<UserLoginPage />} />
+          <Route path="/" element={<Navbar navClass="grid grid-rows-2 h-screen" isUser={isUser} setUser={setUser}/>} >
+            <Route path="/" element={<UserLoginPage setUser={setUser}/>} />
             <Route path="/signup" element={<UserSignupPage />} />
-            <Route path="/homepage" element={<Homepage />} />
-          </Route>
+            {isUser && <Route path="/homepage" element={<Homepage/>} />}
+          </Route> 
 
           {/* Routes for admin */}
           <Route path="/admin" element={<AdminNavbar isAdmin={isAdmin} setAdmin={setAdmin} navClass="admin-layout"/>}>

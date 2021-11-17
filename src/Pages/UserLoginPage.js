@@ -1,12 +1,13 @@
 import React, {useState} from 'react'
-import {Link} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
 import '../SCSS/loginForm.scss';
 import InputContainer from '../components/InputContainer'
 import Button from '../components/Button'
 import ErrorAlert from '../components/ErrorAlert'
 
-function UserLoginPage() {
+function UserLoginPage({setUser}) {
 
+    let navigate = useNavigate();
     const [IDNumber, setIDNumber] = useState('');
     const [password, setPassword] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
@@ -57,13 +58,15 @@ function UserLoginPage() {
                                 
 
                                 if (!IDNumber || !password) {
-                                    setErrorMessage('Please provide ID Number and Password')
+                                    setErrorMessage('Please provide ID Number and Password'); return;
                                 } else if (password !== pass) {
-                                    setErrorMessage('Incorrect Password')
+                                    setErrorMessage('Incorrect Password'); return;
                                 } else if (IDNumber !== idNumber) {
-                                    setErrorMessage('ID Number doesn\'t exist')
+                                    setErrorMessage('ID Number doesn\'t exist'); return;
                                 } else {
                                     setErrorMessage('')
+                                    setUser(true)
+                                    navigate("/homepage", {replace: true})
                                 }
                             }} 
                             className="globalButtons" 
