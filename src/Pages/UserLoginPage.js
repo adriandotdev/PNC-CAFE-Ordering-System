@@ -59,13 +59,15 @@ function UserLoginPage({setUser}) {
 
                                 if (!IDNumber || !password) {
                                     setErrorMessage('Please provide ID Number and Password'); return;
-                                } else if (password !== pass) {
-                                    setErrorMessage('Incorrect Password'); return;
                                 } else if (IDNumber !== idNumber) {
                                     setErrorMessage('ID Number doesn\'t exist'); return;
-                                } else {
+                                }
+                                else if (password !== pass) {
+                                    setErrorMessage('Incorrect Password'); return;
+                                }  else {
                                     setErrorMessage('')
                                     setUser(true)
+                                    window.sessionStorage.setItem('isUser', 'true');
                                     navigate("/homepage", {replace: true})
                                 }
                             }} 
