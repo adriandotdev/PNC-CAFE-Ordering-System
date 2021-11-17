@@ -23,7 +23,8 @@ function Dropdown({isUser, setUser}) {
                     {isUser && <Button onClick={
                                         () => {
                                             setUser(false)
-                                            window.location.replace('http://localhost:3000/login')
+                                            window.sessionStorage.setItem('isUser', 'false');
+                                            window.location.replace('http://localhost:3000')
                                         }}       
                                         className="btn-block hover:bg-pnc p-2 font-medium transition-all text-white" 
                                         text="Logout"/>}
