@@ -18,11 +18,20 @@ function App() {
 
   const [isAdmin, setAdmin] = useState(false);
   const [isUser, setUser] = useState(false);
+  const [IDNumber, setIDNumber] = useState(null);
+
   // If the admin account hasn't logged out yet, we still use the sessionStorage for previous activity.
   useEffect(() => {
 
     if (window.sessionStorage.getItem('isAdmin') === 'true') 
       setAdmin(true)
+  }, [])
+
+  // If the user hasn't logged out yet, we still use the sessionStorage for previous activity.
+  useEffect(() => {
+
+    if (window.sessionStorage.getItem('isUser') === 'true') 
+      setUser(true)
   }, [])
 
   return (
