@@ -1,44 +1,48 @@
-import React from 'react'
-import {Nav} from 'react-router-dom'
-import Button from '../components/Button'
-import {menu} from '../test/menu'
-import adobo from '../assets/Adobo.jpg'
+import React, {useState, useEffect, useContext} from 'react'
+import {UserContext} from '../contexts/UserContext'
+import MenuInfoModal from '../components/MenuInfoModal'
 
 function Homepage() {
 
+    const [menu, setMenu] = useState([])
+    const [,,, setMenuID] = useContext(UserContext)
+
+    useEffect(() => {
+
+        fetch('http://localhost:3001/get-menu')
+        .then(res => res.json())
+        .then(data => setMenu(JSON.parse(data)))
+    }, [])
+
     return (
         
-        <div className="grid grid-auto-rows">
+        <div className="grid grid-auto-rows w-full">
 
-
-            <div className="flex flex-wrap justify-center gap-10 p-5">
+            <div className="flex flex-wrap justify-center md:justify-start items-start gap-10 py-5 md:p-5">
                 {
                     menu.map(prod => {
                         return (
-                            <div className="card max-w-xs w-full h-auto shadow-md"> 
+                            <label key={prod['menu_id']}  onClick={() => setMenuID(prod['menu_id'])} htmlFor="menu-info-modal" className="card w-64 lg:max-w-xs lg:w-full max-h-full shadow-md modal-button cursor-pointer transform hover:-translate-y-1 transition-all"> 
                                 <figure>
-                                    <img src={adobo} alt="photo of adobo" />
+                                    <img src={`../../assets/${prod['image_path']}`} alt="photo of adobo" />
                                 </figure>
                                 <div className="card-body">
-                                    <h2 className="card-title font-bold text-2xl">{prod.menu}</h2>
-                                    {/* <section className="flex items-center flex-wrap gap-5">
-                                        
+                                    
+                                    <section className="flex items-center flex-wrap gap-5">
+                                        <h2 className="card-title font-bold text-2xl">{prod.menu}</h2>
                                         <section className="badge bg-pnc border-none">
                                             <p>Available</p>
                                         </section>
-                                    </section> */}
+                                    </section>
                                     
-                                    <p className="menu-desc">{prod.menuDesc}</p>
-                                    <small className="text-3xl">${prod.price}</small>
-                                    {/* <div className="card-actions">
-                                        <Button className="btn" text="Add to Cart"/>
-                                    </div> */}
+                                    <p className="menu-desc">{prod['menu_desc']}</p>
+                                    <small className="text-3xl">${prod['menu_price']}</small>
                                 </div>
-                                
-                            </div>
+                            </label>
                         )
                     })
                 }
+                <MenuInfoModal />
             </div>
         </div>
         
