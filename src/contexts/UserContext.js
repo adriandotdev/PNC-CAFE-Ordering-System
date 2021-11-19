@@ -8,7 +8,8 @@ export function UserProvider(props) {
     const [userIDNumber, setUserIDNumber] = useState(null);
     const [menuID, setMenuID] = useState('')
     const [quantity, setQuantity] = useState(1)
-
+    const [cartMenus, setCartMenus] = useState(0)
+    
     return (
         <UserContext.Provider value={[userIDNumber, setUserIDNumber, menuID, setMenuID, quantity, setQuantity]}>
             {props.children}
