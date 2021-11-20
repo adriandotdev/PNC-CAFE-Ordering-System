@@ -9,11 +9,11 @@ import ErrorAlert from '../components/ErrorAlert'
 function UserLoginPage({setUser}) {
 
     let navigate = useNavigate();
-    const [, setUserIDNumber] = useContext(UserContext)
+    const [userIDNumber, setUserIDNumber] = useContext(UserContext)
     const [IDNumber, setIDNumber] = useState('');
     const [password, setPassword] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
-    const [receivedData, setReceivedData] = useState(null);
+    const [receivedData, setReceivedData] = useState([]);
 
     function authenticate() {
 
@@ -36,13 +36,14 @@ function UserLoginPage({setUser}) {
         // Check if the input field of ID Number and Password are not empty.
         if (IDNumber && password) {
 
-            if (receivedData && (password === receivedData[0]['password'] && IDNumber === receivedData[0]['id_number'])){
+            if (receivedData.length > 0 && (password === receivedData[0]['password'] && IDNumber === receivedData[0]['id_number'])){
 
                 setUser(true)
                 setErrorMessage('')
                 setUserIDNumber(IDNumber)
-                window.sessionStorage.setItem('isUser', 'true');
-                navigate("/homepage", {replace: true})
+                window.sessionStorage.setItem('isUser', 'true'); // set the session storage to determine if the user hasn't logged out yet.
+                window.sessionStorage.setItem('idNumber', `${IDNumber}`) // set the session storage to determine the id number of the user.
+                navigate("/homepage")
             } else {
                 setErrorMessage('ID Number and password does not match')
             }
