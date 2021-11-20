@@ -1,5 +1,7 @@
 const express = require('express');
-const path = require('path')
+const {verifyUser, getUser, addUser} = require('../controller/AuthenticationController')
+const {addMenu, editMenu, deleteMenu, getMenu, getMenuByID} = require('../controller/MenuController')
+const {getCartItem, addQuantity, addToBag, getCartItems} = require('../controller/CartController')
 var mysql  = require('mysql');
 
 const route = express.Router();
@@ -19,128 +21,33 @@ connection.connect((err) => {
 });
 
 
-route.post('/verify-user', (req, res) => {
+/** ROUTES FOR AUTHENTICATING A USER */
+route.post('/verify-user', verifyUser)
 
-    const query = `SELECT * FROM existing_users WHERE id_number = '${req.body['IDNumber']}'`
+route.post('/get-user', getUser)
 
-    connection.query(query, function (error, results, fields) {
-
-        if (error) {
-            console.log(error);
-            return;
-        }
-        console.log(results)
-        res.json(JSON.stringify(results))
-    })
-})
-
-route.post('/get-user', (req, res) => {
-
-    const query = `SELECT * FROM users WHERE id_number = '${req.body['IDNumber']}'`
-
-    connection.query(query, function (error, results, fields) {
-
-        if (error) {
-            console.log(error);
-            return;
-        }
-        console.log(results)
-        res.json(JSON.stringify(results))
-    })
-})
-
-route.post('/add-user', (req, res) => {
-
-    const query = `INSERT INTO users VALUES ('${req.body['IDNumber']}', '${req.body['password']}', '${req.body['email']}')`;
-
-    connection.query(query, function (error, results, fields) {
-
-        if (error) {
-            console.log(error);
-            return;
-        }
-        console.log(results)
-        res.json(JSON.stringify({status: 200}))
-    })
-});
-
+route.post('/add-user', addUser);
 
 
 // ROUTES FOR MENU
-route.get('/get-menu', (req, res) => {
-    
-    const query = `SELECT * FROM menu`;
+route.post('/add-menu', addMenu)
 
-    connection.query(query, function (error, results, fields) {
+route.get('/get-menu', getMenu)
 
-        if (error) {
-            console.log(err)
-        }
-        res.json(JSON.stringify(results))
-    })
-})
+route.post('/get-menu-id', getMenuByID)
 
-route.post('/get-menu-id', (req, res) => {
+route.post('/edit-menu', editMenu)
 
-    const query = `SELECT * FROM menu WHERE menu_id = '${req.body['menuID']}'`;
+route.delete('/delete-menu', deleteMenu)
 
-    connection.query(query, function (error, results, fields) {
 
-        if (error) {
-            console.log(err)
-        }
-        console.log(results)
-        res.json(JSON.stringify(results))
-    })
-})
+// ROUTES FOR CART
+route.post('/get-cart-item', getCartItem)
 
-route.post('/add-menu', (req, res) => {
+route.post('/add-quantity', addQuantity)
 
-    const query = `INSERT INTO menu VALUES ('${req.body['id']}', '${req.body['menuName']}', '${req.body['menuDesc']}' , '${req.body['price']}', '${path.basename(req.body['image'])}')`;
+route.post('/add-to-bag', addToBag)
 
-    connection.query(query, function (error, results, fields) {
+route.post('/get-cart-items', getCartItems)
 
-        if (error) {
-            console.log(err)
-        }
-        console.log(results)
-        res.json(JSON.stringify(results));
-    })
-    
-})
-
-route.post('/edit-menu', (req, res) => {
-
-    let query = ``;
-
-    // check if the admin wants to replace the current image of the menu.
-    if (req.body['image'])
-        query = `UPDATE menu SET menu = '${req.body['menuName']}', menu_desc = '${req.body['menuDesc']}', menu_price = '${req.body['price']}', image_path = '${path.basename(req.body['image'])}' WHERE menu_id = '${req.body['menuID']}'`
-    else 
-        query = `UPDATE menu SET menu = '${req.body['menuName']}', menu_desc = '${req.body['menuDesc']}', menu_price = '${req.body['price']}' WHERE menu_id = '${req.body['menuID']}'`
-
-    connection.query(query, function (error, results, fields) {
-
-        if (error) {
-            console.log(err)
-        }
-        console.log(results)
-        res.json(JSON.stringify(results));
-    })
-   
-})
-
-route.delete('/delete-menu', (req, res) => {
-
-    let query = `DELETE FROM menu WHERE menu_id = '${req.body['menuID']}'`
-
-    connection.query(query, function (error, results, fields) {
-
-        if (error) {
-            console.log(err)
-        }
-        console.log(results)
-        res.json(JSON.stringify(results));
-    })
-})
 module.exports = route;
