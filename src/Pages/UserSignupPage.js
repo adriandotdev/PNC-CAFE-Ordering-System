@@ -8,6 +8,8 @@ import ErrorAlert from '../components/ErrorAlert'
 function UserSignupPage() {
 
     let navigate = useNavigate()
+
+    // States of this page.
     const [IDNumber, setIDNumber] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -88,12 +90,11 @@ function UserSignupPage() {
 
                     <h1 className="card-title font-bold text-xl md:text-2xl text-pnc">Sign Up</h1>
                     
-                    {/* action="http://localhost:3001/add-user"  method="POST"  */}
                     <form autoComplete="off"  className="form-control" onSubmit={(e) => {
 
-                        e.preventDefault()
-                        verify_user()
-                    }}>
+                            e.preventDefault()
+                            verify_user()
+                        }}>
 
                         <InputContainer name="id-number" type="text" labelContent="ID Number" value={IDNumber} 
                         onChange={

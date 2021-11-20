@@ -4,8 +4,6 @@ import Button from '../components/Button'
 
 function MenuInfoPage() {
 
-    // NEED TO COMMENT LAHAT NG CODE DITO :)
-    
     const[userIDNumber, setUserIDNumber, menuID, setMenuID, quantity, setQuantity,,,,setAddedToCart] = useContext(UserContext)
     const [currentMenu, setCurrentMenu] = useState([])
 
@@ -102,7 +100,7 @@ function MenuInfoPage() {
             console.log('updated qty') // for testing
         })
     }
-
+    
     const isAlreadyOnBag = () => {
 
         fetch('http://localhost:3001/get-cart-item', {

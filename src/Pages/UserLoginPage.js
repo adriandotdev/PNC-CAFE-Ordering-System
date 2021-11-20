@@ -9,7 +9,7 @@ import ErrorAlert from '../components/ErrorAlert'
 function UserLoginPage({setUser}) {
 
     let navigate = useNavigate();
-    const [userIDNumber, setUserIDNumber] = useContext(UserContext)
+    const [setUserIDNumber] = useContext(UserContext)
     const [IDNumber, setIDNumber] = useState('');
     const [password, setPassword] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
@@ -23,19 +23,25 @@ function UserLoginPage({setUser}) {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({IDNumber})
-        }).then(res => res.json())
+        })
+        .then(res => res.json())
         .then(data => {
 
-            if(JSON.parse(data))
+            // if data is not empty
+            if (JSON.parse(data))
                 setReceivedData(JSON.parse(data)) // triggers re-render          
         })
     }
 
+    /**
+     * NOTE: ONLY RUNS WHEN THE 'receivedData' value changes.
+     */
     useEffect(() => {
 
         // Check if the input field of ID Number and Password are not empty.
         if (IDNumber && password) {
 
+            /** Check if the ID Number and Password entered by user is equal to the received data's id number and password. */
             if (receivedData.length > 0 && (password === receivedData[0]['password'] && IDNumber === receivedData[0]['id_number'])){
 
                 setUser(true)
@@ -50,6 +56,7 @@ function UserLoginPage({setUser}) {
         }
         
     }, [receivedData])
+
     return (
         <div className="hero mt-12 flex flex-col lg:mt-0 lg:justify-center lg:items-center lg:flex-row lg:p-12">
             
@@ -67,7 +74,8 @@ function UserLoginPage({setUser}) {
                     <form className="form-control " onSubmit={(e) => {
                         
                         e.preventDefault()
-                        
+                    
+                       // If both are not empty, authenticate
                        if (IDNumber && password)
                             authenticate()
                     }}>

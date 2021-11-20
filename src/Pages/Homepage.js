@@ -6,7 +6,7 @@ function Homepage() {
 
     let navigate = useNavigate()
     const [menu, setMenu] = useState([])
-    const [userIDNumber, setUserIDNumber,, setMenuID,,, noOfCartItems, setNoOfCartItems,, setAddedToCart] = useContext(UserContext)
+    const [, setUserIDNumber,, setMenuID,,,,, setAddedToCart] = useContext(UserContext)
 
     /** Whenever this page gets rendered, 
      * It will fetch all of the menus and render 
@@ -23,15 +23,11 @@ function Homepage() {
         fetch('http://localhost:3001/get-menu')
         .then(res => res.json())
         .then(data => setMenu(JSON.parse(data)))
-
-        
     })
 
     return (
 
-
         <div>   
-            
                 <div className="grid grid-auto-rows w-full place-content-center md:p-5 md:pl-12">
 
                 <h1 className="text-center text-2xl py-5 md:pl-12 md:pt-2 self-start md:text-left md:py-0 lg:text-4xl text-pnc font-bold">Today's Menu</h1>
@@ -47,19 +43,27 @@ function Homepage() {
                                                 navigate(`/menu:${prod['menu_id']}`)
 
                                             }} className="card w-64 h-max lg:max-w-xs lg:w-full lg:h-44 shadow-md modal-button cursor-pointer transform hover:-translate-y-1 transition-all bg-repeat-y"> 
+
+                                    {/* MENU IMAGE */}
                                     <figure className="home-figure ">
                                         <img className="" src={`../../assets/${prod['image_path']}`} alt="photo of adobo" />
                                     </figure>
+
+                                    {/* Menu Content */}
                                     <div className="card-body backdrop-filter backdrop-opacity-5 absolute z-20">
                                         
                                         <section className="flex justify-center flex-col gap-5">
+
+                                            {/* Menu */}
                                             <h2 className="card-title font-bold text-2xl text-white">{prod.menu}</h2>
+
+                                            {/* Availability Badge */}
                                             <section className="badge bg-pnc border-none">
                                                 <p>Available</p>
                                             </section>
                                         </section>
                                         
-                                        {/* <small className="menu-desc">{prod['menu_desc']}</small> */}
+                                        {/* Price */}
                                         <p className="text-3xl text-white font-bold">${prod['menu_price']}</p>
                                     </div>
                                 </label>
