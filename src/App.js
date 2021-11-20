@@ -13,12 +13,17 @@ import MenuPage from './Pages/MenuPage'
 import CustomersPage from './Pages/CustomersPage'
 import AdminLogin from './Pages/AdminLogin'
 import Homepage from './Pages/Homepage'
+import MenuInfoPage from './Pages/MenuInfoPage'
+
+// Contexts
+import {AdminMenuProvider} from './contexts/AdminMenuContext'
+import {UserProvider} from './contexts/UserContext'
 
 function App() {
 
   const [isAdmin, setAdmin] = useState(false);
   const [isUser, setUser] = useState(false);
-  const [IDNumber, setIDNumber] = useState(null);
+  
 
   // If the admin account hasn't logged out yet, we still use the sessionStorage for previous activity.
   useEffect(() => {
@@ -43,6 +48,7 @@ function App() {
             <Route path="/" element={<UserLoginPage setUser={setUser}/>} />
             <Route path="/signup" element={<UserSignupPage />} />
             {isUser && <Route path="/homepage" element={<Homepage/>} />}
+            {isUser && <Route path="/menu:id" element={<MenuInfoPage/>} />}
           </Route> 
 
           {/* Routes for admin */}
@@ -52,7 +58,7 @@ function App() {
             {
               isAdmin && <Route path="/admin" element={<AdminPage />}>
                           <Route path="/admin/users" element={<CustomersPage />} />
-                          <Route path="/admin/menu" element={<MenuPage />} />
+                          <Route path="/admin/menu" element={<AdminMenuProvider><MenuPage /></AdminMenuProvider>} />
                         </Route>
             }
           </Route>
