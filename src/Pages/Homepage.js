@@ -1,50 +1,76 @@
 import React, {useState, useEffect, useContext} from 'react'
+import {useNavigate} from 'react-router-dom'
 import {UserContext} from '../contexts/UserContext'
+import Button from '../components/Button'
 import MenuInfoModal from '../components/MenuInfoModal'
 
 function Homepage() {
 
+    let navigate = useNavigate()
     const [menu, setMenu] = useState([])
-    const [,,, setMenuID] = useContext(UserContext)
+    const [userIDNumber, setUserIDNumber,, setMenuID,,, noOfCartItems, setNoOfCartItems,, setAddedToCart] = useContext(UserContext)
 
+    /** Whenever this page gets rendered, 
+     * It will fetch all of the menus and render 
+     * it to the page. */
     useEffect(() => {
+
+        setAddedToCart(false)
+        
+        let id_number = sessionStorage.getItem('idNumber')
+
+        if (id_number)
+            setUserIDNumber(id_number);
 
         fetch('http://localhost:3001/get-menu')
         .then(res => res.json())
         .then(data => setMenu(JSON.parse(data)))
-    }, [])
+    })
 
     return (
-        
-        <div className="grid grid-auto-rows w-full">
 
-            <div className="flex flex-wrap justify-center md:justify-start items-start gap-10 py-5 md:p-5">
-                {
-                    menu.map(prod => {
-                        return (
-                            <label key={prod['menu_id']}  onClick={() => setMenuID(prod['menu_id'])} htmlFor="menu-info-modal" className="card w-64 lg:max-w-xs lg:w-full max-h-full shadow-md modal-button cursor-pointer transform hover:-translate-y-1 transition-all"> 
-                                <figure>
-                                    <img src={`../../assets/${prod['image_path']}`} alt="photo of adobo" />
-                                </figure>
-                                <div className="card-body">
-                                    
-                                    <section className="flex items-center flex-wrap gap-5">
-                                        <h2 className="card-title font-bold text-2xl">{prod.menu}</h2>
-                                        <section className="badge bg-pnc border-none">
-                                            <p>Available</p>
+
+        <div>   
+            
+                <div className="grid grid-auto-rows w-full place-content-center md:p-5 md:pl-12">
+
+                <h1 className="text-center text-2xl py-5 md:pl-12 md:pt-2 self-start md:text-left md:py-0 lg:text-4xl text-pnc font-bold">Today's Menu</h1>
+
+                <div className="flex flex-wrap justify-center md:justify-start items-start gap-10 py-2 md:p-12">
+                    {
+                        menu.map(prod => {
+                            return (
+                                <label key={prod['menu_id']}  onClick={() => {
+
+                                                setMenuID(prod['menu_id'])
+                                                window.sessionStorage.setItem('menuID', `${prod['menu_id']}`)
+                                                navigate(`/menu:${prod['menu_id']}`)
+
+                                            }} className="card w-64 h-max lg:max-w-xs lg:w-full lg:h-44 shadow-md modal-button cursor-pointer transform hover:-translate-y-1 transition-all bg-repeat-y"> 
+                                    <figure className="home-figure ">
+                                        <img className="" src={`../../assets/${prod['image_path']}`} alt="photo of adobo" />
+                                    </figure>
+                                    <div className="card-body backdrop-filter backdrop-opacity-5 absolute z-20">
+                                        
+                                        <section className="flex justify-center flex-col gap-5">
+                                            <h2 className="card-title font-bold text-2xl text-white">{prod.menu}</h2>
+                                            <section className="badge bg-pnc border-none">
+                                                <p>Available</p>
+                                            </section>
                                         </section>
-                                    </section>
-                                    
-                                    <p className="menu-desc">{prod['menu_desc']}</p>
-                                    <small className="text-3xl">${prod['menu_price']}</small>
-                                </div>
-                            </label>
-                        )
-                    })
-                }
-                <MenuInfoModal />
-            </div>
+                                        
+                                        {/* <small className="menu-desc">{prod['menu_desc']}</small> */}
+                                        <p className="text-3xl text-white font-bold">${prod['menu_price']}</p>
+                                    </div>
+                                </label>
+                            )
+                        })
+                    }
+                    {/* <MenuInfoModal /> */}
+                </div>
+            </div>    
         </div>
+        
         
     )
 }

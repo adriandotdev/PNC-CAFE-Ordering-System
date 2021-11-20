@@ -24,6 +24,7 @@ function Dropdown({isUser, setUser}) {
                                         () => {
                                             setUser(false)
                                             window.sessionStorage.setItem('isUser', 'false');
+                                            window.sessionStorage.setItem('idNumber', '');
                                             window.location.replace('http://localhost:3000')
                                         }}       
                                         className="btn-block hover:bg-pnc p-2 font-medium transition-all text-white" 
