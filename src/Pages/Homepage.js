@@ -1,8 +1,6 @@
 import React, {useState, useEffect, useContext} from 'react'
 import {useNavigate} from 'react-router-dom'
 import {UserContext} from '../contexts/UserContext'
-import Button from '../components/Button'
-import MenuInfoModal from '../components/MenuInfoModal'
 
 function Homepage() {
 
@@ -25,6 +23,8 @@ function Homepage() {
         fetch('http://localhost:3001/get-menu')
         .then(res => res.json())
         .then(data => setMenu(JSON.parse(data)))
+
+        
     })
 
     return (

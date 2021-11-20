@@ -7,6 +7,11 @@
   @apply btn btn-outline text-lg font-medium text-white md:text-xl w-full border-none bg-pnc hover:bg-pncHover;
 }
 
+/* General styles for all the titles across the webpage */
+.titles {
+  @apply text-pnc text-2xl font-bold;
+}
+
 .button {
   @apply btn btn-outline bg-pnc hover:bg-pncHover border-none text-white;
 }
@@ -83,8 +88,35 @@
 
 /* Homepage */
 .menu-desc {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  max-lines: 3;
-  @apply text-lg font-medium;
+  max-lines: 2;
+  @apply block font-medium break-all overflow-ellipsis overflow-hidden max-h-16 h-auto;
+}
+
+/* Menu Info Modal styles */
+.quantity {
+  @apply btn btn-sm btn-disabled bg-transparent border-gray-300 text-black rounded-none lg:btn-md;
+}
+
+/* Quantity Buttons */
+.qty-btn {
+  @apply btn btn-outline rounded-none bg-pncHover hover:bg-pnc border-none font-bold text-xl btn-sm lg:btn-md;
+}
+
+.home-figure {
+  position: relative;
+  color: white;
+}
+
+.home-figure::after {
+  content: " ";
+  z-index: 10;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  opacity: 0.4;
+
+  background-color: black;
 }
