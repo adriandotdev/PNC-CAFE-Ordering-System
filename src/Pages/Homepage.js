@@ -6,7 +6,7 @@ function Homepage() {
 
     let navigate = useNavigate()
     const [menu, setMenu] = useState([])
-    const [, setUserIDNumber,, setMenuID,,,,, setAddedToCart] = useContext(UserContext)
+    const [userIDNumber, setUserIDNumber, menuID, setMenuID, quantity, setQuantity, noOfCartItems, setNoOfCartItems, addedToCart, setAddedToCart] = useContext(UserContext)
 
     /** Whenever this page gets rendered, 
      * It will fetch all of the menus and render 
