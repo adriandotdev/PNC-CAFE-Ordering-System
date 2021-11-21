@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import {BrowserRouter as Router, Route, Routes, Navigate} from 'react-router-dom'
+import {BrowserRouter as Router, Route, Routes} from 'react-router-dom'
 
 // components
 import Navbar from './components/Navbar'
@@ -17,7 +17,6 @@ import MenuInfoPage from './Pages/MenuInfoPage'
 
 // Contexts
 import {AdminMenuProvider} from './contexts/AdminMenuContext'
-import {UserProvider} from './contexts/UserContext'
 
 function App() {
 
