@@ -1,11 +1,23 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import {customer} from '../test/customer'
 
 function CustomersPage() {
+
+    const [pncUsers, setPncUsers] = useState([])
+
+    useEffect(() => {
+
+        fetch('http://localhost:3001/users')
+        .then(response => response.json())
+        .then(data => {
+            setPncUsers(JSON.parse(data))
+        })
+    }, [])
+
     return (
         <div className="row-start-3 row-end-3 col-start-1 col-end-5 lg:col-start-2 lg:row-start-1 lg:row-end-1">
             <div >
-                <h1 className="p-3 pl-1 text-center text-xl font-medium md:text-lg lg:text-2xl lg:text-left">Customers</h1>
+                <h1 className="p-3 pl-1 text-center text-xl font-medium md:text-lg lg:text-2xl lg:text-left">Users</h1>
             </div>
 
             <div className="lg:row-start-2 col-start-1 col-end-5 lg:col-start-2 lg:col-end-5 overflow-y-auto border table-height">
@@ -19,21 +31,23 @@ function CustomersPage() {
                             <th className="table-headers">Middle Name</th>
                             <th className="table-headers">Last Name</th>
                             <th className="table-headers">Email</th>
-                        
-                        
+                            <th className="table-headers">Sex</th>
+                            <th className="table-headers">Contact Number</th>
                     </thead>
 
                     {/* Actual Data */}
                     <tbody className="overflow-y-auto">
                         {
-                            customer.map(cust => {
+                            pncUsers.map(user => {
                                 return (
-                                    <tr className="hover">
-                                        <th>{cust.idNumber}</th>
-                                        <td>{cust.givenName}</td>
-                                        <td>Lauriano</td>
-                                        <td>Marcelo</td>
-                                        <td>email@gmail.com</td>
+                                    <tr key={user['id_number']} className="hover">
+                                        <th>{user['id_number']}</th>
+                                        <td>{user['given_name']}</td>
+                                        <td>{user['middle_name']}</td>
+                                        <td>{user['last_name']}</td>
+                                        <td>{user['email']}</td>
+                                        <td>{user['sex']}</td>
+                                        <td>{user['mobile_number']}</td>
                                     </tr>
                                 )
                             })
@@ -47,6 +61,8 @@ function CustomersPage() {
                         <th className="table-headers sticky bottom-0">Middle Name</th>
                         <th className="table-headers sticky bottom-0">Last Name</th>
                         <th className="table-headers sticky bottom-0">Email</th>
+                        <th className="table-headers sticky bottom-0">Sex</th>
+                        <th className="table-headers sticky bottom-0">Contact Number</th>
                     </tfoot>
                 </table>
             </div>
