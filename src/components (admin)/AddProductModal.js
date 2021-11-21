@@ -10,7 +10,7 @@ function AddProductModal() {
     const [menuID, setMenuID, isEditing, setEditing] = useContext(AdminMenuContext) // Context of Admin Page
     
     const [menuName, setMenuName] = useState('');
-    const [menuDesc, setMenuDesc] = useState(''); // menu description
+    const [isAvailable, setAvailability] = useState(false); // menu description
     const [price, setPrice] = useState(0);
     
     /**
@@ -24,10 +24,10 @@ function AddProductModal() {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify( { id: Date.now().toLocaleString(), menuName, menuDesc, price, image } )
+            body: JSON.stringify( { id: Date.now().toLocaleString(), menuName, price, isAvailable, image } )
         })
 
-        setMenuID('')
+        setMenuID('') // to trigger the useEffect at MenuPage.js
     }
 
     /**
@@ -47,7 +47,8 @@ function AddProductModal() {
         // This will setup the value of the selected menu to be edited.
         const menu = JSON.parse(data)
         setMenuName(menu[0]['menu'])
-        setMenuDesc(menu[0]['menu_desc'])
+        console.log(menu[0]['status'])
+        setAvailability(menu[0]['status'] == 1 ? true : false)
         setPrice(menu[0]['menu_price'])
     }
 
@@ -62,7 +63,7 @@ function AddProductModal() {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({menuID, menuName, menuDesc, price, image})
+            body: JSON.stringify({menuID, menuName, isAvailable, price, image})
         })
     }
 
@@ -89,14 +90,19 @@ function AddProductModal() {
                         <Label props={{name: 'product-name', labelContent: 'Product Name'}} />
                     </section>
 
-                    <div className="form-control">
+                    {/* <div className="form-control">
                         <textarea value={menuDesc} id="product-desc" name="product-desc" onChange={(e) => setMenuDesc(e.target.value)} 
                         className="textarea border-pnc textarea-bordered focus:ring-1 ring-pnc" placeholder="Product Description" required></textarea>
-                    </div>
-
+                    </div> */}
+                    
                     <section className="input-container flex flex-col-reverse relative">
                         <Textfield props={{type: 'number', name: 'product-price'}} value={price} onChange={(e) => setPrice(e.target.value)}/>
                         <Label props={{name: 'product-price', labelContent: 'Product Price'}} />
+                    </section>
+
+                    <section className="flex items-center gap-3 my-2">
+                        <label htmlFor="availability">{isAvailable ? "Avaliable" : "Not Available"}</label>
+                        <input type="checkbox" value={isAvailable} onChange={() => setAvailability(!isAvailable)} name="availability" id="availability" checked={isAvailable}/>
                     </section>
 
                     <input type="file" name="image" id="image" />
@@ -109,7 +115,7 @@ function AddProductModal() {
                             // This is the function when the user is adding a new menu.
                                 addMenu()
                                 setMenuName('')
-                                setMenuDesc('')
+                                setAvailability(false)
                                 setPrice(0)
                                 setMenuID('')
                             } : () => {
@@ -117,7 +123,7 @@ function AddProductModal() {
                             // This is the function when the user is adding a new menu.
                                 update()
                                 setMenuName('')
-                                setMenuDesc('')
+                                setAvailability(false)
                                 setPrice(0)
                                 setMenuID('')
                                 setEditing(false)
@@ -126,9 +132,9 @@ function AddProductModal() {
                         <ModalButton htmlFor="menu-modal" className="admin-sidebar-btn modal-button" text="Close" onClick={() => { 
                             setEditing(false)
                             setMenuName('')
-                            setMenuDesc('')
                             setPrice(0)
                             setMenuID('')
+                            setAvailability(false)
                         }}/>
                     </div>
                 </form>
