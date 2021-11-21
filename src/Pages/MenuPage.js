@@ -37,8 +37,9 @@ function MenuPage() {
                             
                             <th className="table-headers">Menu ID</th>
                             <th className="table-headers">Menu</th>
-                            <th className="table-headers">Description</th>
+                            {/* <th className="table-headers">Description</th> */}
                             <th className="table-headers">Price</th>
+                            <th className="table-headers">Status</th>
                             <th className="table-headers">Edit</th>
                             <th className="table-headers">Delete</th>
                     </thead>
@@ -52,8 +53,9 @@ function MenuPage() {
                                         <th className="hidden"></th>
                                         <th>{prod.menu_id}</th>
                                         <td>{prod.menu}</td>
-                                        <td><Button className="button" text="Product Info"/></td>
+                                        {/* <td><Button className="button" text="Product Info"/></td> */}
                                         <td>${prod.menu_price}</td>
+                                        <td className={prod.status == 1 ? "text-green-500 font-medium" : "text-red-500 font-medium"}>{prod.status == 1 ? "Available" : "Not Available"}</td>
                                         <td>
                                             {/* Edit Button */}
                                             <ModalButton onClick={() => {
