@@ -12,6 +12,7 @@ function UserSignupPage() {
     // States of this page.
     const [IDNumber, setIDNumber] = useState('');
     const [email, setEmail] = useState('');
+    const [mobileNumber, setMobileNumber] = useState('')
     const [password, setPassword] = useState('');
     const [confirmationPassword, setConfirmationPassword] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
@@ -25,7 +26,7 @@ function UserSignupPage() {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({IDNumber, password, email})
+            body: JSON.stringify({IDNumber, password, email, mobileNumber})
         })
 
         const data = await res.json()
@@ -107,6 +108,13 @@ function UserSignupPage() {
                         <InputContainer name="email" type="email" labelContent="Email" value={email} onChange={
                             (e) => { 
                                 setEmail(e.target.value)
+                                setErrorMessage('') 
+                            }
+                        }/>
+
+                        <InputContainer name="mobile-number" type="number" labelContent="Mobile Number" value={mobileNumber} onChange={
+                            (e) => { 
+                                setMobileNumber(e.target.value)
                                 setErrorMessage('') 
                             }
                         }/>
