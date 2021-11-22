@@ -1,10 +1,13 @@
-import React from 'react'
+import React, {useContext} from 'react'
+import {UserContext} from '../contexts/UserContext'
 import {Outlet} from 'react-router-dom'
 import ShoppingCart from '../component-icons/ShoppingCart'
 import Dropdown from '../component-icons/Dropdown'
 import {UserProvider} from '../contexts/UserContext'
 
 function Navbar({navClass, isUser, setUser}) {
+
+    
     return (
         <UserProvider>
                 <div className={navClass}>

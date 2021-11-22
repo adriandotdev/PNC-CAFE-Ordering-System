@@ -4,7 +4,7 @@ import {UserContext} from '../contexts/UserContext'
 
 function ShoppingCart() {
 
-    const [userIDNumber,,,,,,noOfCartItems, setNoOfCartItems, addedToCart] = useContext(UserContext)
+    const {userIDNumber, noOfCartItems, setNoOfCartItems, addedToCart} = useContext(UserContext)
     const [clicked, setClicked] = useState(false)
     
     useEffect(() => {

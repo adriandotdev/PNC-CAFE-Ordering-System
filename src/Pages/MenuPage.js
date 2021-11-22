@@ -7,7 +7,7 @@ import Button from '../components/Button'
 
 function MenuPage() {
 
-    const [menuID, setMenuID, ,setEditing, menu, setMenuList] = useContext(AdminMenuContext)
+    const {menuID, setMenuID, setEditing, menu, setMenuList} = useContext(AdminMenuContext)
 
     /** A useEffect that runs whenever an admin adds, updates, deletes 
      * new data to fetch updated menus in the database */

@@ -16,6 +16,18 @@
   @apply btn btn-outline bg-pnc hover:bg-pncHover border-none text-white;
 }
 
+/* Style for profile "Save Changes" button. */
+.save-changes-btn {
+  @apply btn btn-sm btn-outline md:btn-md bg-pnc hover:bg-pncHover border-none text-white;
+}
+
+.cancel-changes-btn {
+  @apply btn btn-sm btn-outline md:btn-md bg-red-500 hover:bg-red-600 border-none text-white;
+}
+
+.delete-account-btn {
+  @apply btn btn-sm md:btn-md border border-red-500 bg-transparent text-red-500 font-medium cursor-pointer hover:bg-red-500 hover:text-white hover:border-opacity-0;
+}
 .admin-drawer-button {
   @apply btn btn-square btn-outline glass  drawer-content hover:bg-pnc bordered border border-pnc;
 }

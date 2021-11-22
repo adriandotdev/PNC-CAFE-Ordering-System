@@ -7,7 +7,7 @@ import ModalButton from './ModalButton'
 
 function AddProductModal() {
 
-    const [menuID, setMenuID, isEditing, setEditing] = useContext(AdminMenuContext) // Context of Admin Page
+    const {menuID, setMenuID, isEditing, setEditing} = useContext(AdminMenuContext) // Context of Admin Page
     
     const [menuName, setMenuName] = useState('');
     const [isAvailable, setAvailability] = useState(false); // menu description

@@ -14,6 +14,7 @@ import CustomersPage from './Pages/CustomersPage'
 import AdminLogin from './Pages/AdminLogin'
 import Homepage from './Pages/Homepage'
 import MenuInfoPage from './Pages/MenuInfoPage'
+import ProfilePage from './Pages/ProfilePage'
 
 // Contexts
 import {AdminMenuProvider} from './contexts/AdminMenuContext'
@@ -39,15 +40,18 @@ function App() {
   }, [])
 
   return (
-    <Router >
+
+    <Router>
+
         <Routes>
 
           {/* Routes for user */}
-          <Route path="/" element={<Navbar navClass="grid grid-rows-2 h-screen" isUser={isUser} setUser={setUser}/>} >
+          <Route path="/" element={<Navbar navClass="grid grid-rows-2 min-h-screen" isUser={isUser} setUser={setUser}/>} >
             <Route path="/" element={<UserLoginPage setUser={setUser}/>} />
             <Route path="/signup" element={<UserSignupPage />} />
             {isUser && <Route path="/homepage" element={<Homepage/>} />}
             {isUser && <Route path="/menu:id" element={<MenuInfoPage/>} />}
+            {isUser && <Route path="/profile" element={<ProfilePage setUser={setUser}/>}/>}
           </Route> 
 
           {/* Routes for admin */}

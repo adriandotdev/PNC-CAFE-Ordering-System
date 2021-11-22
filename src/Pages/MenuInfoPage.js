@@ -4,7 +4,7 @@ import Button from '../components/Button'
 
 function MenuInfoPage() {
 
-    const[userIDNumber, setUserIDNumber, menuID, setMenuID, quantity, setQuantity,,,,setAddedToCart] = useContext(UserContext)
+    const {userIDNumber, setUserIDNumber, menuID, setMenuID, quantity, setQuantity,setAddedToCart} = useContext(UserContext)
     const [currentMenu, setCurrentMenu] = useState([])
 
     /** A useEffect function that 

@@ -9,7 +9,7 @@ import ErrorAlert from '../components/ErrorAlert'
 function UserLoginPage({setUser}) {
 
     let navigate = useNavigate();
-    const [,setUserIDNumber] = useContext(UserContext)
+    const {setUserIDNumber} = useContext(UserContext)
     const [IDNumber, setIDNumber] = useState('');
     const [password, setPassword] = useState('');
     const [errorMessage, setErrorMessage] = useState('');

@@ -20,8 +20,10 @@ export function UserProvider(props) {
     // This state value will change if the user is adding to the cart.
     const [addedToCart, setAddedToCart] = useState(false)
 
+    const [isUser, setUser] = useState(false)
+
     return (
-        <UserContext.Provider value={[userIDNumber, setUserIDNumber, menuID, setMenuID, quantity, setQuantity, noOfCartItems, setNoOfCartItems, addedToCart, setAddedToCart]}>
+        <UserContext.Provider value={{userIDNumber, setUserIDNumber, menuID, setMenuID, quantity, setQuantity, noOfCartItems, setNoOfCartItems, addedToCart, setAddedToCart, isUser, setUser}}>
             {props.children}
         </UserContext.Provider>
     )
