@@ -35,7 +35,7 @@ function Homepage() {
                 <div className="flex flex-wrap justify-center md:justify-start items-start gap-10 py-2 md:p-12">
                     {
                         menu.map(prod => {
-                            return (
+                            return (prod['status'] == 1 &&
                                 <label key={prod['menu_id']}  onClick={() => {
 
                                                 setMenuID(prod['menu_id'])
