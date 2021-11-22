@@ -5,11 +5,12 @@ import ShoppingCart from '../component-icons/ShoppingCart'
 import Dropdown from '../component-icons/Dropdown'
 import {UserProvider} from '../contexts/UserContext'
 
-function Navbar({navClass, isUser, setUser}) {
+function Navbar({navClass}) {
 
     
     return (
         <UserProvider>
+            
                 <div className={navClass}>
 
                 <div className="relative">
@@ -18,8 +19,8 @@ function Navbar({navClass, isUser, setUser}) {
                         
                         <section className="">
 
-                            { isUser && <ShoppingCart />}
-                            <Dropdown isUser={isUser} setUser={setUser}/>
+                            <ShoppingCart />
+                            <Dropdown />
                         </section>
                     </nav>
                 </div>

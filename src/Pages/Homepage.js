@@ -6,7 +6,7 @@ function Homepage() {
 
     let navigate = useNavigate()
     const [menu, setMenu] = useState([])
-    const {setUserIDNumber, setMenuID, setAddedToCart} = useContext(UserContext)
+    const {setUserIDNumber, setMenuID, setAddedToCart, isUser, setUser} = useContext(UserContext)
 
     /** Whenever this page gets rendered, 
      * It will fetch all of the menus and render 
@@ -17,17 +17,18 @@ function Homepage() {
         
         let id_number = sessionStorage.getItem('idNumber')
 
-        if (id_number)
+        if (id_number) {
             setUserIDNumber(id_number);
-
+            setUser(true)
+        }
         fetch('http://localhost:3001/get-menu')
         .then(res => res.json())
         .then(data => setMenu(JSON.parse(data)))
     })
 
     return (
-
-        <div>   
+        <>
+        { isUser && <div>   
                 <div className="grid grid-auto-rows w-full place-content-center md:p-5 md:pl-12">
 
                 <h1 className="text-center text-2xl py-5 md:pl-12 md:pt-2 self-start md:text-left md:py-0 lg:text-4xl text-pnc font-bold">Today's Menu</h1>
@@ -73,8 +74,8 @@ function Homepage() {
                     {/* <MenuInfoModal /> */}
                 </div>
             </div>    
-        </div>
-        
+        </div> }
+        </>
         
     )
 }

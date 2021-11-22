@@ -4,7 +4,7 @@ import Button from '../components/Button'
 
 function MenuInfoPage() {
 
-    const {userIDNumber, setUserIDNumber, menuID, setMenuID, quantity, setQuantity,setAddedToCart} = useContext(UserContext)
+    const {userIDNumber, setUserIDNumber, menuID, setMenuID, quantity, setQuantity,setAddedToCart, isUser, setUser} = useContext(UserContext)
     const [currentMenu, setCurrentMenu] = useState([])
 
     /** A useEffect function that 
@@ -21,9 +21,10 @@ function MenuInfoPage() {
          * if not, then set the userIDNumber at UserContext to the
          * value of idNumber at sessionStorage.
          */
-        if (id_number) 
+        if (id_number) {
             setUserIDNumber(id_number)
-
+            setUser(true)
+        }
         /**
          * check if the menu_id at sessionStorage is not empty,
          *  if not, then set the menuID at UserContext to the
@@ -125,7 +126,8 @@ function MenuInfoPage() {
     }
 
     return (
-        <div className="flex justify-center items-center p-2">
+        <> 
+        { isUser && <div className="flex justify-center items-center p-2">
 
             <div className="card sm:max-w-xl lg:max-w-xl w-full border border-pnc">
                 <figure>
@@ -158,7 +160,7 @@ function MenuInfoPage() {
                     
                 </div>
             </div>
-        </div>
+        </div> } </>
     )
 }
 

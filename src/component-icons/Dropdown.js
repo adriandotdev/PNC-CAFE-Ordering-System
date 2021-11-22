@@ -1,9 +1,12 @@
-import React from 'react'
+import React, {useContext} from 'react'
+import {UserContext} from '../contexts/UserContext'
 import {Link} from 'react-router-dom'
 import Button from '../components/Button'
 
 // This is the dropdown menu for user.
-function Dropdown({isUser, setUser}) {
+function Dropdown() {
+
+    const {isUser, setUser} = useContext(UserContext)
     return (
         <>
             <div  className="dropdown dropdown-hover dropdown-end">

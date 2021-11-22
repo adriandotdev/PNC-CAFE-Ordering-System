@@ -46,12 +46,12 @@ function App() {
         <Routes>
 
           {/* Routes for user */}
-          <Route path="/" element={<Navbar navClass="grid grid-rows-2 min-h-screen" isUser={isUser} setUser={setUser}/>} >
+          <Route path="/" element={<Navbar navClass="grid grid-rows-2 min-h-screen"/>} >
             <Route path="/" element={<UserLoginPage setUser={setUser}/>} />
             <Route path="/signup" element={<UserSignupPage />} />
-            {isUser && <Route path="/homepage" element={<Homepage/>} />}
-            {isUser && <Route path="/menu:id" element={<MenuInfoPage/>} />}
-            {isUser && <Route path="/profile" element={<ProfilePage setUser={setUser}/>}/>}
+            <Route path="/homepage" element={<Homepage/>} />
+            <Route path="/menu:id" element={<MenuInfoPage/>} />
+            <Route path="/profile" element={<ProfilePage />}/>
           </Route> 
 
           {/* Routes for admin */}

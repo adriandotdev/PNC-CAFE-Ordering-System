@@ -11,7 +11,7 @@ import DeleteAccountModal from '../components/DeleteAccountModal'
 function ProfilePage() {
 
     let navigate = useNavigate()
-    const {userIDNumber, setUserIDNumber} = useContext(UserContext)
+    const {userIDNumber, setUserIDNumber, isUser, setUser} = useContext(UserContext)
     const [emailDisabled, setEmailDisabled] = useState(true)
     const [email, setEmail] = useState('')
 
@@ -38,9 +38,10 @@ function ProfilePage() {
 
         let id_number = sessionStorage.getItem('idNumber')
 
-        if (id_number)
+        if (id_number) {
             setUserIDNumber(id_number);
-
+            setUser(true)
+        }
         fetch('http://localhost:3001/user-id', {
             method: 'POST',
             headers: {
@@ -107,7 +108,8 @@ function ProfilePage() {
     }
 
     return (
-        <div className="card justify-center items-center bordered border h-max overflow-auto">
+
+        <> {isUser && <div className="card justify-center items-center bordered border h-max overflow-auto">
 
             <div className="justify-center py-4 items-center gap-5 sm:max-w-sm md:max-w-md w-full">
                 
@@ -243,7 +245,7 @@ function ProfilePage() {
                 
             </div>
             
-        </div>
+        </div> } </>
     )
 }
 
