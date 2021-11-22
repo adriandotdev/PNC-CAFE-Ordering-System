@@ -1,14 +1,17 @@
 import React, {useState, useContext} from 'react'
-import {useNavigate, Link} from 'react-router-dom'
+import {Link} from 'react-router-dom'
 import {UserContext} from '../contexts/UserContext'
 import InputContainer from '../components/InputContainer'
 
 function DeleteAccountModal() {
 
-    let navigate = useNavigate()
-    const {confirmation, setConfirmation} = useState('')
-    const {userIDNumber} = useContext(UserContext)
+    // Here's the confirmation text that the user will input to confirm the deletion of account.
+    const [confirmation, setConfirmation] = useState('')
 
+    // User Context Properties
+    const {userIDNumber, setUser} = useContext(UserContext)
+
+    // A function to delete the logged in account.
     function deleteAccount() {
 
         fetch('http://localhost:3001/delete-user', {
@@ -17,8 +20,12 @@ function DeleteAccountModal() {
             body: JSON.stringify({userIDNumber})
         })
         .then(res => res.json())
-        .then( data => data)
-
+        .then( data => {
+            setUser(false)
+            window.sessionStorage.setItem('isUser', 'false');
+            window.sessionStorage.setItem('idNumber', '');
+            window.location.replace('http://localhost:3000')
+        })
     }
     
     return (
@@ -36,9 +43,11 @@ function DeleteAccountModal() {
                     labelContent="Delete Account"
                     value={confirmation}
                     onChange={(e) => setConfirmation(e.target.value)}/>
+
                 <div className="modal-action">
                     <Link to="/" onClick={(e) => {
                         
+                        // if the confirmation text (id number of user) is equal to the user context property userIDNumber
                         if (confirmation === userIDNumber)
                             deleteAccount()
                     }} className="cancel-changes-btn">Confirm</Link>
