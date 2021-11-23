@@ -10,7 +10,7 @@ export function AdminMenuProvider(props) {
     const [menu, setMenuList] = useState([]) 
     
     return (
-        <AdminMenuContext.Provider value={[menuID, setMenuID, isEditing, setEditing, menu, setMenuList]}>
+        <AdminMenuContext.Provider value={{menuID, setMenuID, isEditing, setEditing, menu, setMenuList}}>
             {props.children}
         </AdminMenuContext.Provider>
     )

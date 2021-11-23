@@ -4,7 +4,7 @@ import ModalButton from './ModalButton'
 
 function DeleteModal() {
 
-    const [ menuID, setMenuID ] = useContext(AdminMenuContext)
+    const { menuID, setMenuID } = useContext(AdminMenuContext)
     async function deleteMenu() {
 
         const res = await fetch('http://localhost:3001/delete-menu', { 
