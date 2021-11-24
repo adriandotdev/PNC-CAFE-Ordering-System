@@ -1,7 +1,6 @@
 import React, {useState, useContext} from 'react'
 import {Link} from 'react-router-dom'
 import {UserContext} from '../contexts/UserContext'
-import InputContainer from '../components/InputContainer'
 
 function DeleteAccountModal() {
 
@@ -31,24 +30,22 @@ function DeleteAccountModal() {
     return (
         <div className="modal m-0">
             
-            <div className="modal-box" onSubmit={(e) => e.preventDefault()}>
+            <div className="modal-box">
                 
                 <p className="text-red-400 font-normal">This cannot be undone. This will permanently remove your PNC Cafe Account.</p>
 
                 <p className="text-red-500 font-medium">{`Please type ${userIDNumber} to confirm`}</p>
 
-                <InputContainer 
-                    name="account" 
-                    type="text"
-                    labelContent="Delete Account"
-                    value={confirmation}
-                    onChange={(e) => setConfirmation(e.target.value)}/>
+                <section className="input-container flex flex-col-reverse relative">
+                    <input className="input border border-pnc focus:ring-1 focus:ring-pnc" type="text" name="" id="" value={confirmation}
+                    onChange={(e) => setConfirmation(e.target.value)} />
+                </section>
 
                 <div className="modal-action">
-                    <Link to="/" onClick={(e) => {
+                    <Link to={confirmation === userIDNumber ? "/" : ""} onClick={(e) => {
                         
                         // if the confirmation text (id number of user) is equal to the user context property userIDNumber
-                        if (confirmation === userIDNumber)
+                        if (confirmation.length > 0 && confirmation === userIDNumber)
                             deleteAccount()
                     }} className="cancel-changes-btn">Confirm</Link>
                     <label className="btn btn-sm md:btn-md btn-outline" htmlFor="account-delete-modal">Cancel</label>
