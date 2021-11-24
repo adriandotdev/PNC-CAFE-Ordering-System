@@ -22,21 +22,12 @@ import {AdminMenuProvider} from './contexts/AdminMenuContext'
 function App() {
 
   const [isAdmin, setAdmin] = useState(false);
-  const [isUser, setUser] = useState(false);
-  
 
   // If the admin account hasn't logged out yet, we still use the sessionStorage for previous activity.
   useEffect(() => {
 
     if (window.sessionStorage.getItem('isAdmin') === 'true') 
       setAdmin(true)
-  }, [])
-
-  // If the user hasn't logged out yet, we still use the sessionStorage for previous activity.
-  useEffect(() => {
-
-    if (window.sessionStorage.getItem('isUser') === 'true') 
-      setUser(true)
   }, [])
 
   return (
@@ -47,7 +38,7 @@ function App() {
 
           {/* Routes for user */}
           <Route path="/" element={<Navbar navClass="grid grid-rows-2 min-h-screen"/>} >
-            <Route path="/" element={<UserLoginPage setUser={setUser}/>} />
+            <Route path="/" element={<UserLoginPage />} />
             <Route path="/signup" element={<UserSignupPage />} />
             <Route path="/homepage" element={<Homepage/>} />
             <Route path="/menu:id" element={<MenuInfoPage/>} />

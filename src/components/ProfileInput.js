@@ -5,12 +5,12 @@ function ProfileInput({inputDisabled, onEdit, onCancel, value, onChange, htmlFor
     return (
         <section className="flex justify-stretch w-full gap-1 items-center">
             <input 
-            disabled={type == "password" ? true : inputDisabled} 
+            disabled={type === "password" ? true : inputDisabled} 
             value={value} 
             onChange={onChange} 
             // "border border-green-400 outline-none p-2 w-full border-none"
             // "border border-green-400 outline-none p-2 w-full"
-            className={type == "password" ? "border border-green-400 outline-none p-2 w-full border-none" : inputDisabled ? "border border-green-400 outline-none p-2 w-full border-none" : "border border-green-400 outline-none p-2 w-full"}
+            className={type === "password" ? "border border-green-400 outline-none p-2 w-full border-none" : inputDisabled ? "border border-green-400 outline-none p-2 w-full border-none" : "border border-green-400 outline-none p-2 w-full"}
             type={type} name={htmlFor} id={htmlFor} 
             required/>
 

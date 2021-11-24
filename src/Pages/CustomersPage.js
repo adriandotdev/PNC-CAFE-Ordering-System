@@ -1,5 +1,4 @@
 import React, {useState, useEffect} from 'react'
-import {customer} from '../test/customer'
 
 function CustomersPage() {
 

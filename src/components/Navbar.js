@@ -1,5 +1,4 @@
-import React, {useContext} from 'react'
-import {UserContext} from '../contexts/UserContext'
+import React from 'react'
 import {Outlet} from 'react-router-dom'
 import ShoppingCart from '../component-icons/ShoppingCart'
 import Dropdown from '../component-icons/Dropdown'

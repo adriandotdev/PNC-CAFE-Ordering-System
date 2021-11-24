@@ -2,7 +2,6 @@ import React, {useState, useEffect, useContext} from 'react'
 import {AdminMenuContext} from '../contexts/AdminMenuContext'
 import Textfield from '../components/Textfield'
 import Label from '../components/Label'
-import Button from '../components/Button';
 import ModalButton from './ModalButton'
 
 function AddProductModal() {
@@ -19,7 +18,7 @@ function AddProductModal() {
 
         const image = document.querySelector('#image').value;
 
-        const res = await fetch('http://localhost:3001/add-menu', { 
+        await fetch('http://localhost:3001/add-menu', { 
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -27,7 +26,7 @@ function AddProductModal() {
             body: JSON.stringify( { id: Date.now().toLocaleString(), menuName, price, isAvailable, image } )
         })
 
-        setMenuID('') // to trigger the useEffect at MenuPage.js
+        setMenuID('') // to trigger the useEffect at MenuPage.js of Admin
     }
 
     /**
@@ -48,7 +47,7 @@ function AddProductModal() {
         const menu = JSON.parse(data)
         setMenuName(menu[0]['menu'])
         console.log(menu[0]['status'])
-        setAvailability(menu[0]['status'] == 1 ? true : false)
+        setAvailability(menu[0]['status'] === '1' ? true : false)
         setPrice(menu[0]['menu_price'])
     }
 
@@ -57,7 +56,7 @@ function AddProductModal() {
 
         const image = document.querySelector('#image').value; 
 
-        const res = await fetch('http://localhost:3001/edit-menu', { 
+        await fetch('http://localhost:3001/edit-menu', { 
 
             method: 'POST',
             headers: {

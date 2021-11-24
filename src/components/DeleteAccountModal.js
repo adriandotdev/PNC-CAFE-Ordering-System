@@ -31,7 +31,7 @@ function DeleteAccountModal() {
     return (
         <div className="modal m-0">
             
-            <form className="modal-box" onSubmit={(e) => e.preventDefault()}>
+            <div className="modal-box" onSubmit={(e) => e.preventDefault()}>
                 
                 <p className="text-red-400 font-normal">This cannot be undone. This will permanently remove your PNC Cafe Account.</p>
 
@@ -54,7 +54,7 @@ function DeleteAccountModal() {
                     <label className="btn btn-sm md:btn-md btn-outline" htmlFor="account-delete-modal">Cancel</label>
                 </div>
                 
-            </form>
+            </div>
         </div>
     )
 }

@@ -124,9 +124,9 @@ function ProfilePage() {
 
                     {/* Change Profile Picture Button */}
                     <section className="text-center flex flex-col gap-3 justify-center">
-                        <div class="avatar online m-auto z-0">
-                            <div class="rounded-full w-24 h-24">
-                                <img src={imagePath == 'none' ? `../../assets/UserDefaultPhoto.png` : `../../assets/${imagePath}`} alt="profile"/>
+                        <div className="avatar online m-auto z-0">
+                            <div className="rounded-full w-24 h-24">
+                                <img src={imagePath === 'none' ? `../../assets/UserDefaultPhoto.png` : `../../assets/${imagePath}`} alt="profile"/>
                             </div>
                         </div> 
                         <label className="cursor-pointer text-pnc font-medium" htmlFor="profile-pic">Change Profile Picture</label>

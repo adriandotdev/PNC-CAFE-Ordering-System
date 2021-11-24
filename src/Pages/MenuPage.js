@@ -3,7 +3,6 @@ import {AdminMenuContext} from '../contexts/AdminMenuContext'
 import AddProductModal from '../components (admin)/AddProductModal'
 import DeleteModal from '../components (admin)/DeleteModal'
 import ModalButton from '../components (admin)/ModalButton'
-import Button from '../components/Button'
 
 function MenuPage() {
 
@@ -55,7 +54,7 @@ function MenuPage() {
                                         <td>{prod.menu}</td>
                                         {/* <td><Button className="button" text="Product Info"/></td> */}
                                         <td>${prod.menu_price}</td>
-                                        <td className={prod.status == 1 ? "text-green-500 font-medium" : "text-red-500 font-medium"}>{prod.status == 1 ? "Available" : "Not Available"}</td>
+                                        <td className={prod.status === '1' ? "text-green-500 font-medium" : "text-red-500 font-medium"}>{prod.status === '1' ? "Available" : "Not Available"}</td>
                                         <td>
                                             {/* Edit Button */}
                                             <ModalButton onClick={() => {
