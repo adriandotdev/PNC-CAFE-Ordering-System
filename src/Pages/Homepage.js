@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useContext} from 'react'
+import React, {useState, useEffect, useContext, useCallback, useMemo} from 'react'
 import {useNavigate} from 'react-router-dom'
 import {UserContext} from '../contexts/UserContext'
 
@@ -6,12 +6,17 @@ function Homepage() {
 
     let navigate = useNavigate()
     const [menu, setMenu] = useState([])
-    const {setUserIDNumber, setMenuID, setAddedToCart, isUser, setUser} = useContext(UserContext)
+    const {userIDNumber, setUserIDNumber, setMenuID, noOfCartItems, setNoOfCartItems, addedToCart, setAddedToCart, isUser, setUser} = useContext(UserContext)
 
+    
+    
     /** Whenever this page gets rendered, 
      * It will fetch all of the menus and render 
      * it to the page. */
     useEffect(() => {
+        console.log('rendered')
+        const controller = new AbortController();
+        const signal = controller.signal;
 
         setAddedToCart(false)
         
@@ -21,10 +26,17 @@ function Homepage() {
             setUserIDNumber(id_number);
             setUser(true)
         }
-        fetch('http://localhost:3001/get-menu')
+        fetch('http://localhost:3001/get-menu', {signal: signal})
         .then(res => res.json())
         .then(data => setMenu(JSON.parse(data)))
-    })
+        .catch(err => {
+            if (err.name === 'AbortError')
+                console.log('Successfully Aborted')
+        })
+
+        // This will abort the fetch request of data.  
+        return () => controller.abort()
+    }, [])
 
     return (
         <>
@@ -36,7 +48,7 @@ function Homepage() {
                 <div className="flex flex-wrap justify-center md:justify-start items-start gap-10 py-2 md:p-12">
                     {
                         menu.map(prod => {
-                            return (prod['status'] == 1 &&
+                            return (prod['status'] === '1' &&
                                 <label key={prod['menu_id']}  onClick={() => {
 
                                                 setMenuID(prod['menu_id'])
@@ -47,7 +59,7 @@ function Homepage() {
 
                                     {/* MENU IMAGE */}
                                     <figure className="home-figure ">
-                                        <img className="" src={`../../assets/${prod['image_path']}`} alt="photo of adobo" />
+                                        <img className="" src={`../../assets/${prod['image_path']}`} alt={`${prod['image_path']}`} />
                                     </figure>
 
                                     {/* Menu Content */}

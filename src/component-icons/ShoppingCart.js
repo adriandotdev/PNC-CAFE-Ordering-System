@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useContext} from 'react'
+import React, {useState, useEffect, useMemo, useCallback, useContext} from 'react'
 import {Link} from 'react-router-dom'
 import {UserContext} from '../contexts/UserContext'
 
@@ -7,9 +7,9 @@ function ShoppingCart() {
     const {userIDNumber, noOfCartItems, setNoOfCartItems, addedToCart, isUser} = useContext(UserContext)
     const [clicked, setClicked] = useState(false)
     
-    useEffect(() => {
 
-        console.log('running shopping cart')
+    useEffect(() => {
+        console.log('USE EFFECT FOR CART ITEMS')
         fetch('http://localhost:3001/get-cart-items', {
             method: 'POST',
             headers: {
@@ -19,11 +19,11 @@ function ShoppingCart() {
         })
         .then(res => res.json())
         .then(data => {
-            console.log('hey', data) // For Testing
+            console.log(data)
             setNoOfCartItems(JSON.parse(data).length)
-        })
-    }, [addedToCart])
-
+        }) 
+    }, [isUser, addedToCart])
+    
     return (
         <>
             {
