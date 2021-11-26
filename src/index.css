@@ -92,6 +92,9 @@
   height: 50rem;
 }
 
+.cart-table-height {
+  height: 26rem;
+}
 /* MENU DESCRIPTION */
 .description-width {
   white-space: pre-wrap;
@@ -102,16 +105,6 @@
 .menu-desc {
   max-lines: 2;
   @apply block font-medium break-all overflow-ellipsis overflow-hidden max-h-16 h-auto;
-}
-
-/* Menu Info Modal styles */
-.quantity {
-  @apply btn btn-sm btn-disabled bg-transparent border-gray-300 text-black rounded-none lg:btn-md;
-}
-
-/* Quantity Buttons */
-.qty-btn {
-  @apply btn btn-outline rounded-none bg-pncHover hover:bg-pnc border-none font-bold text-xl btn-sm lg:btn-md;
 }
 
 .home-figure {
@@ -131,4 +124,22 @@
   opacity: 0.4;
 
   background-color: black;
+}
+
+/* CART */
+.cart-menu-title {
+  @apply font-bold md:text-2xl;
+}
+
+.cart-menu-price {
+  @apply text-xl font-medium text-pnc;
+}
+/* Menu Info Modal styles */
+.quantity {
+  @apply btn btn-sm rounded-full btn-disabled bg-transparent border-gray-300 text-black border-none;
+}
+
+/* Quantity Buttons */
+.qty-btn {
+  @apply btn btn-outline bg-pnc text-white border-none btn-circle p-1;
 }

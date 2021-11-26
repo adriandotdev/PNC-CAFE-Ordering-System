@@ -31,7 +31,7 @@ function MenuPage() {
 
             <div className="lg:row-start-2 col-start-1 col-end-5 lg:col-start-2 lg:col-end-5 overflow-y-auto border table-height">
                 
-                <table className="table w-full relative ">
+                <table className="table w-full relative">
                     <thead className="relative">
                             
                             <th className="table-headers">Menu ID</th>
