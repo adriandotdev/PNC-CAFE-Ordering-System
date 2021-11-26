@@ -15,6 +15,7 @@ import AdminLogin from './Pages/AdminLogin'
 import Homepage from './Pages/Homepage'
 import MenuInfoPage from './Pages/MenuInfoPage'
 import ProfilePage from './Pages/ProfilePage'
+import CartPage from './Pages/CartPage'
 
 // Contexts
 import {AdminMenuProvider} from './contexts/AdminMenuContext'
@@ -43,6 +44,7 @@ function App() {
             <Route path="/homepage" element={<Homepage/>} />
             <Route path="/menu:id" element={<MenuInfoPage/>} />
             <Route path="/profile" element={<ProfilePage />}/>
+            <Route path="/cart" element={<CartPage />} />
           </Route> 
 
           {/* Routes for admin */}
