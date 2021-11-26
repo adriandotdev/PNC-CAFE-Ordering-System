@@ -17,7 +17,7 @@ connection.connect((err) => {
 
 const addMenu = (req, res) => {
 
-    const query = `INSERT INTO menu VALUES ('${req.body['id']}', '${req.body['menuName']}', '${req.body['menuDesc']}' , '${req.body['price']}', '${path.basename(req.body['image'])}')`;
+    const query = `INSERT INTO menu VALUES ('${req.body['id']}', '${req.body['menuName']}', '${req.body['price']}', '${path.basename(req.body['image'])}', ${req.body['isAvailable']})`;
 
     connection.query(query, function (error, results, fields) {
 
@@ -34,11 +34,12 @@ const editMenu = (req, res) => {
 
     let query = ``;
 
+    console.log(req.body['isAvailable'])
     // check if the admin wants to replace the current image of the menu.
     if (req.body['image'])
-        query = `UPDATE menu SET menu = '${req.body['menuName']}', menu_desc = '${req.body['menuDesc']}', menu_price = '${req.body['price']}', image_path = '${path.basename(req.body['image'])}' WHERE menu_id = '${req.body['menuID']}'`
+        query = `UPDATE menu SET menu = '${req.body['menuName']}', menu_price = '${req.body['price']}', image_path = '${path.basename(req.body['image'])}' , status = '${req.body['isAvailable'] ? 1 : 0}' WHERE menu_id = '${req.body['menuID']}'`
     else 
-        query = `UPDATE menu SET menu = '${req.body['menuName']}', menu_desc = '${req.body['menuDesc']}', menu_price = '${req.body['price']}' WHERE menu_id = '${req.body['menuID']}'`
+        query = `UPDATE menu SET menu = '${req.body['menuName']}', menu_price = '${req.body['price']}', status = '${req.body['isAvailable'] ? 1 : 0}' WHERE menu_id = '${req.body['menuID']}'`
 
     connection.query(query, function (error, results, fields) {
 
