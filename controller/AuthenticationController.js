@@ -46,7 +46,7 @@ const getUser = (req, res) => {
 
 const addUser = (req, res) => {
 
-    const query = `INSERT INTO users VALUES ('${req.body['IDNumber']}', '${req.body['password']}', '${req.body['email']}')`;
+    const query = `INSERT INTO users VALUES ('${req.body['IDNumber']}', '${req.body['password']}', '${req.body['email']}', '${req.body['mobileNumber']}', 'none')`;
 
     connection.query(query, function (error, results, fields) {
 
