@@ -1,14 +1,14 @@
 import React from 'react'
 import Button from './Button'
 
-function QuantityButton() {
+function QuantityButton({decrease, increase, quantity}) {
     return (
         <div className="btn-group justify-center">
-            <Button className="qty-btn" text="-" />    
+            <Button onClick={decrease} className="qty-btn" text="-" />    
             <section className="quantity">
-                2
+                {quantity}
             </section>     
-            <Button className="qty-btn" text="+" />     
+            <Button onClick={increase} className="qty-btn" text="+" />     
         </div>
     )
 }
