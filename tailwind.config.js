@@ -20,7 +20,10 @@ module.exports = {
         },
         gridTemplateRows: {
           '2': 'minmax(0, 5rem) minmax(0, 1fr)',
-        }
+        },
+        height: {
+            cartHeight: '508px'
+          }
       }
   },
   variants: {
