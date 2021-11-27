@@ -24,6 +24,8 @@ export function UserProvider(props) {
 
     const [bagTotal, setBagTotal] = useState(0);
 
+    const [subTotal, setSubTotal] = useState(0)
+
     return (
         <UserContext.Provider value={{userIDNumber, setUserIDNumber, 
                                     menuID, setMenuID, 
@@ -31,7 +33,8 @@ export function UserProvider(props) {
                                     noOfCartItems, setNoOfCartItems, 
                                     addedToCart, setAddedToCart, 
                                     isUser, setUser,
-                                    bagTotal, setBagTotal}}>
+                                    bagTotal, setBagTotal,
+                                    subTotal, setSubTotal}}>
             {props.children}
         </UserContext.Provider>
     )
