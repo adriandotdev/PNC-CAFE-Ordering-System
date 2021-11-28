@@ -11,7 +11,7 @@ import DeleteAccountModal from '../components/DeleteAccountModal'
 function ProfilePage() {
 
     let navigate = useNavigate()
-    const {userIDNumber, setUserIDNumber, isUser, setUser} = useContext(UserContext)
+    const {userIDNumber, setUserIDNumber, isUser, setUser, setQuantity} = useContext(UserContext)
     const [emailDisabled, setEmailDisabled] = useState(true)
     const [email, setEmail] = useState('')
 
@@ -42,6 +42,8 @@ function ProfilePage() {
             setUserIDNumber(id_number);
             setUser(true)
         }
+        setQuantity(1)
+        
         fetch('http://localhost:3001/user-id', {
             method: 'POST',
             headers: {

@@ -127,7 +127,7 @@ function MenuInfoPage() {
 
     return (
         <> 
-        { isUser && <div className="flex justify-center items-center p-2">
+        { isUser && <div className="flex justify-center items-center py-5 px-2">
 
             <div className="card sm:max-w-xl lg:max-w-xl w-full border border-pnc">
                 <figure>
