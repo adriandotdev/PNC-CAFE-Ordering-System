@@ -127,6 +127,18 @@
 }
 
 /* CART */
+
+.cart-page {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(min-content, max-content));
+  place-content: start space-evenly;
+  width: 100%;
+}
+
+.cart-container {
+  @apply md:max-w-lg lg:max-w-2xl md:h-cartHeight md:overflow-y-auto w-full flex flex-col items-center row-start-2 row-end-3 col-start-1 col-end-3 md:col-start-1 md:col-end-2;
+}
+
 .cart-menu-title {
   @apply font-bold md:text-2xl;
 }
@@ -141,5 +153,9 @@
 
 /* Quantity Buttons */
 .qty-btn {
-  @apply btn btn-outline bg-pnc text-white border-none btn-circle p-1;
+  @apply btn btn-outline bg-pnc text-white border-none;
+}
+
+.details {
+  @apply text-pnc font-bold;
 }
