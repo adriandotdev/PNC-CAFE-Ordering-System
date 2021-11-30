@@ -20,11 +20,14 @@ export function UserProvider(props) {
     // This state value will change if the user is adding to the cart.
     const [addedToCart, setAddedToCart] = useState(false)
 
+    // global state if the user has logged in.
     const [isUser, setUser] = useState(false)
 
     const [bagTotal, setBagTotal] = useState(0);
 
     const [subTotal, setSubTotal] = useState(0)
+
+    const [isEditingDone, setEditingDone] = useState(false)
 
     return (
         <UserContext.Provider value={{userIDNumber, setUserIDNumber, 
@@ -34,7 +37,8 @@ export function UserProvider(props) {
                                     addedToCart, setAddedToCart, 
                                     isUser, setUser,
                                     bagTotal, setBagTotal,
-                                    subTotal, setSubTotal}}>
+                                    subTotal, setSubTotal,
+                                    isEditingDone, setEditingDone}}>
             {props.children}
         </UserContext.Provider>
     )
