@@ -229,6 +229,7 @@ function ProfilePage() {
                             value={password} 
                             htmlFor="password" type="password"/>
 
+                        {/* This div will show up when the user wants to change his/her password. */}
                         {isPasswordToBeEdit &&  <div className="w-full flex flex-col items-stretch gap-1">
                             
                             <InputContainer 
@@ -269,7 +270,6 @@ function ProfilePage() {
 
                     <section className="w-full flex justify-end items-center card-actions">
                         <Button className="save-changes-btn" text="Save Changes"/>
-                        {/* <Button className="cancel-changes-btn" text="Cancel"/> */}
                         <label className="delete-account-btn" htmlFor="account-delete-modal">Delete Account</label>
                         <input className="modal-toggle" type="checkbox" name="account-delete-modal" id="account-delete-modal" />
                         <DeleteAccountModal />
