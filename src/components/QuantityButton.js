@@ -20,7 +20,7 @@ function QuantityButton({decrease, increase, quantity, menuID}) {
                     so that the modal for deletion won't appear
                     when the decrease button gets clicked.
                 */}
-                <label onClick={decrease} htmlFor={quantity === 1 && menuID} className="qty-btn">-</label>  
+                <label onClick={decrease} htmlFor={quantity === 1 ? menuID : undefined} className="qty-btn">-</label>  
                 <section className="quantity">
                     {quantity}
                 </section>     
