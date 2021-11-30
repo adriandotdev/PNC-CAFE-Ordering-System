@@ -2,6 +2,7 @@ import React, {useState, useEffect, useContext} from 'react'
 import {UserContext} from '../contexts/UserContext'
 import CartItem from '../components/CartItem'
 import {Link} from 'react-router-dom'
+import CheckoutModal from '../components/CheckoutModal'
 
 function CartPage() {
 
@@ -75,7 +76,7 @@ function CartPage() {
                     </section>
                     
 
-                    <div class="cart-container">
+                    <div className="cart-container">
                         
                         {
                             cartItems.map(item => {
@@ -106,7 +107,9 @@ function CartPage() {
 
                         <p className="text-xl font-medium"><span className="details">Bag Total:</span> {new Intl.NumberFormat('en-IN', {style: 'currency', currency: 'PHP'}).format(bagTotal)}</p>
 
-                        <Link to="" className="button">Proceed to Checkout</Link>
+                        <label htmlFor={subTotal > 0 ? "checkout-modal" : undefined} className="button">Proceed to Checkout</label>
+                        <small className="instruction">*Please select atleast one bag item to proceed to checkout</small>
+                        <CheckoutModal />
                     </div>
                 </div>
             : <div className="flex flex-col gap-3 justify-center items-center">

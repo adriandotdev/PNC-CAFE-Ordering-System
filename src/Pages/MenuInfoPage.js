@@ -129,7 +129,7 @@ function MenuInfoPage() {
         <> 
         { isUser && <div className="flex justify-center items-center py-5 px-2">
 
-            <div className="card sm:max-w-md border border-pnc">
+            <div className="card sm:max-w-md w-full border border-pnc">
                 <figure>
                     <img className="w-full" src={`../../assets/${currentMenu.length > 0 && currentMenu[0]['image_path']}`} alt="" />
                 </figure>
