@@ -10,8 +10,17 @@ import DeleteAccountModal from '../components/DeleteAccountModal'
 
 function ProfilePage() {
 
+    /**
+     * All of the state that has 'Disabled' word
+     * is responsible for toggling the textfield, meaning
+     * if it is enabled or disabled.
+     * 
+     * The toggling will enabled if the user clicks the edit button (Pen Logo)
+     */
     let navigate = useNavigate()
-    const {userIDNumber, setUserIDNumber, isUser, setUser, setQuantity} = useContext(UserContext)
+
+    const {userIDNumber, setUserIDNumber, isUser, setUser, setQuantity, isEditingDone, setEditingDone} = useContext(UserContext)
+
     const [emailDisabled, setEmailDisabled] = useState(true)
     const [email, setEmail] = useState('')
 
@@ -32,18 +41,22 @@ function ProfilePage() {
     const [confirmPassword, setConfirmPassword] = useState('')
 
     const [errorMessage, setErrorMessage] = useState('')
-    const [isEditingDone, setEditingDone] = useState(false)
 
     useEffect(() => {
 
         let id_number = sessionStorage.getItem('idNumber')
 
+        // Every time the user refresh the page or go to this page, we set the userIDNumber from the session storage and setUser to true.
         if (id_number) {
             setUserIDNumber(id_number);
             setUser(true)
         }
-        setQuantity(1)
+        setQuantity(1); // when this page reloads or refreshed, we set the global state quantity to 1.
         
+
+        // fetch the profile info of the specified user based on ID Number.
+        // we fetch it from the route user-id
+        // we use post method because we want to put a value in our request.
         fetch('http://localhost:3001/user-id', {
             method: 'POST',
             headers: {
@@ -54,7 +67,9 @@ function ProfilePage() {
         .then(res => res.json())
         .then(data => {
 
-            console.log(JSON.parse(data))
+            console.log(JSON.parse(data)) // for testing
+
+            // Set all the values.
             setEmail(JSON.parse(data)[0]['email'])
             setContactNumber(JSON.parse(data)[0]['mobile_number'])
             setPassword(JSON.parse(data)[0]['password'])
@@ -63,6 +78,7 @@ function ProfilePage() {
         })
     }, [cancelEditing, isEditingDone])
 
+    // Function that change the profile info.
     function changeProfileInfo() {
 
         if (contactNumber.length > 11) {
@@ -73,21 +89,36 @@ function ProfilePage() {
 
         if (isPasswordToBeEdit) {
             
+            /** Check if the password that typed of user is 
+             * equal to the old password. */
             if (currentOldPassword !== oldPassword) {
                 setErrorMessage('Old password is incorrect')
                 return;
             }
+            /** Check if the new password is equal to 
+             * the confirmation password */
             else if (newPassword !== confirmPassword) {
                 setErrorMessage('New Password does not match.')
                 return;
             }
         }
 
+        // Get the image base name (E.g. Image.jpg, Chloe.png).
         let image = document.querySelector('#profile-pic').value;
 
         fetch('http://localhost:3001/update-with-id', {
             method: 'POST', 
             headers: { 'Content-Type': 'application/json'},
+
+            /**
+             * If the newPassword state is not empty,
+             * then we know that the user wants to 
+             * edit his/her password.
+             * 
+             * if not, then we set the 'password' state
+             * as 'newPassword' because it is the same as 
+             * what the user old password is.
+             */
             body: newPassword ? JSON.stringify({email, contactNumber, newPassword, image, userIDNumber}) : JSON.stringify({email, contactNumber, newPassword: password, image, userIDNumber})
         })
         .then(res => res.json())

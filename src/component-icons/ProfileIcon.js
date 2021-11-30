@@ -4,32 +4,33 @@ import {UserContext} from '../contexts/UserContext'
 
 function ProfileIcon() {
 
-    const {isUser, userIDNumber} = useContext(UserContext)
+    const {isUser, userIDNumber, isEditingDone} = useContext(UserContext)
     const [image, setImage] = useState('')
 
     useEffect(() => {
 
-        console.log('Running in profile Icon') // for testing
-        let idNumber =  sessionStorage.getItem('idNumber');
+        if (isUser) {
 
-        fetch('http://localhost:3001/user-id', {
-            method: 'POST',
-            headers: {'Content-Type': 'application/'},
-            body: JSON.stringify({userIDNumber: '1900120'})
-        })
-        .then(res => res.json())
-        .then(data => console.log(data))
+            fetch('http://localhost:3001/user-id', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({userIDNumber})
+            })
+            .then(res => res.json())
+            .then(data => setImage(JSON.parse(data)[0].profile_image_path))
+        }
 
-    })
+    }, [isUser, isEditingDone])
+
     return (
         <>
             {
                 isUser &&
-                    <section className="avatar flex items-center">
-                        <div className="mb-8 rounded-full w-12 h-12" >
-                             <img src="../../assets/NadsImage.jpg" alt="" />
+                    <Link to="/profile" className="avatar flex justify-center items-center h-max">
+                        <div className="rounded-full border-2 border-white w-12 h-12" >
+                             <img src={image !== 'none' ? `../../assets/${image}` : `../../assets/UserDefaultPhoto.png`} alt="" />
                         </div>
-                    </section>
+                    </Link>
             }
         </>
     )
