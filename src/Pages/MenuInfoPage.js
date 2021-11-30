@@ -129,17 +129,17 @@ function MenuInfoPage() {
         <> 
         { isUser && <div className="flex justify-center items-center py-5 px-2">
 
-            <div className="card sm:max-w-xl lg:max-w-xl w-full border border-pnc">
+            <div className="card sm:max-w-md border border-pnc">
                 <figure>
                     <img className="w-full" src={`../../assets/${currentMenu.length > 0 && currentMenu[0]['image_path']}`} alt="" />
                 </figure>
                 <div className="card-body gap-4">
-                    <h1 className=" titles">{currentMenu.length > 0 && currentMenu[0]['menu']}</h1>
+                    <h1 className="titles">{currentMenu.length > 0 && currentMenu[0]['menu']}</h1>
                     
                     {/* Price and Quantity Buttons */}
                     <section className="flex flex-col gap-5 md:flex-row md:items-center">
-                        <small className="text-4xl font-serif font-extrabold">${currentMenu.length > 0 && currentMenu[0]['menu_price']}</small>
-                        <div className="flex gap-3">
+                        <small className="text-4xl font-extrabold">${currentMenu.length > 0 && currentMenu[0]['menu_price']}</small>
+                        <div className="flex items-center gap-3">
                             <p className="font-normal">Qty: </p>
                             <section className="btn-group">
                                 <Button onClick={() => setQuantity(prevQty => prevQty > 1 ? prevQty - 1 : prevQty)} className="qty-btn" text="-"/>

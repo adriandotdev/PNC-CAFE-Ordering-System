@@ -9,7 +9,7 @@
 
 /* General styles for all the titles across the webpage */
 .titles {
-  @apply text-pnc text-2xl font-bold;
+  @apply text-pnc text-3xl md:text-4xl font-bold;
 }
 
 .button {
