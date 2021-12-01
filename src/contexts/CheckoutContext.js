@@ -1,16 +1,19 @@
-import React, {createContext, useState} from 'react';
+import React, {createContext, useState} from 'react'
 
-export const CheckoutContext = createContext();
+export const CheckoutContext = createContext()
 
+// This will wrap up all the children components
 export function CheckoutProvider(props) {
 
-    const [state, setState] = useState({
+    const [checkout, setCheckout] = useState({
 
-        cartItem: []
+        subTotal: 0,
+        otherDetails: {},
+        items: []
     })
-    return (
 
-        <CheckoutContext.Provider value={state, setState}>
+    return (
+        <CheckoutContext.Provider value={{checkout, setCheckout}}>
             {props.children}
         </CheckoutContext.Provider>
     )

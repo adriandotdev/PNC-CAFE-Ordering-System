@@ -159,3 +159,20 @@
 .details {
   @apply text-pnc font-bold;
 }
+
+.instruction {
+  @apply font-medium text-pnc text-lg;
+  max-width: 25ch;
+}
+
+.user-details {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  width: 100%;
+  row-gap: 1rem;
+}
+
+.user-details-title {
+  @apply text-pnc font-medium text-base sm:text-lg;
+}
