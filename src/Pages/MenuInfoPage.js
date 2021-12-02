@@ -1,12 +1,13 @@
 import React, {useState, useEffect, useContext} from 'react'
 import {UserContext} from '../contexts/UserContext'
 import Button from '../components/Button'
+import AddItemModal from '../components/AddItemModal'
 
 function MenuInfoPage() {
 
     const {userIDNumber, setUserIDNumber, menuID, setMenuID, quantity, setQuantity,setAddedToCart, isUser, setUser} = useContext(UserContext)
     const [currentMenu, setCurrentMenu] = useState([])
-
+    const [modalOpen, setModalOpen] = useState(false)
     /** A useEffect function that 
      * gets the data of the specified 
      * menu on first render based on 
@@ -150,16 +151,28 @@ function MenuInfoPage() {
                     </section>
                     
                     <section className="card-actions">
-                        <Button onClick={() => {
-
-                            isAlreadyOnBag()
+                        <label onClick={() => {
                             
-                        }} className="button btn-sm bg-transparent" text="Add to Bag"/>
+                            setModalOpen(true)
+                            isAlreadyOnBag()
+
+                            setTimeout(() => setModalOpen(false), 1500)
+                        }} className="button btn-sm bg-transparent modal-button" htmlFor="add-item-modal">
+                            Add to Bag
+                            {/* <Button onClick={() => {
+
+                                isAlreadyOnBag()
+                                
+                            }} className="button btn-sm bg-transparent" text="Add to Bag"/> */}
+                        </label>
+                        { modalOpen && <AddItemModal /> }
                         <Button className="button" text="Buy Now"/>
                     </section>
                     
                 </div>
             </div>
+
+            
         </div> } </>
     )
 }
