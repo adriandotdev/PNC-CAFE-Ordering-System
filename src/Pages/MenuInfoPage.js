@@ -127,11 +127,11 @@ function MenuInfoPage() {
 
     return (
         <> 
-        { isUser && <div className="flex justify-center items-center py-5 px-2">
+        { isUser && <div className="flex justify-center items-center py-8 px-2">
 
-            <div className="card sm:max-w-md w-full border border-pnc">
+            <div className="card max-w-sm  w-full border border-pnc">
                 <figure>
-                    <img className="w-full" src={`../../assets/${currentMenu.length > 0 && currentMenu[0]['image_path']}`} alt="" />
+                    <img className="sm:max-w-md w-full" src={`../../assets/${currentMenu.length > 0 && currentMenu[0]['image_path']}`} alt="" />
                 </figure>
                 <div className="card-body gap-4">
                     <h1 className="titles">{currentMenu.length > 0 && currentMenu[0]['menu']}</h1>
@@ -154,7 +154,7 @@ function MenuInfoPage() {
 
                             isAlreadyOnBag()
                             
-                        }} className="button bg-transparent" text="Add to Bag"/>
+                        }} className="button btn-sm bg-transparent" text="Add to Bag"/>
                         <Button className="button" text="Buy Now"/>
                     </section>
                     

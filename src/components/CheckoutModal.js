@@ -32,8 +32,18 @@ function CheckoutModal() {
                 
                 <div className="modal-box flex flex-col items-stretch gap-3">
 
+                    <div className="overflow-x-auto">
+                        <ul className="steps gap-5 sm:gap-0 w-full">
+                            <li className="step step-accent break-word text-pnc font-medium">Required Info</li>
+                            <li className="step text-pnc font-medium">Place Order</li>
+                            <li className="step text-pnc font-medium">Preparing</li>
+                            <li className="step text-pnc font-medium">Order Received</li>
+                        </ul>
+                    </div>
+                    
+
                     <section>
-                        <h3 className="text-pnc text-2xl  font-bold">Please Provide Additional Info</h3>
+                        {/* <h3 className="text-pnc text-2xl  font-bold">Please Provide Additional Info</h3> */}
                     </section>
                     
                     <InputContainer 
@@ -61,18 +71,18 @@ function CheckoutModal() {
                             </select>
                         </fieldset>
 
-
                         {/* All of the Modal Action */}
                         <div className="modal-action">
-                            <label className="button" htmlFor="checkout-modal">
-                                <Button className="button" text="Confirm" onClick={() => {
+                            <label onClick={() => {
 
                                     if (!checkValuesIfEmpty()) {
                                         setCheckout({...checkout, subTotal: subTotal, otherDetails: additionalInfo})
-                                        navigate('/checkout')
+                                        sessionStorage.setItem('checkout', JSON.stringify(checkout))
+                                        navigate('/checkout', {replace: true})
                                     }
                                         
-                                }}/>
+                                }} htmlFor="checkout-modal">
+                                <Button className="button" text="Confirm" />
                             </label>
                             <label onClick={() => setAdditionalInfo({location: '', desiredTime: '', paymentMethod: 'Cash On Delivery'})} className="admin-delete-btn" htmlFor="checkout-modal">Cancel</label>
                         </div>
