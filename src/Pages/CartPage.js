@@ -1,21 +1,25 @@
 import React, {useState, useEffect, useContext} from 'react'
 import {UserContext} from '../contexts/UserContext'
+import {CheckoutContext} from '../contexts/CheckoutContext'
 import CartItem from '../components/CartItem'
 import {Link} from 'react-router-dom'
+import CheckoutModal from '../components/CheckoutModal'
 
 function CartPage() {
 
     const [cartItems, setCartItems] = useState([]) // holds the cart items of specified user.
-
+    const {setCheckout} = useContext(CheckoutContext)
     const {setUser, isUser, userIDNumber, 
         setUserIDNumber, addedToCart, setAddedToCart, 
         setQuantity, noOfCartItems, bagTotal, 
         setBagTotal, subTotal, setSubTotal} = useContext(UserContext) // User Context which consist of all the global variables that shared across the app. (User Context)
 
     const [isAllSelected, setAllSelected] = useState(false) // Boolean value if the cart items is all selected
+    const [isAllClicked, setAllClicked] = useState(false)
 
     useEffect(() => {
         
+        console.log('isAllSelected Change')
         document.title = 'PNC Cafe | My Cart' // set document title.
         setAddedToCart(false) // set the global variable when a user added to a cart.
         setQuantity(1) // reset the global state 'quantity' to 1.
@@ -40,7 +44,8 @@ function CartPage() {
 
             // This part will get the total price of all the items in the bag.
             let totalPriceOfAllItems = 0;
-
+            
+            /** Loop throgh each item, and get the quantity and menu_price */
             JSON.parse(data).forEach(item => {
 
                 totalPriceOfAllItems += item.quantity * item.menu_price
@@ -49,9 +54,19 @@ function CartPage() {
             setBagTotal(totalPriceOfAllItems)
         })
 
-
-    }, [addedToCart, bagTotal, isUser]) // Dependency list's that triggers this useEffect to run when one of them value changes.
+    }, [addedToCart, bagTotal, isUser, isAllSelected]) // Dependency list's that triggers this useEffect to run when one of them value changes.
     
+    const addAll = () => {
+
+        let total = 0;
+
+        cartItems.forEach(item => {
+
+            total += item.menu_price * item.quantity;
+        })
+        
+        return total;
+    }
     return (
         <>
             {
@@ -68,6 +83,19 @@ function CartPage() {
                                     if (!isAllSelected === false)
                                         setSubTotal(0)
 
+                                    !isAllSelected ? setCheckout(prevValue => {return {...prevValue, items: cartItems.map(item => {
+
+                                        return {menuID: item.menu_id, menu: item.menu, menuPrice: item.menu_price, quantity: item.quantity}
+                                    })}}) : setCheckout(prevValue => {return {...prevValue, items: []}})
+
+                                    if (!isAllSelected === true)
+                                        setSubTotal(addAll())
+                                    else if (!isAllSelected === false)
+                                        setSubTotal(0)
+
+                                    if (!isAllSelected === false)
+                                        setAllClicked(true)
+                                
                                     setAllSelected(!isAllSelected) // set to opposite of the current value.
                                 }} className="checkbox checkbox-accent" type="checkbox" id="select-all" />
                         </section>
@@ -75,13 +103,15 @@ function CartPage() {
                     </section>
                     
 
-                    <div class="cart-container">
+                    <div className="cart-container">
                         
                         {
                             cartItems.map(item => {
                                 
                                 return (
                                      <CartItem 
+                                        isAllClicked={isAllClicked}
+                                        setAllClicked={setAllClicked}
                                         selectAll={isAllSelected} 
                                         setAllSelected={setAllSelected} 
                                         key={item.menu_id} 
@@ -106,7 +136,9 @@ function CartPage() {
 
                         <p className="text-xl font-medium"><span className="details">Bag Total:</span> {new Intl.NumberFormat('en-IN', {style: 'currency', currency: 'PHP'}).format(bagTotal)}</p>
 
-                        <Link to="" className="button">Proceed to Checkout</Link>
+                        <label htmlFor={subTotal > 0 ? "checkout-modal" : undefined} className="button">Proceed to Checkout</label>
+                        <small className="instruction">*Please select atleast one bag item to proceed to checkout</small>
+                        <CheckoutModal />
                     </div>
                 </div>
             : <div className="flex flex-col gap-3 justify-center items-center">

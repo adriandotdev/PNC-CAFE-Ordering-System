@@ -44,6 +44,7 @@ function ProfilePage() {
 
     useEffect(() => {
 
+        document.title = 'PNC Cafe | Profile'
         let id_number = sessionStorage.getItem('idNumber')
 
         // Every time the user refresh the page or go to this page, we set the userIDNumber from the session storage and setUser to true.

@@ -14,7 +14,9 @@ function Homepage() {
      * It will fetch all of the menus and render 
      * it to the page. */
     useEffect(() => {
-        console.log('rendered')
+
+        document.title = 'PNC Cafe | Home'
+        console.log('rendered') // for testing
         const controller = new AbortController();
         const signal = controller.signal;
 
