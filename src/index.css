@@ -63,7 +63,7 @@
   grid-row: 2/-1;
   grid-column: 1/-1;
   grid-template-columns: minmax(0, 10rem) repeat(3, minmax(0, 1fr));
-  grid-template-rows: repeat(3, minmax(0, min-content));
+  /* grid-template-rows: repeat(3, minmax(0, min-content)); */
 }
 
 .admin-button {

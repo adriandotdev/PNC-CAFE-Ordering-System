@@ -14,8 +14,8 @@ function CustomersPage() {
     }, [])
 
     return (
-        <div className="row-start-3 row-end-3 col-start-1 col-end-5 lg:col-start-2 lg:row-start-1 lg:row-end-1">
-            <div >
+        <div className="row-start-4 col-start-1 col-end-5">
+            <div className=" py-2 px-5" >
                 <h1 className="p-3 pl-1 text-center text-xl font-medium md:text-lg lg:text-2xl lg:text-left">Users</h1>
             </div>
 

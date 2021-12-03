@@ -20,16 +20,16 @@ function MenuPage() {
     }, [menu, menuID])
 
     return (
-        <div className="row-start-3 row-end-3 col-start-1 col-end-5 lg:col-start-2 lg:row-start-1 lg:row-end-1">
+        <div className="row-start-4 row-end-5 col-start-1 col-end-5">
 
 
-            <div className="flex justify-center items-center py-2 lg:justify-start">
+            <div className="flex justify-between items-center py-2 px-5">
                 <h1 className="p-3 pl-1 font-medium md:text-lg lg:text-2xl">Menu</h1>
                 <ModalButton htmlFor="menu-modal" className="admin-sidebar-btn modal-button" text="Add Menu"/>
                 <AddProductModal />
             </div>
 
-            <div className="lg:row-start-2 col-start-1 col-end-5 lg:col-start-2 lg:col-end-5 overflow-y-auto border table-height">
+            <div className=" lg:row-start-2 col-start-1 col-end-5 lg:col-start-2 lg:col-end-5 overflow-y-auto border table-height">
                 
                 <table className="table w-full relative">
                     <thead className="relative">
