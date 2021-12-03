@@ -176,3 +176,7 @@
 .user-details-title {
   @apply text-pnc font-medium text-base sm:text-lg;
 }
+
+.button-no-color {
+  @apply btn bg-transparent border-none outline-none text-black;
+}
