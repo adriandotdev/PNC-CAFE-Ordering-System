@@ -73,7 +73,7 @@ function CartPage() {
                cartItems.length > 0 ?  <div className="cart-page p-8 gap-4">
 
                     <section className="row-start-1 row-end-2 col-span-3 md:col-span-1 flex flex-wrap justify-between items-center">
-                        <h1 className=" self-start w-max text-3xl md:text-4xl font-bold text-pnc">My Cart</h1>
+                        <h1 className=" self-start w-max text-3xl md:text-4xl font-bold text-pnc">My Bag</h1>
 
                         <section className="flex items-center gap-3">
                             <label className="text-pnc font-bold" htmlFor="select-all">Select All</label>
