@@ -6,7 +6,7 @@ import Button from '../components/Button'
 // This is the dropdown menu for user.
 function Dropdown() {
 
-    const {isUser, setUser} = useContext(UserContext)
+    const {isUser, setUser, setQuantity} = useContext(UserContext)
     return (
         <>
             <div  className="dropdown dropdown-hover dropdown-end">
@@ -20,10 +20,10 @@ function Dropdown() {
                 <ul className="menu dropdown-content w-32 rounded mr-1 z-10 bg-pncHover transition-all shadow-2xl">
 
                     {/* Profile Button - This will link to profile page. */}
-                    {isUser && <Link to="/profile" className="btn-block focus:border-none hover:bg-pnc p-2 font-medium transition-all text-white text-center">Profile</Link>}
+                    {isUser && <Link to="" className="btn-block focus:border-none hover:bg-pnc p-2 font-medium transition-all text-white text-center">Your Orders</Link>}
 
                     {/* Menu Button - it will point to homepage */}
-                    <Link to="/homepage" className="text-center btn-block focus:border-none hover:bg-pnc p-2 font-medium transition-all text-white">Menu</Link>
+                    <Link to="/homepage" onClick={() => setQuantity(1)} className="text-center btn-block focus:border-none hover:bg-pnc p-2 font-medium transition-all text-white">Menu</Link>
 
                     {/* About Button */}
                     <Button className="btn-block hover:bg-pnc p-2 font-medium transition-all text-white" text="About"/>
