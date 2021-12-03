@@ -36,11 +36,11 @@ function DeleteItemModal({userIDNumber, menuID, isChecked, menuPrice, quantity})
              
             <input type="checkbox" id={menuID} className="modal-toggle" /> 
             <div className="modal">
-                <div className="modal-box">
-                    <p className="text-xl font-bold text-red-500">Do you want to delete this item?</p> 
+                <div className="modal-box md:max-w-sm">
+                    <p className="text-xl font-bold text-red-500">Delete this item?</p> 
                     <div className="modal-action">
                     <label onClick={deleteItem} htmlFor={menuID} className="admin-delete-btn">Confirm</label> 
-                    <label htmlFor={menuID} className="btn">Close</label>
+                    <label htmlFor={menuID} className="button-no-color">Close</label>
                     </div>
                 </div>
             </div>
