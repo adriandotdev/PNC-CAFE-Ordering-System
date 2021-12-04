@@ -138,8 +138,10 @@ function MenuInfoPage() {
                     <h1 className="titles">{currentMenu.length > 0 && currentMenu[0]['menu']}</h1>
                     
                     {/* Price and Quantity Buttons */}
-                    <section className="flex flex-col gap-5 md:flex-row md:items-center">
-                        <small className="text-4xl font-extrabold">${currentMenu.length > 0 && currentMenu[0]['menu_price']}</small>
+                    <section className="flex flex-col gap-5">
+
+                        <small className="text-4xl font-extrabold">{currentMenu.length > 0 && new Intl.NumberFormat('en-IN', {style: 'currency', currency: 'PHP'}).format(currentMenu[0]['menu_price'])}</small>
+
                         <div className="flex items-center gap-3">
                             <p className="font-normal">Qty: </p>
                             <section className="btn-group">
