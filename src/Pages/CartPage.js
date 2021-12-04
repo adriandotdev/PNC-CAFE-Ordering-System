@@ -41,7 +41,7 @@ function CartPage() {
         .then(data => {
             
             setCartItems(JSON.parse(data))
-
+            
             // This part will get the total price of all the items in the bag.
             let totalPriceOfAllItems = 0;
             
@@ -67,6 +67,7 @@ function CartPage() {
         
         return total;
     }
+
     return (
         <>
             {
@@ -144,7 +145,7 @@ function CartPage() {
             : <div className="flex flex-col gap-3 justify-center items-center">
                  <h1 className="text-center w-full text-2xl text-pnc font-bold md:text-3xl lg:text-4xl">Cart is Empty</h1> 
                  <Link to="/homepage" className="button">Go to Menu</Link>
-            </div>}
+            </div>   } 
         </>
     )
 }
