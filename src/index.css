@@ -180,3 +180,12 @@
 .button-no-color {
   @apply btn bg-transparent border-none outline-none text-black;
 }
+
+.button-sm {
+  @apply btn btn-sm btn-outline bg-pnc hover:bg-pncHover border-none text-white;
+}
+
+/* YOUR ORDERS */
+.tab-style {
+  @apply tab bg-pnc text-white rounded transition;
+}

@@ -17,7 +17,7 @@ import MenuInfoPage from './Pages/MenuInfoPage'
 import ProfilePage from './Pages/ProfilePage'
 import CartPage from './Pages/CartPage'
 import CheckoutPage from './Pages/CheckoutPage'
-
+import YourOrders from './Pages/YourOrders'
 // Contexts
 import {AdminMenuProvider} from './contexts/AdminMenuContext'
 
@@ -47,6 +47,7 @@ function App() {
             <Route path="/profile" element={<ProfilePage />}/>
             <Route path="/cart" element={<CartPage />} />
             <Route path="/checkout" element={<CheckoutPage />} />
+            <Route path="/your-orders" element={<YourOrders />} />
           </Route> 
 
           {/* Routes for admin */}
