@@ -17,7 +17,7 @@ connection.connect((err) => {
 
 const addMenu = (req, res) => {
 
-    const query = `INSERT INTO menu VALUES ('${req.body['id']}', '${req.body['menuName']}', '${req.body['price']}', '${path.basename(req.body['image'])}', ${req.body['isAvailable']})`;
+    const query = `INSERT INTO menu VALUES ('${req.body['id']}', "${req.body['menuName']}", '${req.body['price']}', "${path.basename(req.body['image'])}", ${req.body['isAvailable']})`;
 
     connection.query(query, function (error, results, fields) {
 
