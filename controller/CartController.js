@@ -66,9 +66,22 @@ const getCartItems = (req, res) => {
     })
 }
 
+const removeItem = (req, res) => {
+
+    const query = `DELETE FROM cart WHERE id_number = '${req.body['userIDNumber']}' AND menu_id = '${req.body['menuID']}'`
+
+    connection.query(query, function (error, results, fields) {
+
+        if (error)
+            console.log(error)
+
+        res.json(JSON.stringify(results))
+    })
+}
 module.exports = {
     getCartItem,
     addQuantity,
     addToBag,
-    getCartItems
+    getCartItems,
+    removeItem
 }
