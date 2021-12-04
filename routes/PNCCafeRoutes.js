@@ -1,7 +1,9 @@
 const express = require('express');
 const {verifyUser, getUser, addUser} = require('../controller/AuthenticationController')
 const {addMenu, editMenu, deleteMenu, getMenu, getMenuByID} = require('../controller/MenuController')
-const {getCartItem, addQuantity, addToBag, getCartItems} = require('../controller/CartController')
+const {getCartItem, addQuantity, addToBag, getCartItems, removeItem} = require('../controller/CartController')
+const {getUsers, getUserByID, updateUserWithID, deleteUserAccount} = require('../controller/UsersController')
+const {addOrder, pendingOrders} = require('../controller/OrdersController')
 var mysql  = require('mysql');
 
 const route = express.Router();
@@ -49,5 +51,18 @@ route.post('/add-quantity', addQuantity)
 route.post('/add-to-bag', addToBag)
 
 route.post('/get-cart-items', getCartItems)
+
+route.post('/remove-item', removeItem)
+
+// ROUTES FOR USERS' DETAILS
+route.get('/users', getUsers)
+route.post('/user-id', getUserByID)
+route.post('/update-with-id', updateUserWithID)
+route.delete('/delete-user', deleteUserAccount)
+
+
+// ORDER
+route.post('/add-order', addOrder)
+route.post('/pending-orders', pendingOrders)
 
 module.exports = route;
