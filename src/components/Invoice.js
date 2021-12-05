@@ -1,16 +1,15 @@
 import React, {useState, useEffect} from 'react'
 import CheckedOutItem from '../components/CheckedOutItem'
 
-function Invoice({orderDetails}) {
+function Invoice({orderDetails, referenceFor="invoice"}) {
     
     const [subTotal, setSubTotal] = useState(0);
     let total = 0;
 
     useEffect(() => {
 
-        
         if (orderDetails !== null) {
-            console.log(orderDetails)
+            console.log(orderDetails) // for testing
             JSON.parse(orderDetails.items).forEach(item => {
 
                 total += item.menuPrice * item.quantity;
@@ -26,7 +25,7 @@ function Invoice({orderDetails}) {
 
     return (
         <>
-            <input type="checkbox" className="modal-toggle" id="invoice" />
+            <input type="checkbox" className="modal-toggle" id={referenceFor}/>
             <div className="modal">
 
                 <div className="modal-box flex flex-col items-stretch gap-3">
@@ -62,22 +61,31 @@ function Invoice({orderDetails}) {
                    
                     {/* Subtotal */}
                     <div className="flex flex-col items-stretch">
+
+                        {/* Subtotal */}
                         <section className="flex justify-between items-center">
                             <p><span className="text-pnc font-medium">Subtotal:</span></p>
                             <p className="font-bold">{formattedPrice(subTotal)}</p>
                         </section>
-                        { JSON.parse(orderDetails.order_details).paymentMethod === 'Cash On Delivery' && <section className="flex justify-between items-center">
-                            <p className="text-pnc font-medium">Delivery Fee:</p>
-                            <span className="font-bold">PHP 10.00</span>
-                        </section> }
+
+                        {/* Delivery Fee */}
+                        { 
+                            orderDetails !== null && JSON.parse(orderDetails.order_details).paymentMethod === 'Cash On Delivery' 
+                            && <section className="flex justify-between items-center">
+                                <p className="text-pnc font-medium">Delivery Fee:</p>
+                                <span className="font-bold">PHP 10.00</span>
+                            </section> 
+                        }
+                        
+                        {/* Total Payment */}
                         <section className="flex justify-between items-center">
                             <p><span className="text-pnc font-medium">Total Payment:</span></p>
                             
-                            <p className="font-bold">{formattedPrice(JSON.parse(orderDetails.order_details).paymentMethod === 'Cash On Delivery' ? subTotal + 10 : subTotal)}</p>
+                            <p className="font-bold">{orderDetails !== null && formattedPrice(JSON.parse(orderDetails.order_details).paymentMethod === 'Cash On Delivery' ? subTotal + 10 : subTotal)}</p>
                         </section>
                     </div>
                     <div className="modal-action">
-                        <label className="button" htmlFor="invoice">Close</label>
+                        <label className="button" htmlFor={referenceFor}>Close</label>
                     </div>
                 </div>
                 

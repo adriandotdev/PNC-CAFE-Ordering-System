@@ -21,7 +21,7 @@ function Order({id, date, status}) {
                 }} 
                 className="button-sm modal-button" > Status </label> 
                 
-                <Button className="text-white button-no-color" text="View"/>
+                <label htmlFor={id} className="text-white button-no-color modal-button"> Invoice </label>
                 
             </section> 
            
