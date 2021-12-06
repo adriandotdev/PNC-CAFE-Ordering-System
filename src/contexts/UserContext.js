@@ -29,6 +29,8 @@ export function UserProvider(props) {
 
     const [isEditingDone, setEditingDone] = useState(false)
 
+    const [invoice, showInvoice] = useState(false)
+
     return (
         <UserContext.Provider value={{userIDNumber, setUserIDNumber, 
                                     menuID, setMenuID, 
@@ -38,7 +40,8 @@ export function UserProvider(props) {
                                     isUser, setUser,
                                     bagTotal, setBagTotal,
                                     subTotal, setSubTotal,
-                                    isEditingDone, setEditingDone}}>
+                                    isEditingDone, setEditingDone,
+                                    invoice, showInvoice}}>
             {props.children}
         </UserContext.Provider>
     )
