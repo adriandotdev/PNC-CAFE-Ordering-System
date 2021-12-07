@@ -2,10 +2,14 @@ import React, {useContext} from 'react'
 import {AdminMenuContext} from '../contexts/AdminMenuContext'
 import ModalButton from './ModalButton'
 
+/** A Delete Modal that pops up at Menu Page 
+ * when the admin wants to delete a menu. */
 function DeleteModal() {
 
     const { menuID, setMenuID } = useContext(AdminMenuContext)
     
+    /** A function that sends a DELETE request
+     * by a menuID. */
     async function deleteMenu() {
 
         await fetch('http://localhost:3001/delete-menu', { 
@@ -28,12 +32,12 @@ function DeleteModal() {
                         <ModalButton onClick={() => {
 
                             deleteMenu();
-                            setMenuID('')
+                            setMenuID('') // set the menu ID to empty to re-render the Menu Page.
                         }} htmlFor="delete-modal" className="admin-delete-btn modal-button" text="Confirm"/>
 
                         <ModalButton onClick={() => {
 
-                            setMenuID('')
+                            setMenuID('') // set the menu ID to empty to re-render the Menu Page.
                         }} htmlFor="delete-modal" className="admin-cancel-btn modal-button" text="Cancel"/>
                     </div>
                 </div>
