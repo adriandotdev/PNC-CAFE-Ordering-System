@@ -25,7 +25,7 @@ function DeleteModal() {
             <div className="modal">
             
                 <div className="modal-box">
-                    <p>Are you sure you want to delete this menu?</p>
+                    <p className="font-bold text-xl">Are you sure you want to delete this menu?</p>
 
                     <div className="modal-action">
 

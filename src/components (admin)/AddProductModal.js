@@ -13,7 +13,8 @@ function AddProductModal() {
     const [price, setPrice] = useState(0);
     
     /**
-     * This is the function that adds the new menu to the database. */
+     * This is the function that adds the new menu 
+     * to the database. */
     async function addMenu() {
 
         const image = document.querySelector('#image').value;
@@ -26,10 +27,11 @@ function AddProductModal() {
             body: JSON.stringify( { id: Date.now().toLocaleString(), menuName, price, isAvailable, image } )
         })
 
-        setMenuID('') // to trigger the useEffect at MenuPage.js of Admin
+        setMenuID('') // to trigger the re-render of MenuPage.js of Admin
     }
 
     /**
+     * GET MENU FOR UPDATE FUNCTION
      * This function will fetch the menu based on menu id. */
     async function getMenuForUpdate() {
 
@@ -47,13 +49,20 @@ function AddProductModal() {
         const menu = JSON.parse(data)
         setMenuName(menu[0]['menu'])
         console.log(menu[0]['status'])
-        setAvailability(menu[0]['status'] === '1' ? true : false)
+        setAvailability(menu[0]['status'] === '1' ? true : false) // If the status is 1, it means it is available.
         setPrice(menu[0]['menu_price'])
     }
 
-    /** A function that updates a selected menu. */
+    /** 
+     * UPDATE FUNCTION
+     * A function that updates a selected menu. */
     async function update() {
 
+        /** NOTE: 
+         * 
+         * SEE THE CONTROLLER of edit-menu server route
+         * to see how it is implemented when the user do not
+         * provide the image. */
         const image = document.querySelector('#image').value; 
 
         await fetch('http://localhost:3001/edit-menu', { 
@@ -70,7 +79,7 @@ function AddProductModal() {
      * the admin wants to edit a selected menu. */
     useEffect(() => {
 
-        if (menuID)
+        if (menuID) // check if menu id is not empty.
             getMenuForUpdate();
 
     }, [isEditing])
@@ -82,7 +91,7 @@ function AddProductModal() {
                 
                 <form className="modal-box" autoComplete="off" onSubmit={(e) => e.preventDefault()}>
 
-                    <h1 className="font-bold text-2xl lg:text-3xl">{isEditing ? "Edit Menu" : "Add Menu"}</h1>
+                    <h1 className="font-bold text-2xl lg:text-3xl text-pnc">{isEditing ? "Edit Menu" : "Add Menu"}</h1>
                     
                     <section className="input-container flex flex-col-reverse relative">
                         <Textfield props={{type: 'text', name: 'product-name'}} value={menuName} onChange={(e) => setMenuName(e.target.value)}/>
@@ -109,6 +118,10 @@ function AddProductModal() {
                     <div className="modal-action">
                         <ModalButton htmlFor="menu-modal" className="admin-sidebar-btn" text={isEditing ? "Edit" : "Add"} 
                         
+                        /** NOTE:
+                         * 
+                         * Since we are using the same modal for adding and editing, 
+                         * we need to have a condition for setting the click event of the button. */
                         onClick={ !isEditing ? () => {
 
                             // This is the function when the user is adding a new menu.
