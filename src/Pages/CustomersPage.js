@@ -1,9 +1,12 @@
 import React, {useState, useEffect} from 'react'
 
+/**
+ * This is the Admin Page for Customers */
 function CustomersPage() {
 
-    const [pncUsers, setPncUsers] = useState([])
+    const [pncUsers, setPncUsers] = useState([]) // state that holds the list of users in this app.
 
+    // runs for the first render of this page.
     useEffect(() => {
 
         fetch('http://localhost:3001/users')
@@ -14,14 +17,14 @@ function CustomersPage() {
     }, [])
 
     return (
-        <div className="row-start-4 col-start-1 col-end-5">
-            <div className=" py-2 px-5" >
-                <h1 className="p-3 pl-1 text-center text-xl font-medium md:text-lg lg:text-2xl lg:text-left">Users</h1>
+        <div className="row-start-4 col-start-1 col-end-5 px-10">
+            <div className="" >
+                <h1 className="text-pnc font-bold text-2xl lg:text-4xl py-2">Users</h1>
             </div>
 
             <div className="lg:row-start-2 col-start-1 col-end-5 lg:col-start-2 lg:col-end-5 overflow-y-auto border table-height">
                 
-                <table className="table w-full relative ">
+                <table className="table w-full relative table-zebra">
                     <thead>
                             
                             {/* <th className="hidden"></th> */}
@@ -38,15 +41,24 @@ function CustomersPage() {
                     <tbody className="overflow-y-auto">
                         {
                             pncUsers.map(user => {
+
+                                const idNumber = user['id_number']
+                                const givenName = user['given_name']
+                                const middleName = user['middle_name']
+                                const lastName = user['last_name']
+                                const email = user['email']
+                                const sex = user['sex']
+                                const mobileNumber = user['mobile_number']
+
                                 return (
                                     <tr key={user['id_number']} className="hover">
-                                        <th>{user['id_number']}</th>
-                                        <td>{user['given_name']}</td>
-                                        <td>{user['middle_name']}</td>
-                                        <td>{user['last_name']}</td>
-                                        <td>{user['email']}</td>
-                                        <td>{user['sex']}</td>
-                                        <td>{user['mobile_number']}</td>
+                                        <th className="text-pnc font-bold">{ idNumber }</th>
+                                        <td>{ givenName }</td>
+                                        <td>{ middleName }</td>
+                                        <td>{ lastName }</td>
+                                        <td className="font-medium text-blue-700">{ email }</td>
+                                        <td className={`${sex === 'Male' ? "text-blue-400" : "text-red-400"} font-medium`}>{ sex }</td>
+                                        <td className="font-bold font-mono">{ mobileNumber }</td>
                                     </tr>
                                 )
                             })
