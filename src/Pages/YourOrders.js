@@ -39,7 +39,7 @@ function YourOrders() {
 
     /** A function that sets the order
      * based on the specified status. */
-    const setOrderStatusAs = (status, orderID) => {
+    const setOrderStatusAs = (status, orderID, getOrdersWithStatus) => {
         
         fetch('http://localhost:3001/set-order-as', {
             method: 'POST',
@@ -49,7 +49,7 @@ function YourOrders() {
         .then(response => response.json())
         .then(_data => {
             
-            getOrdersWithStatus('to prepare')
+            getOrdersWithStatus(status)
         })
     }
 
@@ -67,7 +67,7 @@ function YourOrders() {
         }
     }, [])
     
-
+    /** When the isUser changes... */
     useEffect(() => {
 
         document.title = 'PNC Cafe | Your Orders'
@@ -139,7 +139,16 @@ function YourOrders() {
                                    {
                                         activeTab.toReceived === true && 
                                         <Button onClick={() => {
-                                            setOrderStatusAs('received', order.order_id)
+                                            setOrderStatusAs('received', order.order_id, getOrdersWithStatus) // set the status as received
+                                            setActiveTab({ // set the active tab to received
+
+                                                toPrepare: true,
+                                                preparing: false,
+                                                toReceived: false,
+                                                received: false,
+                                                cancelled: false
+                                            })
+                                            // getOrdersWithStatus('received') // get the orders with status received
                                         }} className="button-sm" text="Received"/>
                                    }
                                    { 
@@ -148,7 +157,15 @@ function YourOrders() {
                                         activeTab.received !== true && 
                                         activeTab.cancelled !== true && 
                                         <Button onClick={() => {
-                                            setOrderStatusAs('cancelled', order.order_id)
+                                            setOrderStatusAs('cancelled', order.order_id, getOrdersWithStatus)
+                                            setActiveTab({ // set the active tab to received
+
+                                                toPrepare: false,
+                                                preparing: false,
+                                                toReceived: false,
+                                                received: false,
+                                                cancelled: true
+                                            })
                                         }} 
                                         className="button-sm-red" 
                                         text="Cancel"/> 
