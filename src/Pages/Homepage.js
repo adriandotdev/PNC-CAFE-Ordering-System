@@ -5,10 +5,8 @@ import {UserContext} from '../contexts/UserContext'
 function Homepage() {
 
     let navigate = useNavigate()
-    const [menu, setMenu] = useState([])
-    const {setUserIDNumber, setMenuID, setAddedToCart, isUser, setUser, setSubTotal} = useContext(UserContext)
-
-    
+    const [menus, setMenu] = useState([])
+    const { setUserIDNumber, setMenuID, setAddedToCart, isUser, setUser, setSubTotal } = useContext(UserContext)
     
     /** Whenever this page gets rendered, 
      * It will fetch all of the menus and render 
@@ -29,7 +27,12 @@ function Homepage() {
             setUserIDNumber(id_number);
             setUser(true)
         }
-        fetch('http://localhost:3001/get-menu', {signal: signal})
+        fetch('http://localhost:3001/get-menu', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({order: 'menu'}),
+            signal: signal
+        })
         .then(res => res.json())
         .then(data => setMenu(JSON.parse(data)))
         .catch(err => {
@@ -50,7 +53,7 @@ function Homepage() {
 
                 <div className="flex flex-wrap justify-center md:justify-start items-start gap-10 py-2 md:p-12">
                     {
-                        menu.map(prod => {
+                        menus.map(prod => {
                             return (prod['status'] === '1' &&
                                 <label key={prod['menu_id']}  onClick={() => {
 
