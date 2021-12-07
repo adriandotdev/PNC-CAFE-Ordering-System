@@ -3,7 +3,7 @@ const {verifyUser, getUser, addUser} = require('../controller/AuthenticationCont
 const {addMenu, editMenu, deleteMenu, getMenu, getMenuByID} = require('../controller/MenuController')
 const {getCartItem, addQuantity, addToBag, getCartItems, removeItem} = require('../controller/CartController')
 const {getUsers, getUserByID, updateUserWithID, deleteUserAccount} = require('../controller/UsersController')
-const {addOrder, pendingOrders} = require('../controller/OrdersController')
+const {addOrder, getOrders, setOrderAsCancelled, getOrdersWithStatus, setOrderAs} = require('../controller/OrdersController')
 var mysql  = require('mysql');
 
 const route = express.Router();
@@ -34,7 +34,7 @@ route.post('/add-user', addUser);
 // ROUTES FOR MENU
 route.post('/add-menu', addMenu)
 
-route.get('/get-menu', getMenu)
+route.post('/get-menu', getMenu)
 
 route.post('/get-menu-id', getMenuByID)
 
@@ -63,6 +63,8 @@ route.delete('/delete-user', deleteUserAccount)
 
 // ORDER
 route.post('/add-order', addOrder)
-route.post('/pending-orders', pendingOrders)
-
+route.post('/set-as-cancelled', setOrderAsCancelled)
+route.post('/get-order-with-status', getOrdersWithStatus)
+route.get('/get-orders', getOrders)
+route.post('/set-order-as', setOrderAs)
 module.exports = route;

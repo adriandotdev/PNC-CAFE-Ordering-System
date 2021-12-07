@@ -55,7 +55,7 @@ const addToBag = (req, res) => {
 
 const getCartItems = (req, res) => {
 
-    const query = `SELECT * FROM cart inner join menu on menu.menu_id = cart.menu_id WHERE id_number = '${req.body['userIDNumber']}'`
+    const query = `SELECT * FROM cart inner join menu on menu.menu_id = cart.menu_id WHERE id_number = '${req.body['userIDNumber']}' AND menu.status = '1'`
 
     connection.query(query, function (error, results, fields) {
 

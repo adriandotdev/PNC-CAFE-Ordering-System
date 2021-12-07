@@ -30,9 +30,9 @@ const addOrder = (req, res) => {
     })
 }
 
-const pendingOrders = (req, res) => {
+const getOrdersWithStatus = (req, res) => {
 
-    const query = `SELECT * FROM Orders WHERE id_number = '${req.body['userIDNumber']}' AND status = 'pending'`;
+    const query = `SELECT * FROM Orders WHERE id_number = '${req.body['userIDNumber']}' AND status = '${req.body['status']}'`;
 
     connection.query(query, function (error, results, fields) {
 
@@ -43,7 +43,52 @@ const pendingOrders = (req, res) => {
         res.json(JSON.stringify(results))
     })
 }
+
+const setOrderAs = (req, res) => {
+
+    const query = `UPDATE Orders SET status = '${req.body['status']}' WHERE id_number = '${req.body['userIDNumber']}' AND order_id = '${req.body['orderID']}'`;
+
+    connection.query(query, function (error, results, fields) {
+
+        if (error) {
+            console.log(error)
+        }
+        console.log(results)
+        res.json(JSON.stringify(results))
+    })
+}
+
+const getOrders = (req, res) => {
+
+    const query = `SELECT * FROM Orders`;
+
+    connection.query(query, function (error, results, fields) {
+
+        if (error) {
+            console.log(error)
+        }
+        console.log(results)
+        res.json(JSON.stringify(results))
+    })
+}
+const setOrderAsCancelled = (req, res) => {
+
+    const query = `UPDATE Orders SET status = 'cancelled' WHERE id_number = '${req.body['userIDNumber']}' AND order_id = '${req.body['orderID']}'`;
+
+    connection.query(query, function (error, results, fields) {
+
+        if (error) {
+            console.log(error)
+        }
+        console.log(results)
+        res.json(JSON.stringify(results))
+    })
+}
+
 module.exports = {
     addOrder,
-    pendingOrders
+    setOrderAsCancelled,
+    getOrdersWithStatus,
+    getOrders,
+    setOrderAs
 }
