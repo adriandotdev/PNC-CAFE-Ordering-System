@@ -69,7 +69,7 @@ const deleteMenu = (req, res) => {
 
 const getMenu = (req, res) => {
     
-    const query = `SELECT * FROM menu`;
+    const query = `SELECT * FROM menu ORDER BY ${req.body['order']}`;
 
     connection.query(query, function (error, results, fields) {
 
