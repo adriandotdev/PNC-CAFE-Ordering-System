@@ -3,6 +3,7 @@ import { UserProvider } from '../contexts/UserContext'
 import {AdminOrderContext} from '../contexts/AdminOrderContext'
 import StatusModal from '../components (admin)/StatusModal'
 import Invoice from '../components/Invoice'
+import SuccessModal from '../components/SuccessModal'
 
 function AdminOrders() {
 
@@ -10,7 +11,12 @@ function AdminOrders() {
     const {orders, setOrders, setOrderID} = useContext(AdminOrderContext)
 
     // A dropdown value for setting up the message when the 'orders' state is empty.
-    const [dropdownValue, setDropdownValue] = useState('pending')
+    const [dropdownValue, setDropdownValue] = useState('all')
+
+    const [isUpdateDone, setUpdateDone] = useState(false)
+
+    const [statusModalData, setStatusModalData] = useState(null)
+    const [invoiceData, setInvoiceData] = useState(null)
 
     /** Get the orders */
     const getOrders = () => {
@@ -44,12 +50,20 @@ function AdminOrders() {
     useEffect(() => {
 
         if (orders.length < 1) 
-            getOrders()
+           getOrdersWithStatus(dropdownValue)
             
-    }, [])
+    }, [orders])
 
     return (
-        <div className="row-start-2 row-end-5 grid grid-cols-12 w-screen gap-3 px-10">
+        <div className="row-start-2 row-end-5 grid grid-cols-12 w-screen gap-3 px-10 relative">
+
+            {/* Status Modal */}
+            <StatusModal idNumber={statusModalData !== null && statusModalData.id_number} referenceFor={statusModalData !== null && `${statusModalData.order_id}/status`}
+                                       isUpdateDone={isUpdateDone}     setUpdateDone={setUpdateDone}/>
+            {/* Invoice Modal */}
+            <UserProvider>
+                <Invoice orderDetails={invoiceData} referenceFor={invoiceData !== null && `${invoiceData.order_id}/invoice`} />
+            </UserProvider>
 
             <section className="flex gap-3 items-center justify-stretch w-max">
                 <h1 className="row-start-1 col-span-12 text-pnc font-bold text-2xl lg:text-4xl">Orders</h1>
@@ -76,7 +90,7 @@ function AdminOrders() {
                 </section>
             </section>
             
-             <div className="col-start-1 col-end-13 overflow-y-auto border table-height">
+             <div className="col-start-1 col-end-13 overflow-y-auto border table-height ">
                 
                 { orders.length > 0 ? <table className="table w-full relative table-zebra">
                     <thead>
@@ -95,7 +109,7 @@ function AdminOrders() {
                     <tbody className="overflow-y-auto">
 
                         {
-                          orders.map(order => {
+                          orders.map((order, index) => {
                                 
                                 let paymentMethod = JSON.parse(order.order_details).paymentMethod;
                                 let time = JSON.parse(order.order_details).desiredTime
@@ -111,22 +125,22 @@ function AdminOrders() {
                                             {/* Order Status */}
                                             <td>
                                                 <label 
-                                                    onClick={() => setOrderID(order.order_id)} 
+                                                    onClick={() => {
+                                                        
+                                                        setStatusModalData(order)
+                                                        setOrderID(order.order_id)
+                                                    }} 
                                                     className={order.status === 'pending' || order.status === 'preparing' ? 'button-sm' : 'btn btn-sm btn-disabled'} 
-                                                    htmlFor={order.status === 'pending' || order.status === 'preparing' ? 'order-status' : ''}>{order.status}
+                                                    htmlFor={order.status === 'pending' || order.status === 'preparing' ? `${order.order_id}/status` : ''}>{order.status}
                                                 </label>
                                             </td>
 
-                                            <td><label className="button-sm" htmlFor={order.order_id}>Invoice</label></td>
+                                            <td>
+                                                <label onClick={() => setInvoiceData(order)} className="button-sm" htmlFor={`${order.order_id}/invoice`}>Invoice</label>
+                                            </td>
                                         </tr>
 
-                                        {/* The StatusModal */}
-                                        <StatusModal idNumber={order.id_number} order_id={order.order_id}/>
-
-                                        {/* The Invoice */}
-                                        <UserProvider>
-                                            <Invoice orderDetails={order} referenceFor={order.order_id} />
-                                        </UserProvider>
+                                        
                                     </>
                                 )
                             }) 
@@ -135,6 +149,8 @@ function AdminOrders() {
                 </table> : <div className="flex flex-col justify-center items-center h-full"><p className="font-bold text-3xl w-max m-auto">There are no {dropdownValue} orders.</p></div> }
                 
             </div>
+            {/* This will show up if the updateDone state is true */}
+            {isUpdateDone && <SuccessModal isUpdateDone={isUpdateDone}/>}
         </div>
     )
 }
