@@ -18,8 +18,10 @@ import ProfilePage from './Pages/ProfilePage'
 import CartPage from './Pages/CartPage'
 import CheckoutPage from './Pages/CheckoutPage'
 import YourOrders from './Pages/YourOrders'
+import AdminOrders from './Pages/AdminOrders'
 // Contexts
 import {AdminMenuProvider} from './contexts/AdminMenuContext'
+import {AdminOrderProvider} from './contexts/AdminOrderContext'
 
 function App() {
 
@@ -37,7 +39,6 @@ function App() {
     <Router>
 
         <Routes>
-
           {/* Routes for user */}
           <Route path="/" element={<Navbar navClass="grid grid-rows-2 min-h-screen"/>} >
             <Route path="/" element={<UserLoginPage />} />
@@ -58,10 +59,10 @@ function App() {
               isAdmin && <Route path="/admin" element={<AdminPage />}>
                           <Route path="/admin/users" element={<CustomersPage />} />
                           <Route path="/admin/menu" element={<AdminMenuProvider><MenuPage /></AdminMenuProvider>} />
+                          <Route path="/admin/orders" element={<AdminMenuProvider><AdminOrderProvider><AdminOrders /></AdminOrderProvider></AdminMenuProvider>} />
                         </Route>
             }
           </Route>
-
         </Routes>
     </Router>
   );

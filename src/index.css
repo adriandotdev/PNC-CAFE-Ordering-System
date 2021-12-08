@@ -185,6 +185,9 @@
   @apply btn btn-sm btn-outline bg-pnc hover:bg-pncHover border-none text-white;
 }
 
+.button-sm-red {
+  @apply btn btn-sm btn-outline bg-red-500 hover:bg-red-600 border-none text-white;
+}
 /* YOUR ORDERS */
 .tab-style {
   @apply tab bg-pnc text-white rounded transition;

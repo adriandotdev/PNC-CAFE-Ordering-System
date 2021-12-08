@@ -8,19 +8,25 @@ import Invoice from '../components/Invoice'
 function YourOrders() {
 
     // User Context
-    const {isUser, setUser, userIDNumber, setUserIDNumber} = useContext(UserContext)
+    const {setUser, userIDNumber, setUserIDNumber} = useContext(UserContext)
+    /** This is the state that holds of the orderDetails
+     * such as the items, orderID, orderDate etc. */
     const [orderDetails, setOrderDetails] = useState(null)
+
+    /** A state that determines which tab is going to be active. */
     const [activeTab, setActiveTab] = useState({
 
-        toPrepare: true,
+        all: true,
+        pending: false,
         preparing: false,
         toReceived: false,
         received: false,
         cancelled: false
     })
 
+    // A state that holds the orders of the user.
     const [orders, setOrders] = useState([])
-
+    
     /** A function that gets the orders 
      * based on the specified status. */
     const getOrdersWithStatus = (status) => {
@@ -71,8 +77,8 @@ function YourOrders() {
     useEffect(() => {
 
         document.title = 'PNC Cafe | Your Orders'
-        getOrdersWithStatus('to prepare')
-    }, [isUser])
+        getOrdersWithStatus('all')
+    }, [])
 
     // 
     return (
@@ -82,18 +88,26 @@ function YourOrders() {
 
             <div className="tabs tabs-boxed">
 
-                {/* To Prepare */}
+                {/* ALL */}
                 <a onClick={() => {
                     
-                    setActiveTab({toPrepare: true, preparing: false, toReceived: false, received: false, cancelled: false})
-                    getOrdersWithStatus('to prepare')
+                    setActiveTab({all: true, pending: false, preparing: false, toReceived: false, received: false, cancelled: false})
+                    getOrdersWithStatus('all')
                 }} 
-                className={`tab ${activeTab.toPrepare ? "tab-style" : ""}`}>To Prepare</a> 
+                className={`tab ${activeTab.all ? "tab-style" : ""}`}>ALL</a> 
+
+                {/* Pending */}
+                <a onClick={() => {
+                    
+                    setActiveTab({all: false, pending: true, preparing: false, toReceived: false, received: false, cancelled: false})
+                    getOrdersWithStatus('pending')
+                }} 
+                className={`tab ${activeTab.pending ? "tab-style" : ""}`}>Pending</a> 
                 
                 {/* Preparing */}
                 <a onClick={() => {
                     
-                    setActiveTab({toPrepare: false, preparing: true, toReceived: false, received: false, cancelled: false})
+                    setActiveTab({all: false, pending: false, preparing: true, toReceived: false, received: false, cancelled: false})
                     getOrdersWithStatus('preparing')
                 }} 
                  className={`tab ${activeTab.preparing ? "tab-style" : ""}`}>Preparing</a> 
@@ -101,21 +115,21 @@ function YourOrders() {
                 {/* To Received */}
                 <a onClick={() => {
                     
-                    setActiveTab({toPrepare: false, preparing: false, toReceived: true, received: false, cancelled: false})
+                    setActiveTab({all: false, pending: false, preparing: false, toReceived: true, received: false, cancelled: false})
                     getOrdersWithStatus('to received')
                 }}  className={`tab ${activeTab.toReceived ? "tab-style" : ""}`}>To Received</a>
 
                 {/* Received */}
                 <a onClick={() => {
                     
-                    setActiveTab({toPrepare: false, preparing: false, toReceived: false, received: true, cancelled: false})
+                    setActiveTab({all: false, pending: false, preparing: false, toReceived: false, received: true, cancelled: false})
                     getOrdersWithStatus('received')
                 }}  className={`tab ${activeTab.received ? "tab-style" : ""}`}>Received</a>
 
                 {/* Cancelled */}
                 <a onClick={() => {
                     
-                    setActiveTab({toPrepare: false, preparing: false, toReceived: false, received: false, cancelled: true})
+                    setActiveTab({all: false, pending: false, preparing: false, toReceived: false, received: false, cancelled: true})
                     getOrdersWithStatus('cancelled')
                 }}  className={`tab ${activeTab.cancelled ? "tab-style" : ""}`}>Cancelled</a>
             </div>
@@ -136,22 +150,26 @@ function YourOrders() {
 
                                 <section className="flex items-center">
 
+                                    {
+                                        activeTab.all === true &&
+                                        <p className="text-pnc font-bold">{order.status}</p>
+                                    }
                                    {
                                         activeTab.toReceived === true && 
                                         <Button onClick={() => {
                                             setOrderStatusAs('received', order.order_id, getOrdersWithStatus) // set the status as received
                                             setActiveTab({ // set the active tab to received
 
-                                                toPrepare: true,
+                                                pending: false,
                                                 preparing: false,
                                                 toReceived: false,
-                                                received: false,
+                                                received: true,
                                                 cancelled: false
                                             })
-                                            // getOrdersWithStatus('received') // get the orders with status received
                                         }} className="button-sm" text="Received"/>
                                    }
                                    { 
+                                        activeTab.all !== true &&
                                         activeTab.toReceived !== true && 
                                         activeTab.preparing !== true && 
                                         activeTab.received !== true && 
@@ -160,7 +178,7 @@ function YourOrders() {
                                             setOrderStatusAs('cancelled', order.order_id, getOrdersWithStatus)
                                             setActiveTab({ // set the active tab to received
 
-                                                toPrepare: false,
+                                                pending: false,
                                                 preparing: false,
                                                 toReceived: false,
                                                 received: false,
