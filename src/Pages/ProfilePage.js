@@ -86,9 +86,9 @@ function ProfilePage() {
     // Function that change the profile info.
     function changeProfileInfo() {
 
-        if (contactNumber.length > 11) {
+        if (contactNumber.length > 11 || contactNumber.length < 11) {
 
-            setErrorMessage('Invalid Contact Number')
+            setErrorMessage('Invalid Contact Number. Please provide an 11-digit number. E.g. 09********2')
             return;
         }
 
