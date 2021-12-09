@@ -6,6 +6,7 @@ import UserDetail from '../components/UserDetail'
 import CheckedOutItem from '../components/CheckedOutItem'
 import Button from '../components/Button'
 import CheckoutMessage from '../components/CheckoutMessage'
+import PlaceOrderModal from '../components/PlaceOrderModal'
 
 // The Checkout page for the user.
 function CheckoutPage() {
@@ -125,6 +126,13 @@ function CheckoutPage() {
         return () => document.removeEventListener('click', addEventToDocument)
     })
 
+    function PlaceOrder () {
+
+         /** Set the isOrderPlaced to true
+         * so that we can change the page. */
+        placedOrder(true)
+        addOrder()
+    }
     return (
         <main className="p-5 py-8 sm:p-10 grid gap-8 sm:gap-5 md:gap-10 grid-cols-1 place-items-stretch place-content-start md:max-w-2xl w-full mx-auto">
             
@@ -182,16 +190,11 @@ function CheckoutPage() {
 
                 {/* Place Order and Cancel button */}
                 <div className="flex items-center gap-3">
-                    <Button onClick={() => {
-                        
-                        /** Set the isOrderPlaced to true
-                         * so that we can change the page. */
-                        placedOrder(true)
-                        addOrder()
-                    }} className="button" text="Place Order"/>
+                    <label htmlFor="place-order-modal" className="modal-button button">Place Order</label>
                     <Link to="/cart" className="button-no-color">Cancel</Link>
                 </div>
             </div> : <CheckoutMessage />}
+            <PlaceOrderModal PlaceOrder={PlaceOrder}/>
         </main>
     )
 }
