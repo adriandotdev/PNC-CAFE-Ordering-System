@@ -31,6 +31,7 @@ function ProfilePage() {
     const [password, setPassword] = useState('')
 
     const [imagePath, setImagePath] = useState('');
+    const [fullName, setFullName] = useState('')
 
     const [cancelEditing, setCancelEditing] = useState(false)
     const [isPasswordToBeEdit, setPasswordToBeEdit] = useState(false)
@@ -70,13 +71,16 @@ function ProfilePage() {
 
             console.log(JSON.parse(data)) // for testing
 
+            const parsedData = JSON.parse(data)
             // Set all the values.
             setEmail(JSON.parse(data)[0]['email'])
             setContactNumber(JSON.parse(data)[0]['mobile_number'])
             setPassword(JSON.parse(data)[0]['password'])
             setCurrentOldPassword(JSON.parse(data)[0]['password'])
             setImagePath(JSON.parse(data)[0]['profile_image_path'])
+            setFullName(parsedData[0]['given_name'] + " " + parsedData[0]['middle_name'] + " " + parsedData[0]['last_name'])
         })
+
     }, [cancelEditing, isEditingDone])
 
     // Function that change the profile info.
@@ -163,6 +167,7 @@ function ProfilePage() {
                                 <img src={imagePath === 'none' ? `../../assets/UserDefaultPhoto.png` : `../../assets/${imagePath}`} alt="profile"/>
                             </div>
                         </div> 
+                        <p className="text-pnc font-medium text-xl text-center break-all">{fullName}</p>
                         <label className="cursor-pointer text-pnc font-medium" htmlFor="profile-pic">Change Profile Picture</label>
                         <input onChange={() => changeProfileInfo()} className="invisible" type="file" name="profile-pic" id="profile-pic" />
                     </section>
