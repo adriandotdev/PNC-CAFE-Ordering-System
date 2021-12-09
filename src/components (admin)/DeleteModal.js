@@ -25,7 +25,7 @@ function DeleteModal() {
             <div className="modal">
             
                 <div className="modal-box">
-                    <p className="font-bold text-xl">Are you sure you want to delete this menu?</p>
+                    <p className="font-bold text-xl text-red-500">Are you sure you want to delete this menu?</p>
 
                     <div className="modal-action">
 
@@ -38,7 +38,7 @@ function DeleteModal() {
                         <ModalButton onClick={() => {
 
                             setMenuID('') // set the menu ID to empty to re-render the Menu Page.
-                        }} htmlFor="delete-modal" className="admin-cancel-btn modal-button" text="Cancel"/>
+                        }} htmlFor="delete-modal" className="button-no-color modal-button" text="Cancel"/>
                     </div>
                 </div>
             </div>
