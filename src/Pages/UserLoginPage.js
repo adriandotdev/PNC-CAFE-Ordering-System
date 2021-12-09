@@ -51,7 +51,7 @@ function UserLoginPage() {
                 window.sessionStorage.setItem('idNumber', `${IDNumber}`) // set the session storage to determine the id number of the user.
                 navigate("/homepage")
             } else {
-                setErrorMessage('ID Number and password does not match')
+                setErrorMessage('Incorrect password')
             }
         }
         
@@ -71,7 +71,7 @@ function UserLoginPage() {
                
                 <div className="card lg:bordered lg:border lg:p-5 max-w-md w-full">
                     <h1 className="card-title font-bold text-xl md:text-2xl text-pnc text-center lg:text-left">Login</h1>
-                    <form className="form-control " onSubmit={(e) => {
+                    <form autoComplete="off" className="form-control " onSubmit={(e) => {
                         
                         e.preventDefault()
                     

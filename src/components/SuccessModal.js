@@ -11,7 +11,7 @@ function SuccessModal({isUpdateDone}) {
             <input checked={isUpdateDone} type="checkbox" className="modal-toggle z-20" id="success-modal" />
             <div className="modal">
                 <div className="modal-box">
-                    <p className="text-pnc font-bold text-2xl">Status updated successfully</p>
+                    <p className="text-pnc font-bold text-2xl">{"Status updated successfully."}</p>
                 </div>
             </div>
         </>
