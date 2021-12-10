@@ -19,6 +19,7 @@ import CartPage from './Pages/CartPage'
 import CheckoutPage from './Pages/CheckoutPage'
 import YourOrders from './Pages/YourOrders'
 import AdminOrders from './Pages/AdminOrders'
+import AboutPage from './Pages/AboutPage'
 // Contexts
 import {AdminMenuProvider} from './contexts/AdminMenuContext'
 import {AdminOrderProvider} from './contexts/AdminOrderContext'
@@ -49,6 +50,7 @@ function App() {
             <Route path="/cart" element={<CartPage />} />
             <Route path="/checkout" element={<CheckoutPage />} />
             <Route path="/your-orders" element={<YourOrders />} />
+            <Route path="/about" element={<AboutPage />} />
           </Route> 
 
           {/* Routes for admin */}
