@@ -115,7 +115,7 @@ function AdminOrders() {
                                 let time = JSON.parse(order.order_details).desiredTime
                                 return (
                                     <>
-                                        <tr key={order.order_id}>
+                                        <tr key={order.order_id} className="hover">
                                             <th className="font-bold font-mono text-pnc">{order.order_id}</th>
                                             <td className="font-serif font-bold">{order.order_date}</td>
                                             <td className="font-semibold text-pnc">{order.id_number}</td>
