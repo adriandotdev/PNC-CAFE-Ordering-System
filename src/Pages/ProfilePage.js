@@ -73,8 +73,12 @@ function ProfilePage() {
 
             const parsedData = JSON.parse(data)
             // Set all the values.
-            setEmail(JSON.parse(data)[0]['email'])
-            setContactNumber(JSON.parse(data)[0]['mobile_number'])
+
+            if (emailDisabled)
+                setEmail(JSON.parse(data)[0]['email'])
+            
+            if (contactDisabled)
+                setContactNumber(JSON.parse(data)[0]['mobile_number'])
             setPassword(JSON.parse(data)[0]['password'])
             setCurrentOldPassword(JSON.parse(data)[0]['password'])
             setImagePath(JSON.parse(data)[0]['profile_image_path'])
@@ -181,6 +185,7 @@ function ProfilePage() {
                                 setEmailDisabled(true)
                                 setErrorMessage('')
                                 setCancelEditing(!cancelEditing)
+                                setContactNumber(contactNumber)
                             }} 
                             onChange={(e) => {
                                 
@@ -200,6 +205,7 @@ function ProfilePage() {
                                 setContactDisabled(true)
                                 setErrorMessage('')
                                 setCancelEditing(!cancelEditing)
+                                setEmail(prevEmail => prevEmail)
                             }} 
                             onChange={(e) => {
                                 
