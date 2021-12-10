@@ -1,4 +1,4 @@
-import React, {useEffect, useContext} from 'react'
+import React, {useState, useEffect, useContext} from 'react'
 import {AdminMenuContext} from '../contexts/AdminMenuContext'
 import AddProductModal from '../components (admin)/AddProductModal'
 import DeleteModal from '../components (admin)/DeleteModal'
@@ -7,7 +7,7 @@ import ModalButton from '../components (admin)/ModalButton'
 function MenuPage() {
 
     const {menuID, setMenuID, setEditing, menu, setMenuList} = useContext(AdminMenuContext)
-
+    const [menuToBeDeleted, setMenuToBeDeleted] = useState('')
     /** A useEffect that runs whenever an admin adds, updates, deletes 
      * new data to fetch updated menus in the database */
     useEffect(() => {
@@ -91,9 +91,13 @@ function MenuPage() {
                                                 This will show up the 
                                                 <DeleteModal/> component.
                                             */}
-                                            <ModalButton onClick={() => setMenuID(prod.menu_id)} htmlFor="delete-modal" className="admin-delete-btn modal-button" text="Delete"/>
+                                            <ModalButton onClick={() => {
+
+                                                setMenuToBeDeleted(prod.menu)
+                                                setMenuID(prod.menu_id)
+                                            }} htmlFor="delete-modal" className="admin-delete-btn modal-button" text="Delete"/>
                                             {/* The modal that pops up when the Delete button is clicked */}
-                                            <DeleteModal /> 
+                                            <DeleteModal menu={menuToBeDeleted}/> 
                                         </td>
                                     </tr>
                                 )

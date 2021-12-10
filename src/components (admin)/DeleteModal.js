@@ -4,7 +4,7 @@ import ModalButton from './ModalButton'
 
 /** A Delete Modal that pops up at Menu Page 
  * when the admin wants to delete a menu. */
-function DeleteModal() {
+function DeleteModal({menu}) {
 
     const { menuID, setMenuID } = useContext(AdminMenuContext)
     
@@ -25,7 +25,7 @@ function DeleteModal() {
             <div className="modal">
             
                 <div className="modal-box">
-                    <p className="font-bold text-xl text-red-500">Are you sure you want to delete this menu?</p>
+                    <p className="font-bold text-xl text-red-500 whitespace-normal">Are you sure you want to delete <span className="text-pnc">{menu}</span> in the menu?</p>
 
                     <div className="modal-action">
 
