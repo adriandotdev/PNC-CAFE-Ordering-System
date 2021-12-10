@@ -23,10 +23,13 @@ function Dropdown() {
                     {isUser && <Link to="/your-orders" className="btn-block focus:border-none hover:bg-pnc p-2 font-medium transition-all text-white text-center">Your Orders</Link>}
 
                     {/* Menu Button - it will point to homepage */}
-                    <Link to="/homepage" onClick={() => setQuantity(1)} className="text-center btn-block focus:border-none hover:bg-pnc p-2 font-medium transition-all text-white">Menu</Link>
+                    {isUser && <Link to="/homepage" onClick={() => setQuantity(1)} className="text-center btn-block focus:border-none hover:bg-pnc p-2 font-medium transition-all text-white">Menu</Link> }
+                    
+                    {/* About Button */}
+                    { !isUser && <Link to="/" className="btn-block hover:bg-pnc p-2 font-medium transition-all text-white text-center">Login</Link> }
 
                     {/* About Button */}
-                    <Button className="btn-block hover:bg-pnc p-2 font-medium transition-all text-white" text="About"/>
+                    <Link to="/about" className="btn-block hover:bg-pnc p-2 font-medium transition-all text-white text-center"> About </Link>
 
                     {/* Logout button - Logout the current logged account */}
                     {isUser && <Button onClick={
