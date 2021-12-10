@@ -30,14 +30,17 @@ function DeleteAccountModal() {
     return (
         <div className="modal m-0">
             
-            <div className="modal-box">
+            <div className="modal-box ">
                 
-                <p className="text-red-400 font-normal">This cannot be undone. This will permanently remove your PNC Cafe Account.</p>
+                <section className="flex flex-col gap-2">
+                    <p className="text-red-400 font-bold">This cannot be undone. This will permanently remove your PNC Cafe Account.</p>
 
-                <p className="text-red-500 font-medium">{`Please type ${userIDNumber} to confirm`}</p>
+                    <p className="text-red-500 font-medium">Please type <span className="text-pnc">{userIDNumber}</span> to confirm</p>
+                </section>
+                
 
                 <section className="input-container flex flex-col-reverse relative">
-                    <input className="input border border-pnc focus:ring-1 focus:ring-pnc" type="text" name="" id="" value={confirmation}
+                    <input placeholder="Please provide your ID Number here..." className="input border border-pnc focus:ring-1 focus:ring-pnc" type="text" name="" id="" value={confirmation}
                     onChange={(e) => setConfirmation(e.target.value)} />
                 </section>
 

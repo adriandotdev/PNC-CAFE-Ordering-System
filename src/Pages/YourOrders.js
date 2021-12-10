@@ -150,10 +150,10 @@ function YourOrders() {
 
                                 <section className="flex items-center">
 
-                                    {
+                                   {
                                         activeTab.all === true &&
                                         <p className="text-pnc font-bold">{order.status}</p>
-                                    }
+                                   }
                                    {
                                         activeTab.toReceived === true && 
                                         <Button onClick={() => {
