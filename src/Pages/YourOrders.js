@@ -148,12 +148,13 @@ function YourOrders() {
                                     <h3 className="font-medium"><span className="text-pnc">Order Date:</span> {order.order_date}</h3>
                                 </section>
 
-                                <section className="flex items-center">
+                                
+                                <section className="flex items-center md:justify-end gap-2 flex-wrap">
 
-                                   {
-                                        activeTab.all === true &&
-                                        <p className="text-pnc font-bold">{order.status}</p>
-                                   }
+                                    {/* Badge */}
+                                    <section className={`badge border-none ${order.status !== 'cancelled' ? "bg-pnc" : "bg-red-500 text-white"}`}>
+                                        {order.status}
+                                    </section>
                                    {
                                         activeTab.toReceived === true && 
                                         <Button onClick={() => {
