@@ -12,6 +12,8 @@ function MenuPage() {
      * new data to fetch updated menus in the database */
     useEffect(() => {
 
+        document.title = 'PNC Cafe | Menu'
+        
         fetch('http://localhost:3001/get-menu', {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},

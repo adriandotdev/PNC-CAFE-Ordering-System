@@ -9,6 +9,8 @@ function CustomersPage() {
     // runs for the first render of this page.
     useEffect(() => {
 
+        document.title = 'PNC Cafe | Users'
+        
         fetch('http://localhost:3001/users')
         .then(response => response.json())
         .then(data => {

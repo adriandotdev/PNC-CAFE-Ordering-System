@@ -38,6 +38,7 @@ function UserLoginPage() {
      */
     useEffect(() => {
 
+        document.title = 'PNC Cafe | Login'
         // Check if the input field of ID Number and Password are not empty.
         if (IDNumber && password) {
 

@@ -49,6 +49,7 @@ function AdminOrders() {
      * get all the orders of the app. */
     useEffect(() => {
 
+        document.title = 'PNC Cafe | Orders'
         if (orders.length < 1) 
            getOrdersWithStatus(dropdownValue)
             
