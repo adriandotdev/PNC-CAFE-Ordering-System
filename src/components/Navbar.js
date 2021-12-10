@@ -8,7 +8,6 @@ import ProfileIcon from '../component-icons/ProfileIcon'
 
 function Navbar({navClass}) {
 
-    
     return (
         <UserProvider>
             
