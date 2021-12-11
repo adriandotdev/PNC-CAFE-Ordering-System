@@ -179,7 +179,7 @@ function CartPage() {
             : 
             /** This will only render when the user is already placed the order.  */
             <div className="flex flex-col gap-3 justify-center items-center">
-                 <h1 className="text-center w-full text-2xl text-pnc font-bold md:text-3xl lg:text-4xl">Cart is Empty</h1> 
+                 <h1 className="text-center w-full text-2xl text-pnc font-bold md:text-3xl lg:text-4xl">Bag is Empty</h1> 
                  <Link to="/homepage" className="button">Go to Menu</Link>
             </div>   } 
         </>

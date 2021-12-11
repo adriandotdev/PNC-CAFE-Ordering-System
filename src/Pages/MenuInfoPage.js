@@ -159,16 +159,10 @@ function MenuInfoPage() {
                             isAlreadyOnBag()
 
                             setTimeout(() => setModalOpen(false), 1500)
-                        }} className="button btn-sm bg-transparent modal-button" htmlFor="add-item-modal">
+                        }} className="button btn-sm bg-transparent modal-button w-full" htmlFor="add-item-modal">
                             Add to Bag
-                            {/* <Button onClick={() => {
-
-                                isAlreadyOnBag()
-                                
-                            }} className="button btn-sm bg-transparent" text="Add to Bag"/> */}
                         </label>
                         { modalOpen && <AddItemModal /> }
-                        <Button className="button" text="Buy Now"/>
                     </section>
                     
                 </div>

@@ -51,8 +51,11 @@ function CheckoutModal() {
         const splitTime = String(time).split(':');
         let convertedTime = ''
 
-        if (+splitTime[0] === 24) {
+        if (+splitTime[0] >= 24) {
             convertedTime = '12:00 AM'
+        }
+        else if (+splitTime[0] < 12) {
+            convertedTime = `${splitTime[0]}:${splitTime[1]} AM`
         }
         else if (+splitTime[0] > 12)
             convertedTime = `${(+splitTime[0] - 12)}:${splitTime[1]} PM`

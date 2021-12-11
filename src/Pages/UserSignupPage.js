@@ -55,7 +55,7 @@ function UserSignupPage() {
             setErrorMessage('ID Number Already Registered')
         } 
         else if (mobileNumber.length > 11 || mobileNumber.length < 11) {
-            setErrorMessage('Mobile Number is invalid. Please provide a 11-digit number starting at 09.')
+            setErrorMessage('Mobile Number is invalid. Please provide an 11-digit number starting at 09.')
         }
         else {
 
