@@ -97,11 +97,11 @@ function CartItem({isAllClicked, setAllClicked, selectAll, setAllSelected, menu,
                         <section>
                             <h1 className="cart-menu-title">{menu}</h1>
                         </section>
-                        <section>
-                            <svg onClick={deleteItem} xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 cursor-pointer" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <label htmlFor={menuID}>
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 cursor-pointer" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                             </svg>
-                        </section>
+                        </label>
                     </div>
                     <section className="flex justify-between flex-wrap gap-3">
 
