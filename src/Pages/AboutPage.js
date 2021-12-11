@@ -1,20 +1,36 @@
 import React from 'react'
-import bgImage from '../Images/Buildings 2.png'
+import AboutLeader from '../components/AboutLeader'
+// import bgImage from '../../ass'
 function AboutPage() {
     return (
-        <div className="absolute top-0 left-0 right-0 bottom-0 flex flex-col-reverse justify-start lg:grid lg:place-content-center lg:w-full lg:h-screen">
-            <img className="block h-1/2 lg:h-auto lg:w-full object-cover" src={bgImage} alt="" />
+        <div className="hero min-h-full overflow-hidden" style={{backgroundImage: `url('../../assets/about-bg.jpg')` }}>
+            <div className="hero-overlay bg-opacity-60"></div> 
+            <div className="text-center hero-content flex-col lg:gap-14 text-neutral-content w-screen">
+                <div className="max-w-full">
+                    <h1 className="mb-5 text-5xl font-bold text-pncHover">
+                        About PNC Cafe
+                    </h1> 
+                    <p className="mb-5">
+                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Illum, quidem voluptatum error expedita natus deserunt, sit facere, iure optio qui voluptas consequuntur labore minus est aperiam minima aliquid repudiandae. Facere sapiente ducimus explicabo perferendis natus reprehenderit quis impedit exercitationem, enim ullam recusandae incidunt velit quae, quidem porro praesentium cum nulla?
+                    </p> 
+                </div>
 
-            <div className="lg:block lg:absolute  lg:w-full lg:h-screen lg:bg-black  lg:bg-opacity-20 hidden"></div>
-            <div className="lg:w-2/3 md:p-8 flex flex-col gap-4 justify-center items-center lg:items-start p-2 h-1/2 lg:h-full  lg:absolute lg:top-1/2 lg:left-1/2 lg:transform lg:-translate-x-1/2 lg:-translate-y-1/2">
+                <div>
+                   <h1 className="mb-5 text-5xl font-bold text-pncHover">
+                        Meet Our Leaders
+                    </h1> 
 
-                <section className="flex flex-col gap-3">
-                    <h1 className="stroke-1 text-xl text-pncHover font-bold lg:text-6xl pb-3 border-b border-pnc text-center lg:text-left">ABOUT PNC CAFE</h1>
-                    <p className="lg:text-white md:text-xl font-medium text-center lg:text-left">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cumque cum ipsa culpa, quisquam eveniet similique? Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis blanditiis atque aliquam a recusandae accusamus!</p>
-                </section>
+                    <div className="flex flex-col lg:flex-wrap lg:flex-row gap-3 lg:gap-12 justify-evenly">
+                        
+                        <AboutLeader name="Diana May S. Ardeza" imagePath="../../assets/Leader2Ardeza.jpg" description="Hola! Me Llamo Ardeza. Mucho Gusto! soy estudiante de ingeniería civil and I speak ABC."/>
+                        <AboutLeader name="RC Khaye B. Suelo" imagePath="../../assets/Leader1Suelo.jpg" description="Hola! Me Llamo Suelo.  Soy un estudiante de ciencias de la computación, and I speak ABC."/>
+                        <AboutLeader name="Adrian Nads L. Marcelo" imagePath="../../assets/Leader3Marcelo.jpg" description="Hola! Me Llamo Marcelo. Soy De Pilipinas. Mucho Gusto! Soy un estudiante de ciencias de la computación and I speak ABC."/>
+                    </div>
+                </div>
 
                 <footer>
-                    <p className="text-black lg:text-white font-medium">All Rights Reserved &copy; 2021.</p>
+                    <p className="font-medium">All Rights Reserved</p>
+                    <p className="font-medium">Copyright &copy; 2021</p>
                 </footer>
             </div>
         </div>
