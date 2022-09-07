@@ -277,7 +277,7 @@ function ProfilePage() {
                     </section>
 
                    {/* ALERTS */}
-                   {isEditingDone && <SuccessAlert alertMessage="Changes Done" />}
+                   {isEditingDone && <SuccessAlert alertMessage="Profile successfully updated" />}
                    {errorMessage && <ErrorAlert errorMessage={errorMessage}/>}
 
                     <section className="w-full flex justify-end items-center card-actions">

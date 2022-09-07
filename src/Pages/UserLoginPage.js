@@ -63,7 +63,7 @@ function UserLoginPage() {
             
             {/* Title Section */}
              <div className="hero-content flex-col lg:items-start gap-3 flex-shrink-0 z-auto">
-                    <h1 className="text-2xl text-pnc font-bold lg:text-4xl xl:text-6xl text-center">Welcome to PNC Cafe</h1>
+                    <h1 className="text-2xl text-pnc font-bold lg:text-4xl xl:text-6xl text-center">Welcome to PNC Café</h1>
                     <p className="font-medium text-pnc text-center md:text-xl">Your Favourite Food delivery Partner</p>
              </div>
 

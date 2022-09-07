@@ -6,7 +6,7 @@ function Homepage() {
 
     let navigate = useNavigate()
     const [menus, setMenu] = useState([])
-    const { setUserIDNumber, setMenuID, setAddedToCart, isUser, setUser, setSubTotal } = useContext(UserContext)
+    const { setUserIDNumber, setMenuID, setAddedToCart, isUser, setUser, setSubTotal, setQuantity } = useContext(UserContext)
     
     /** Whenever this page gets rendered, 
      * It will fetch all of the menus and render 
@@ -18,6 +18,7 @@ function Homepage() {
         const controller = new AbortController();
         const signal = controller.signal;
 
+        setQuantity(1)
         setAddedToCart(false)
         setSubTotal(0)
         
@@ -74,7 +75,7 @@ function Homepage() {
                                         <section className="flex justify-center flex-col gap-5">
 
                                             {/* Menu */}
-                                            <h2 className="card-title font-bold text-2xl text-white">{prod.menu}</h2>
+                                            <h2 className="card-title font-bold text-2xl text-white overflow-hidden overflow-ellipsis whitespace-nowrap w-60 ">{prod.menu}</h2>
 
                                             {/* Availability Badge */}
                                             <section className="badge bg-pnc border-none">

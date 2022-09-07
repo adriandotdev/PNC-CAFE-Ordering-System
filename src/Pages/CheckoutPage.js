@@ -4,7 +4,6 @@ import {UserContext} from '../contexts/UserContext'
 import {CheckoutContext} from '../contexts/CheckoutContext'
 import UserDetail from '../components/UserDetail'
 import CheckedOutItem from '../components/CheckedOutItem'
-import Button from '../components/Button'
 import CheckoutMessage from '../components/CheckoutMessage'
 import PlaceOrderModal from '../components/PlaceOrderModal'
 

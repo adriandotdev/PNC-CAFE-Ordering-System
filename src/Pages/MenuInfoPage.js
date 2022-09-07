@@ -1,4 +1,5 @@
 import React, {useState, useEffect, useContext} from 'react'
+import {Link} from 'react-router-dom'
 import {UserContext} from '../contexts/UserContext'
 import Button from '../components/Button'
 import AddItemModal from '../components/AddItemModal'
@@ -162,6 +163,7 @@ function MenuInfoPage() {
                         }} className="button btn-sm bg-transparent modal-button w-full" htmlFor="add-item-modal">
                             Add to Bag
                         </label>
+                        <Link className="btn btn-outline w-full" to="/homepage">Go to Menu</Link>
                         { modalOpen && <AddItemModal /> }
                     </section>
                     

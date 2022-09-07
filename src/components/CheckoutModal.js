@@ -74,7 +74,7 @@ function CheckoutModal() {
                         <ul className="steps gap-5 sm:gap-0 w-full">
                             <li className="step step-accent break-word text-pnc font-medium">Required Info</li>
                             <li className="step text-pnc font-medium">Place Order</li>
-                            <li className="step text-pnc font-medium">Preparing</li>
+                            <li className="step text-pnc font-medium">Pending</li>
                             <li className="step text-pnc font-medium">Order Received</li>
                         </ul>
                     </div>

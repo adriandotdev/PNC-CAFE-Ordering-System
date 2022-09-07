@@ -69,6 +69,7 @@ function CartItem({isAllClicked, setAllClicked, selectAll, setAllSelected, menu,
             
     }, [selectAll]);
     
+    // JSX
     return (
 
             <div className="w-full flex gap-4 p-2 h-max border-b">

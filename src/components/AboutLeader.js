@@ -11,6 +11,7 @@ function AboutLeader({name, imagePath, description}) {
                     </div> 
                 </div>
                 <h1 className="font-bold text-lg">{name}</h1>
+                <hr className="h-1 w-20 bg-pnc border-0 m-auto mt-2" />
             </div>
             
             <p className="max-w-xs lg:w-56">{description}</p>

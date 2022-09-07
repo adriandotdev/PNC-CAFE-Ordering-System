@@ -16,7 +16,7 @@ function Navbar({navClass}) {
 
                     <div className="relative">
                         <nav className="nav navbar bg-pnc p-5 navbar-start w-full flex items-center justify-between fixed top-0 z-10">
-                            <h1 className="text-white font-bold text-2xl sm:block md:text-3xl">PNC Cafe</h1>
+                            <h1 className="text-white font-bold text-2xl sm:block md:text-3xl">PNC Café</h1>
                             
                             <section className="flex gap-5">
 

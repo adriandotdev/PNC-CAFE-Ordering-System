@@ -11,7 +11,7 @@ function AdminNavbar({isAdmin, setAdmin}) {
 
             <nav className="row-start-1 col-start-1 col-end-4 navbar flex justify-between items-center bg-pnc">
 
-                <h1 className="text-white font-medium text-xl lg:text-3xl">PNC Cafe</h1>
+                <h1 className="text-white font-medium text-xl lg:text-3xl">PNC Café</h1>
 
                 {isAdmin && <div className="dropdown dropdown-end relative">
 
