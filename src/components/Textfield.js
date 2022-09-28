@@ -4,7 +4,7 @@ function Textfield({props, value, onChange}) {
     return (
         <>
             <input value={value} onChange={onChange} 
-            className="input border border-pnc focus:ring-1 focus:ring-pnc" 
+            className="input border border-foodHubColor2 focus:ring-1 focus:ring-foodHubColor2" 
             type={props.type} name={props.name} 
             id={props.name} 
             placeholder=" " 

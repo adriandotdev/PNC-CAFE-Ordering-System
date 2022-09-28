@@ -9,16 +9,17 @@
   background-color: white;
   color: black;
   padding: 0 0.2rem;
-  color: #228c22;
+  color: #0040AB;
 }
 
+// When Placeholder is not visible, we assume that the label is on top of the input field.
 .input-container input:not(:placeholder-shown) ~ label {
   top: 0;
   left: 5px;
   background-color: white;
   color: black;
   padding: 0 0.2rem;
-  color: #228c22;
+  color: #0040AB;
 }
 
 .input-label {

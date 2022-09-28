@@ -3,16 +3,17 @@ import AboutLeader from '../components/AboutLeader'
 // import bgImage from '../../ass'
 function AboutPage() {
     return (
-        <div className="hero min-h-full overflow-hidden" style={{backgroundImage: `url('../../assets/about-bg.jpg')` }}>
-            <div className="hero-overlay bg-opacity-60"></div> 
+        // style={{backgroundImage: `url('../../assets/about-bg.jpg')` }}
+        <div className="hero min-h-full overflow-hidden" >
+            {/* hero-overlay bg-opacity-60 */}
+            <div className=""></div> 
             <div className="text-center hero-content flex-col lg:gap-14 text-neutral-content w-screen">
                 <div className="max-w-full">
                     <h1 className="mb-5 text-5xl font-bold text-pncHover">
-                        About PNC Cafe
+                        About Food Hub
                     </h1> 
-                    <p className="mb-5 text-base">
-                            Welcome to the Pamantasan ng Cabuyao Café Reservation System, may your tummies be always full! We’re dedicated to provide you the very best service that you’ve ever had, with the intention to shorten the lines in the cafeteria during this pandemic times. Founded in 2021 by Diana May Ardeza, Adrian Nads Marcelo, RC Khaye Suelo and Alyana Pornelosa has come a long way from its beginning in a small outlet outside the Pamantasan ng Cabuyao. When the founders first started out, their passion for providing foods and service to the people drove them do intense research and plan to build such cafeteria. This gave them impetus to turn hard work and inspiration into a booming Café Reservation System. We now serve customers all over the Pamantasan ng Cabuyao.          
-                            We hope you enjoy our products and service as much as we enjoy offering them to you. If you have any questions or comments, please don’t hesitate to contact us!
+                    <p className="mb-5 text-base text-foodHubColor2">
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt aspernatur ipsa commodi fugiat accusantium fuga sit repellendus ratione nesciunt expedita ab pariatur sed error nemo eum molestiae voluptatibus tempora voluptas accusamus labore consequatur voluptatum asperiores, vitae omnis? Magni, repellendus veritatis atque molestias quasi quae, consectetur rem repellat fuga quod perferendis, quo labore sapiente odio harum quam! Odit unde ex incidunt sequi! Inventore, incidunt architecto illo recusandae magni nostrum cupiditate voluptas est et dolore quam debitis sed animi totam. Adipisci unde asperiores minus minima omnis autem officia soluta incidunt commodi excepturi aspernatur esse, ab iure iste impedit labore! Iste explicabo atque rerum dolores perferendis quos ipsa vero, tempora, ratione unde, recusandae reprehenderit itaque voluptatem repellendus laborum. Animi qui et accusantium libero. Nisi sint reiciendis nam accusantium consequuntur, porro
                     </p> 
                 </div>
 
@@ -29,13 +30,13 @@ function AboutPage() {
 
                         <AboutLeader name="RC Khaye B. Suelo" imagePath="../../assets/Leader1Suelo.jpg" description="She is RC Khaye from Switzerland. She studied Computer Science at Pamantasan ng Cabuyao, and took a Web Design bootcamp at Queensland, Australia."/>
                         
-                        <AboutLeader name="Alyana G. Pornelosa" imagePath="../../assets/Leader4Pornelosa.jpg" description="She is Alyana from Ontario, Canada. She studied Computer Science at Pamantasan ng Cabuyao, and a Frontend Developer for almost 5 years and also studied Web Design at Caprisa College in Canada."/>
+                        {/* <AboutLeader name="Alyana G. Pornelosa" imagePath="../../assets/Leader4Pornelosa.jpg" description="She is Alyana from Ontario, Canada. She studied Computer Science at Pamantasan ng Cabuyao, and a Frontend Developer for almost 5 years and also studied Web Design at Caprisa College in Canada."/> */}
                     </div>
                 </div>
 
                 <footer>
                     <p className="font-medium">All Rights Reserved</p>
-                    <p className="font-medium">Copyright &copy; 2021</p>
+                    <p className="font-medium">Copyright &copy; 2022</p>
                 </footer>
             </div>
         </div>

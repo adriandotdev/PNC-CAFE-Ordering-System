@@ -8,8 +8,10 @@ module.exports = {
         colors: {
           transparent: 'transparent',
           current: 'currentColor',
-          pnc: '#228c22',
-          pncHover: '#2CB52C',
+          pnc: '#AB1500',
+          pncHover: '#580E03',
+          foodHubColor1: '#AB6B00',
+          foodHubColor2: '#0040AB'
         },
         gridTemplateColumns: {
           // Simple 16 column grid
